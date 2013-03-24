@@ -1,0 +1,14 @@
+A move-aware, highly efficient operators library
+================================================
+
+Basic usage follows the Boost.Operators library.
+More documentation is definitly needed.
+
+If you like to write some documentation, contact me at
+
+  d.frey@gmx.de
+
+(or wait until I find time to do it myself ;)
+
+Happy hacking,
+Daniel
