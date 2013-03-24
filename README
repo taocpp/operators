@@ -2,13 +2,67 @@ A move-aware, highly efficient operators library
 ================================================
 
 Basic usage follows the Boost.Operators library.
-More documentation is definitly needed.
+See <http://www.boost.org/doc/libs/1_53_0/libs/utility/operators.htm>.
 
-If you like to write some documentation, contact me at
+Example
+-------
 
-  d.frey@gmx.de
+#include <df/operators.hpp>
 
-(or wait until I find time to do it myself ;)
+class A
+  : df::commutative_addable< A >,
+    df::multipliable< A, double >
+{
+public:
+  // create a new instance of A
+  A( const long v );
+
+  // copy and move constructor
+  A( const A& a );
+  A( A&& a );
+
+  // copy and move assignment
+  A& operator=( const A& a );
+  A& operator=( A&& a );
+
+  // addition of another A
+  A& operator+=( const A &a );
+
+  // multiplication by scalar
+  A& operator*=( double d );
+};
+
+and the following operators are generated:
+
+A&& operator+( A&& a, const A& b );
+A&& operator+( A&& a, A&& b );
+A&& operator+( const A& a, A&& b );
+A   operator+( const A& a, const A& b );
+
+A&& operator*( A&& a, double d );
+A   operator*( const A& a, double d );
+
+Status
+------
+
+The library is new, but fully tested in one of
+my (private) projects. No version number has been
+attached to it yet, I'll give it some time
+to gather initial public feedback. The interface
+could change, but I don't expect many changes.
+
+Future
+------
+
+I'll work on the documentation and hopefully
+have something in a few days.
+
+Contact
+-------
+
+Contact me at <d.frey@gmx.de> for feedback, suggestions
+and success stories - I'd like to hear if the library
+is useful for others and where it is used.
 
 Happy hacking,
 Daniel
