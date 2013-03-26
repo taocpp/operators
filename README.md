@@ -341,10 +341,10 @@ The following templates are available:
     <td>
       <code>commutative_xorable&lt; T &gt;</code>
     </td><td>
-      <code>T operator|( const T&amp; t, const T&amp; t1 )</code><br>
-      <code>T&amp;&amp; operator|( const T&amp; t, T&amp;&amp; t1 )</code><br>
-      <code>T&amp;&amp; operator|( T&amp;&amp; t, const T&amp; t1 )</code><br>
-      <code>T&amp;&amp; operator|( T&amp;&amp; t, T&amp;&amp; t1 )</code>
+      <code>T operator^( const T&amp; t, const T&amp; t1 )</code><br>
+      <code>T&amp;&amp; operator^( const T&amp; t, T&amp;&amp; t1 )</code><br>
+      <code>T&amp;&amp; operator^( T&amp;&amp; t, const T&amp; t1 )</code><br>
+      <code>T&amp;&amp; operator^( T&amp;&amp; t, T&amp;&amp; t1 )</code>
     </td><td>
       <code>T tmp( t )</code><br>
       <code>tmp ^= t</code><br>
@@ -354,14 +354,14 @@ The following templates are available:
     <td>
       <code>commutative_xorable&lt; T, U &gt;</code>
     </td><td>
-      <code>T operator|( const T&amp; t, const U&amp; u )</code><br>
-      <code>T operator|( const T&amp; t, U&amp;&amp; u )</code><br>
-      <code>T&amp;&amp; operator|( T&amp;&amp; t, const U&amp; u )</code><br>
-      <code>T&amp;&amp; operator|( T&amp;&amp; t, U&amp;&amp; u )</code><br>
-      <code>T operator|( const U&amp; u, const T&amp; t )</code><br>
-      <code>T&amp;&amp; operator|( const U&amp; u, T&amp;&amp; t )</code><br>
-      <code>T operator|( U&amp;&amp; u, const T&amp; t )</code><br>
-      <code>T&amp;&amp; operator|( U&amp;&amp; u, T&amp;&amp; t )</code>
+      <code>T operator^( const T&amp; t, const U&amp; u )</code><br>
+      <code>T operator^( const T&amp; t, U&amp;&amp; u )</code><br>
+      <code>T&amp;&amp; operator^( T&amp;&amp; t, const U&amp; u )</code><br>
+      <code>T&amp;&amp; operator^( T&amp;&amp; t, U&amp;&amp; u )</code><br>
+      <code>T operator^( const U&amp; u, const T&amp; t )</code><br>
+      <code>T&amp;&amp; operator^( const U&amp; u, T&amp;&amp; t )</code><br>
+      <code>T operator^( U&amp;&amp; u, const T&amp; t )</code><br>
+      <code>T&amp;&amp; operator^( U&amp;&amp; u, T&amp;&amp; t )</code>
     </td><td>
       <code>T tmp( t )</code><br>
       <code>tmp ^= u</code><br>
@@ -371,10 +371,10 @@ The following templates are available:
     <td>
       <code>xorable&lt; T &gt;</code>
     </td><td>
-      <code>T operator|( const T&amp; t, const T&amp; t1 )</code><br>
-      <code>T operator|( const T&amp; t, T&amp;&amp; t1 )</code><br>
-      <code>T&amp;&amp; operator|( T&amp;&amp; t, const T&amp; t1 )</code><br>
-      <code>T&amp;&amp; operator|( T&amp;&amp; t, T&amp;&amp; t1 )</code>
+      <code>T operator^( const T&amp; t, const T&amp; t1 )</code><br>
+      <code>T operator^( const T&amp; t, T&amp;&amp; t1 )</code><br>
+      <code>T&amp;&amp; operator^( T&amp;&amp; t, const T&amp; t1 )</code><br>
+      <code>T&amp;&amp; operator^( T&amp;&amp; t, T&amp;&amp; t1 )</code>
     </td><td>
       <code>T tmp( t )</code><br>
       <code>tmp ^= t</code><br>
@@ -384,10 +384,10 @@ The following templates are available:
     <td>
       <code>xorable&lt; T, U &gt;</code>
     </td><td>
-      <code>T operator|( const T&amp; t, const U&amp; u )</code><br>
-      <code>T operator|( const T&amp; t, U&amp;&amp; u )</code><br>
-      <code>T&amp;&amp; operator|( T&amp;&amp; t, const U&amp; u )</code><br>
-      <code>T&amp;&amp; operator|( T&amp;&amp; t, U&amp;&amp; u )</code>
+      <code>T operator^( const T&amp; t, const U&amp; u )</code><br>
+      <code>T operator^( const T&amp; t, U&amp;&amp; u )</code><br>
+      <code>T&amp;&amp; operator^( T&amp;&amp; t, const U&amp; u )</code><br>
+      <code>T&amp;&amp; operator^( T&amp;&amp; t, U&amp;&amp; u )</code>
     </td><td>
       <code>T tmp( t )</code><br>
       <code>tmp ^= u</code><br>
@@ -397,10 +397,10 @@ The following templates are available:
     <td>
       <code>xorable_left&lt; T, U &gt;</code>
     </td><td>
-      <code>T operator|( const U&amp; u, const T&amp; t )</code><br>
-      <code>T operator|( const U&amp; u, T&amp;&amp; t )</code><br>
-      <code>T operator|( U&amp;&amp; u, const T&amp; t )</code><br>
-      <code>T operator|( U&amp;&amp; u, T&amp;&amp; t )</code>
+      <code>T operator^( const U&amp; u, const T&amp; t )</code><br>
+      <code>T operator^( const U&amp; u, T&amp;&amp; t )</code><br>
+      <code>T operator^( U&amp;&amp; u, const T&amp; t )</code><br>
+      <code>T operator^( U&amp;&amp; u, T&amp;&amp; t )</code>
     </td><td>
       <code>T tmp( u )</code><br>
       <code>T tmp( std::move( u ) )</code><br>
