@@ -830,10 +830,6 @@ of both.
     </td>
   </tr>
 
-  <tr>
-    <th>Template</th><th>Provides</th>
-  </tr>
-
   <!-- ring -->
   <tr valign="top">
     <td>
@@ -938,10 +934,6 @@ of both.
       <code>field&lt; T, U &gt;</code><br>
       <code>totally_ordered&lt; T, U &gt;</code>
     </td>
-  </tr>
-
-  <tr>
-    <th>Template</th><th>Provides</th>
   </tr>
 
   <!-- bitwise -->
