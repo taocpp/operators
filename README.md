@@ -611,6 +611,96 @@ The following templates are available:
     </td>
   </tr>
 
+  <tr>
+    <th>Template</th><th>Provides</th><th>Requires</th>
+  </tr>
+
+  <!-- left_shiftable -->
+  <tr valign="top">
+    <td>
+      <code>left_shiftable&lt; T &gt;</code>
+    </td><td>
+      <code>T operator&lt;&lt;( const T&amp; t, const T&amp; t1 )</code><br>
+      <code>T operator&lt;&lt;( const T&amp; t, T&amp;&amp; t1 )</code><br>
+      <code>T&amp;&amp; operator&lt;&lt;( T&amp;&amp; t, const T&amp; t1 )</code><br>
+      <code>T&amp;&amp; operator&lt;&lt;( T&amp;&amp; t, T&amp;&amp; t1 )</code>
+    </td><td>
+      <code>T tmp( t )</code><br>
+      <code>tmp &lt;&lt;= t</code><br>
+      <code>tmp &lt;&lt;= std::move( t )</code>
+    </td>
+  </tr><tr valign="top">
+    <td>
+      <code>left_shiftable&lt; T, U &gt;</code>
+    </td><td>
+      <code>T operator&lt;&lt;( const T&amp; t, const U&amp; u )</code><br>
+      <code>T operator&lt;&lt;( const T&amp; t, U&amp;&amp; u )</code><br>
+      <code>T&amp;&amp; operator&lt;&lt;( T&amp;&amp; t, const U&amp; u )</code><br>
+      <code>T&amp;&amp; operator&lt;&lt;( T&amp;&amp; t, U&amp;&amp; u )</code>
+    </td><td>
+      <code>T tmp( t )</code><br>
+      <code>tmp &lt;&lt;= u</code><br>
+      <code>tmp &lt;&lt;= std::move( u )</code>
+    </td>
+  </tr>
+
+  <!-- right_shiftable -->
+  <tr valign="top">
+    <td>
+      <code>right_shiftable&lt; T &gt;</code>
+    </td><td>
+      <code>T operator&gt;&gt;( const T&amp; t, const T&amp; t1 )</code><br>
+      <code>T operator&gt;&gt;( const T&amp; t, T&amp;&amp; t1 )</code><br>
+      <code>T&amp;&amp; operator&gt;&gt;( T&amp;&amp; t, const T&amp; t1 )</code><br>
+      <code>T&amp;&amp; operator&gt;&gt;( T&amp;&amp; t, T&amp;&amp; t1 )</code>
+    </td><td>
+      <code>T tmp( t )</code><br>
+      <code>tmp &gt;&gt;= t</code><br>
+      <code>tmp &gt;&gt;= std::move( t )</code>
+    </td>
+  </tr><tr valign="top">
+    <td>
+      <code>right_shiftable&lt; T, U &gt;</code>
+    </td><td>
+      <code>T operator&gt;&gt;( const T&amp; t, const U&amp; u )</code><br>
+      <code>T operator&gt;&gt;( const T&amp; t, U&amp;&amp; u )</code><br>
+      <code>T&amp;&amp; operator&gt;&gt;( T&amp;&amp; t, const U&amp; u )</code><br>
+      <code>T&amp;&amp; operator&gt;&gt;( T&amp;&amp; t, U&amp;&amp; u )</code>
+    </td><td>
+      <code>T tmp( t )</code><br>
+      <code>tmp &gt;&gt;= u</code><br>
+      <code>tmp &gt;&gt;= std::move( u )</code>
+    </td>
+  </tr>
+
+  <tr>
+    <th>Template</th><th>Provides</th><th>Requires</th>
+  </tr>
+
+  <!-- incrementable -->
+  <tr valign="top">
+    <td>
+      <code>incrementable&lt; T &gt;</code>
+    </td><td>
+      <code>T operator++( T&amp; t, int )</code><br>
+    </td><td>
+      <code>T tmp( t )</code><br>
+      <code>++t</code><br>
+    </td>
+  </tr>
+
+  <!-- decrementable -->
+  <tr valign="top">
+    <td>
+      <code>decrementable&lt; T &gt;</code>
+    </td><td>
+      <code>T operator--( T&amp; t, int )</code><br>
+    </td><td>
+      <code>T tmp( t )</code><br>
+      <code>--t</code><br>
+    </td>
+  </tr>
+
 </table>
 
 Contact
