@@ -84,14 +84,16 @@ Requirements
 The library uses only a single C++11 feature, move semantics (aka rvalue references),
 to make it as portable as possible.
 Support for this particular feature of C++11 is available in most modern compilers,
-the following compilers and versions should support it:
+the following compilers and versions are supported and tested:
 
-* GCC 4.3 or newer
+* GCC 4.4 or newer
 * Clang (any version)
-* Intel C++ 11.0 or newer
-* Microsoft Visual C++ 10.0 or newer
 
 Remember to enable C++11, e.g., provide `--std=c++11` or similar options.
+
+>Note: If you use or test the **df.operators** library other compilers, e.g., with
+>Visual C++, Intel C++, or any other compiler, I'd like to hear from you. I will add
+>the compiler (and the required minimum version) to the above list. Thank you in advance!
 
 Installation
 ------------
