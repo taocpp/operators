@@ -108,9 +108,13 @@ The following templates are available:
 ***WORK IN PROGRESS, LAYOUT CHECK***
 
 <table>
+
   <tr>
     <th>Template</th><th>Provides</th><th>Requires</th>
-  </tr><tr valign="top">
+  </tr>
+
+  <!-- addable -->
+  <tr valign="top">
     <td>
       <code>commutative_addable&lt; T &gt;</code>
     </td><td>
@@ -130,7 +134,7 @@ The following templates are available:
       <code>T operator+( const T&amp; t, const U&amp; u )</code><br>
       <code>T operator+( const T&amp; t, U&amp;&amp; u )</code><br>
       <code>T&amp;&amp; operator+( T&amp;&amp; t, const U&amp; u )</code><br>
-      <code>T&amp;&amp; operator+( T&amp;&amp; t, U&amp;&amp; u )</code>
+      <code>T&amp;&amp; operator+( T&amp;&amp; t, U&amp;&amp; u )</code><br>
       <code>T operator+( const U&amp; u, const T&amp; t )</code><br>
       <code>T&amp;&amp; operator+( const U&amp; u, T&amp;&amp; t )</code><br>
       <code>T operator+( U&amp;&amp; u, const T&amp; t )</code><br>
@@ -172,8 +176,8 @@ The following templates are available:
     </td><td>
       <code>T operator+( const U&amp; u, const T&amp; t )</code><br>
       <code>T operator+( const U&amp; u, T&amp;&amp; t )</code><br>
-      <code>T&amp;&amp; operator+( U&amp;&amp; u, const T&amp; t )</code><br>
-      <code>T&amp;&amp; operator+( U&amp;&amp; u, T&amp;&amp; t )</code>
+      <code>T operator+( U&amp;&amp; u, const T&amp; t )</code><br>
+      <code>T operator+( U&amp;&amp; u, T&amp;&amp; t )</code>
     </td><td>
       <code>T tmp( u )</code><br>
       <code>T tmp( std::move( u ) )</code><br>
@@ -181,6 +185,230 @@ The following templates are available:
       <code>tmp += std::move( t )</code>
     </td>
   </tr>
+
+  <tr>
+    <th>Template</th><th>Provides</th><th>Requires</th>
+  </tr>
+
+  <!-- andable -->
+  <tr valign="top">
+    <td>
+      <code>commutative_andable&lt; T &gt;</code>
+    </td><td>
+      <code>T operator&amp;( const T&amp; t, const T&amp; t1 )</code><br>
+      <code>T&amp;&amp; operator&amp;( const T&amp; t, T&amp;&amp; t1 )</code><br>
+      <code>T&amp;&amp; operator&amp;( T&amp;&amp; t, const T&amp; t1 )</code><br>
+      <code>T&amp;&amp; operator&amp;( T&amp;&amp; t, T&amp;&amp; t1 )</code>
+    </td><td>
+      <code>T tmp( t )</code><br>
+      <code>tmp &amp;= t</code><br>
+      <code>tmp &amp;= std::move( t )</code>
+    </td>
+  </tr><tr valign="top">
+    <td>
+      <code>commutative_andable&lt; T, U &gt;</code>
+    </td><td>
+      <code>T operator&amp;( const T&amp; t, const U&amp; u )</code><br>
+      <code>T operator&amp;( const T&amp; t, U&amp;&amp; u )</code><br>
+      <code>T&amp;&amp; operator&amp;( T&amp;&amp; t, const U&amp; u )</code><br>
+      <code>T&amp;&amp; operator&amp;( T&amp;&amp; t, U&amp;&amp; u )</code><br>
+      <code>T operator&amp;( const U&amp; u, const T&amp; t )</code><br>
+      <code>T&amp;&amp; operator&amp;( const U&amp; u, T&amp;&amp; t )</code><br>
+      <code>T operator&amp;( U&amp;&amp; u, const T&amp; t )</code><br>
+      <code>T&amp;&amp; operator&amp;( U&amp;&amp; u, T&amp;&amp; t )</code>
+    </td><td>
+      <code>T tmp( t )</code><br>
+      <code>tmp &amp;= u</code><br>
+      <code>tmp &amp;= std::move( u )</code>
+    </td>
+  </tr><tr valign="top">
+    <td>
+      <code>andable&lt; T &gt;</code>
+    </td><td>
+      <code>T operator&amp;( const T&amp; t, const T&amp; t1 )</code><br>
+      <code>T operator&amp;( const T&amp; t, T&amp;&amp; t1 )</code><br>
+      <code>T&amp;&amp; operator&amp;( T&amp;&amp; t, const T&amp; t1 )</code><br>
+      <code>T&amp;&amp; operator&amp;( T&amp;&amp; t, T&amp;&amp; t1 )</code>
+    </td><td>
+      <code>T tmp( t )</code><br>
+      <code>tmp &amp;= t</code><br>
+      <code>tmp &amp;= std::move( t )</code>
+    </td>
+  </tr><tr valign="top">
+    <td>
+      <code>andable&lt; T, U &gt;</code>
+    </td><td>
+      <code>T operator&amp;( const T&amp; t, const U&amp; u )</code><br>
+      <code>T operator&amp;( const T&amp; t, U&amp;&amp; u )</code><br>
+      <code>T&amp;&amp; operator&amp;( T&amp;&amp; t, const U&amp; u )</code><br>
+      <code>T&amp;&amp; operator&amp;( T&amp;&amp; t, U&amp;&amp; u )</code>
+    </td><td>
+      <code>T tmp( t )</code><br>
+      <code>tmp &amp;= u</code><br>
+      <code>tmp &amp;= std::move( u )</code>
+    </td>
+  </tr><tr valign="top">
+    <td>
+      <code>andable_left&lt; T, U &gt;</code>
+    </td><td>
+      <code>T operator&amp;( const U&amp; u, const T&amp; t )</code><br>
+      <code>T operator&amp;( const U&amp; u, T&amp;&amp; t )</code><br>
+      <code>T operator&amp;( U&amp;&amp; u, const T&amp; t )</code><br>
+      <code>T operator&amp;( U&amp;&amp; u, T&amp;&amp; t )</code>
+    </td><td>
+      <code>T tmp( u )</code><br>
+      <code>T tmp( std::move( u ) )</code><br>
+      <code>tmp &amp;= t</code><br>
+      <code>tmp &amp;= std::move( t )</code>
+    </td>
+  </tr>
+
+  <!-- orable -->
+  <tr valign="top">
+    <td>
+      <code>commutative_orable&lt; T &gt;</code>
+    </td><td>
+      <code>T operator|( const T&amp; t, const T&amp; t1 )</code><br>
+      <code>T&amp;&amp; operator|( const T&amp; t, T&amp;&amp; t1 )</code><br>
+      <code>T&amp;&amp; operator|( T&amp;&amp; t, const T&amp; t1 )</code><br>
+      <code>T&amp;&amp; operator|( T&amp;&amp; t, T&amp;&amp; t1 )</code>
+    </td><td>
+      <code>T tmp( t )</code><br>
+      <code>tmp |= t</code><br>
+      <code>tmp |= std::move( t )</code>
+    </td>
+  </tr><tr valign="top">
+    <td>
+      <code>commutative_orable&lt; T, U &gt;</code>
+    </td><td>
+      <code>T operator|( const T&amp; t, const U&amp; u )</code><br>
+      <code>T operator|( const T&amp; t, U&amp;&amp; u )</code><br>
+      <code>T&amp;&amp; operator|( T&amp;&amp; t, const U&amp; u )</code><br>
+      <code>T&amp;&amp; operator|( T&amp;&amp; t, U&amp;&amp; u )</code><br>
+      <code>T operator|( const U&amp; u, const T&amp; t )</code><br>
+      <code>T&amp;&amp; operator|( const U&amp; u, T&amp;&amp; t )</code><br>
+      <code>T operator|( U&amp;&amp; u, const T&amp; t )</code><br>
+      <code>T&amp;&amp; operator|( U&amp;&amp; u, T&amp;&amp; t )</code>
+    </td><td>
+      <code>T tmp( t )</code><br>
+      <code>tmp |= u</code><br>
+      <code>tmp |= std::move( u )</code>
+    </td>
+  </tr><tr valign="top">
+    <td>
+      <code>orable&lt; T &gt;</code>
+    </td><td>
+      <code>T operator|( const T&amp; t, const T&amp; t1 )</code><br>
+      <code>T operator|( const T&amp; t, T&amp;&amp; t1 )</code><br>
+      <code>T&amp;&amp; operator|( T&amp;&amp; t, const T&amp; t1 )</code><br>
+      <code>T&amp;&amp; operator|( T&amp;&amp; t, T&amp;&amp; t1 )</code>
+    </td><td>
+      <code>T tmp( t )</code><br>
+      <code>tmp |= t</code><br>
+      <code>tmp |= std::move( t )</code>
+    </td>
+  </tr><tr valign="top">
+    <td>
+      <code>orable&lt; T, U &gt;</code>
+    </td><td>
+      <code>T operator|( const T&amp; t, const U&amp; u )</code><br>
+      <code>T operator|( const T&amp; t, U&amp;&amp; u )</code><br>
+      <code>T&amp;&amp; operator|( T&amp;&amp; t, const U&amp; u )</code><br>
+      <code>T&amp;&amp; operator|( T&amp;&amp; t, U&amp;&amp; u )</code>
+    </td><td>
+      <code>T tmp( t )</code><br>
+      <code>tmp |= u</code><br>
+      <code>tmp |= std::move( u )</code>
+    </td>
+  </tr><tr valign="top">
+    <td>
+      <code>orable_left&lt; T, U &gt;</code>
+    </td><td>
+      <code>T operator|( const U&amp; u, const T&amp; t )</code><br>
+      <code>T operator|( const U&amp; u, T&amp;&amp; t )</code><br>
+      <code>T operator|( U&amp;&amp; u, const T&amp; t )</code><br>
+      <code>T operator|( U&amp;&amp; u, T&amp;&amp; t )</code>
+    </td><td>
+      <code>T tmp( u )</code><br>
+      <code>T tmp( std::move( u ) )</code><br>
+      <code>tmp |= t</code><br>
+      <code>tmp |= std::move( t )</code>
+    </td>
+  </tr>
+
+  <!-- xorable -->
+  <tr valign="top">
+    <td>
+      <code>commutative_xorable&lt; T &gt;</code>
+    </td><td>
+      <code>T operator|( const T&amp; t, const T&amp; t1 )</code><br>
+      <code>T&amp;&amp; operator|( const T&amp; t, T&amp;&amp; t1 )</code><br>
+      <code>T&amp;&amp; operator|( T&amp;&amp; t, const T&amp; t1 )</code><br>
+      <code>T&amp;&amp; operator|( T&amp;&amp; t, T&amp;&amp; t1 )</code>
+    </td><td>
+      <code>T tmp( t )</code><br>
+      <code>tmp ^= t</code><br>
+      <code>tmp ^= std::move( t )</code>
+    </td>
+  </tr><tr valign="top">
+    <td>
+      <code>commutative_xorable&lt; T, U &gt;</code>
+    </td><td>
+      <code>T operator|( const T&amp; t, const U&amp; u )</code><br>
+      <code>T operator|( const T&amp; t, U&amp;&amp; u )</code><br>
+      <code>T&amp;&amp; operator|( T&amp;&amp; t, const U&amp; u )</code><br>
+      <code>T&amp;&amp; operator|( T&amp;&amp; t, U&amp;&amp; u )</code><br>
+      <code>T operator|( const U&amp; u, const T&amp; t )</code><br>
+      <code>T&amp;&amp; operator|( const U&amp; u, T&amp;&amp; t )</code><br>
+      <code>T operator|( U&amp;&amp; u, const T&amp; t )</code><br>
+      <code>T&amp;&amp; operator|( U&amp;&amp; u, T&amp;&amp; t )</code>
+    </td><td>
+      <code>T tmp( t )</code><br>
+      <code>tmp ^= u</code><br>
+      <code>tmp ^= std::move( u )</code>
+    </td>
+  </tr><tr valign="top">
+    <td>
+      <code>xorable&lt; T &gt;</code>
+    </td><td>
+      <code>T operator|( const T&amp; t, const T&amp; t1 )</code><br>
+      <code>T operator|( const T&amp; t, T&amp;&amp; t1 )</code><br>
+      <code>T&amp;&amp; operator|( T&amp;&amp; t, const T&amp; t1 )</code><br>
+      <code>T&amp;&amp; operator|( T&amp;&amp; t, T&amp;&amp; t1 )</code>
+    </td><td>
+      <code>T tmp( t )</code><br>
+      <code>tmp ^= t</code><br>
+      <code>tmp ^= std::move( t )</code>
+    </td>
+  </tr><tr valign="top">
+    <td>
+      <code>xorable&lt; T, U &gt;</code>
+    </td><td>
+      <code>T operator|( const T&amp; t, const U&amp; u )</code><br>
+      <code>T operator|( const T&amp; t, U&amp;&amp; u )</code><br>
+      <code>T&amp;&amp; operator|( T&amp;&amp; t, const U&amp; u )</code><br>
+      <code>T&amp;&amp; operator|( T&amp;&amp; t, U&amp;&amp; u )</code>
+    </td><td>
+      <code>T tmp( t )</code><br>
+      <code>tmp ^= u</code><br>
+      <code>tmp ^= std::move( u )</code>
+    </td>
+  </tr><tr valign="top">
+    <td>
+      <code>xorable_left&lt; T, U &gt;</code>
+    </td><td>
+      <code>T operator|( const U&amp; u, const T&amp; t )</code><br>
+      <code>T operator|( const U&amp; u, T&amp;&amp; t )</code><br>
+      <code>T operator|( U&amp;&amp; u, const T&amp; t )</code><br>
+      <code>T operator|( U&amp;&amp; u, T&amp;&amp; t )</code>
+    </td><td>
+      <code>T tmp( u )</code><br>
+      <code>T tmp( std::move( u ) )</code><br>
+      <code>tmp ^= t</code><br>
+      <code>tmp ^= std::move( t )</code>
+    </td>
+  </tr>
+
 </table>
 
 Contact
