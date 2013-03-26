@@ -1,16 +1,17 @@
 The df.operators library
 ========================
 
-Welcome to the **df.operators** library, the perfect tool to ease building highly-efficient mathematical data types with C++11.
+Welcome to the **df.operators** library, the perfect tool to build
+highly efficient, move-aware arithmetic data types with C++11.
 
 Preface
 -------
 
-The **df.operators** library is the next logical evolution of the
+The **df.operators** library is the next logical step in the evolution of the
 [Boost.Operators](http://www.boost.org/doc/libs/1_53_0/libs/utility/operators.htm) library,
 whose maintainer I became in 2001. Since then, C++ has changed significiantly and
-with the arrival of C++11, the time has come for a complete move-aware rewrite and
-to get rid of some *very* old legacy code and work-arounds.
+with C++11, the time has come for a complete rewrite and to get rid of some
+*very* old legacy code and work-arounds.
 
 The aim of this library is, of course, the replacement of Boost.Operators and,
 eventually, the final inclusion in a future version of the C++ standard.
