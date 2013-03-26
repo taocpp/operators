@@ -804,6 +804,41 @@ The following templates are available:
 
 </table>
 
+The following templates provide common groups of related operations.
+For example, since a type which is addable is usually also subractable,
+the `additive` template provides the combined operators of both.
+
+<table>
+
+  <tr>
+    <th>Template</th><th>Provides</th>
+  </tr>
+
+  <!-- bitwise -->
+  <tr valign="top">
+    <td>
+      <code>bitwise&lt; T &gt;</code>
+    </td><td>
+      <ul>
+        <li><code>andable&lt; T &gt;</code></li>
+        <li><code>orable&lt; T &gt;</code></li>
+        <li><code>xorable&lt; T &gt;</code></li>
+      </ul>
+    </td>
+  </tr><tr valign="top">
+    <td>
+      <code>bitwise&lt; T, U &gt;</code>
+    </td><td>
+      <ul>
+        <li><code>andable&lt; T, U &gt;</code></li>
+        <li><code>orable&lt; T, U &gt;</code></li>
+        <li><code>xorable&lt; T, U &gt;</code></li>
+      </ul>
+    </td>
+  </tr>
+
+</table>
+
 Contact
 -------
 
