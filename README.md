@@ -100,14 +100,115 @@ The **df.operators** library is a header-only library. There is nothing to build
 just copy it somewhere and add the appropriate compiler option to add its `include` directory
 to the compiler's include path, e.g., `-I /path/to/df.operators/include`.
 
-Templates
----------
+Provided templates
+------------------
 
 The following templates are available:
 
 ***WORK IN PROGRESS, LAYOUT CHECK***
 
 <table>
+
+  <tr>
+    <th>Template</th><th>Provides</th><th>Requires</th>
+  </tr>
+
+  <!-- equality_comparable -->
+  <tr valign="top">
+    <td>
+      <code>equality_comparable&lt; T &gt;</code>
+    </td><td>
+      <code>bool operator!=( const T&amp; t, const T&amp; t1 )</code>
+    </td><td>
+      <code>static_cast&lt; bool &gt;( t == t1 )</code>
+    </td>
+  </tr><tr valign="top">
+    <td>
+      <code>equality_comparable&lt; T, U &gt;</code>
+    </td><td>
+      <code>bool operator!=( const T&amp; t, const U&amp; u )</code><br>
+      <code>bool operator==( const U&amp; u, const T&amp; t )</code><br>
+      <code>bool operator!=( const U&amp; u, const T&amp; t )</code>
+    </td><td>
+      <code>static_cast&lt; bool &gt;( t == u )</code>
+    </td>
+  </tr>
+
+  <!-- less_than_comparable -->
+  <tr valign="top">
+    <td>
+      <code>less_than_comparable&lt; T &gt;</code>
+    </td><td>
+      <code>bool operator&gt;( const T&amp; t, const T&amp; t1 )</code>
+      <code>bool operator&lt;=( const T&amp; t, const T&amp; t1 )</code>
+      <code>bool operator&gt;=( const T&amp; t, const T&amp; t1 )</code>
+    </td><td>
+      <code>static_cast&lt; bool &gt;( t &lt; t1 )</code>
+    </td>
+  </tr><tr valign="top">
+    <td>
+      <code>less_than_comparable&lt; T, U &gt;</code>
+    </td><td>
+      <code>bool operator&lt;=( const T&amp; t, const U&amp; u )</code><br>
+      <code>bool operator&gt;=( const T&amp; t, const U&amp; u )</code><br>
+      <code>bool operator&lt;( const U&amp; u, const T&amp; t )</code><br>
+      <code>bool operator&gt;( const U&amp; u, const T&amp; t )</code><br>
+      <code>bool operator&lt;=( const U&amp; u, const T&amp; t )</code><br>
+      <code>bool operator&gt;=( const U&amp; u, const T&amp; t )</code>
+    </td><td>
+      <code>static_cast&lt; bool &gt;( t &lt; u )</code><br>
+      <code>static_cast&lt; bool &gt;( t &gt; u )</code>
+    </td>
+  </tr>
+
+  <!-- equivalent -->
+  <tr valign="top">
+    <td>
+      <code>equivalent&lt; T &gt;</code>
+    </td><td>
+      <code>bool operator==( const T&amp; t, const T&amp; t1 )</code>
+    </td><td>
+      <code>static_cast&lt; bool &gt;( t &lt; t1 )</code>
+    </td>
+  </tr><tr valign="top">
+    <td>
+      <code>equivalent&lt; T, U &gt;</code>
+    </td><td>
+      <code>bool operator==( const T&amp; t, const U&amp; u )</code>
+    </td><td>
+      <code>static_cast&lt; bool &gt;( t &lt; u )</code><br>
+      <code>static_cast&lt; bool &gt;( t &gt; u )</code>
+    </td>
+  </tr>
+
+  <!-- partially_ordered -->
+  <tr valign="top">
+    <td>
+      <code>partially_ordered&lt; T &gt;</code>
+    </td><td>
+      <code>bool operator&gt;( const T&amp; t, const T&amp; t1 )</code><br>
+      <code>bool operator&lt;=( const T&amp; t, const T&amp; t1 )</code><br>
+      <code>bool operator&gt;=( const T&amp; t, const T&amp; t1 )</code>
+    </td><td>
+      <code>static_cast&lt; bool &gt;( t &lt; t1 )</code><br>
+      <code>static_cast&lt; bool &gt;( t == t1 )</code>
+    </td>
+  </tr><tr valign="top">
+    <td>
+      <code>partially_ordered&lt; T, U &gt;</code>
+    </td><td>
+      <code>bool operator&lt;=( const T&amp; t, const U&amp; u )</code><br>
+      <code>bool operator&gt;=( const T&amp; t, const U&amp; u )</code><br>
+      <code>bool operator&lt;( const U&amp; u, const T&amp; t )</code><br>
+      <code>bool operator&gt;( const U&amp; u, const T&amp; t )</code><br>
+      <code>bool operator&lt;=( const U&amp; u, const T&amp; t )</code><br>
+      <code>bool operator&gt;=( const U&amp; u, const T&amp; t )</code>
+    </td><td>
+      <code>static_cast&lt; bool &gt;( t &lt; u )</code><br>
+      <code>static_cast&lt; bool &gt;( t &gt; u )</code><br>
+      <code>static_cast&lt; bool &gt;( t == u )</code>
+    </td>
+  </tr>
 
   <tr>
     <th>Template</th><th>Provides</th><th>Requires</th>
@@ -682,10 +783,10 @@ The following templates are available:
     <td>
       <code>incrementable&lt; T &gt;</code>
     </td><td>
-      <code>T operator++( T&amp; t, int )</code><br>
+      <code>T operator++( T&amp; t, int )</code>
     </td><td>
       <code>T tmp( t )</code><br>
-      <code>++t</code><br>
+      <code>++t</code>
     </td>
   </tr>
 
@@ -694,10 +795,10 @@ The following templates are available:
     <td>
       <code>decrementable&lt; T &gt;</code>
     </td><td>
-      <code>T operator--( T&amp; t, int )</code><br>
+      <code>T operator--( T&amp; t, int )</code>
     </td><td>
       <code>T tmp( t )</code><br>
-      <code>--t</code><br>
+      <code>--t</code>
     </td>
   </tr>
 
