@@ -807,9 +807,138 @@ For example, since a type which is left shiftable is usually also
 right shiftable, the `shiftable` template provides the combined operators
 of both.
 
-***WORK IN PROGRESS***
-
 <table>
+
+  <tr>
+    <th>Template</th><th>Provides</th>
+  </tr>
+
+  <!-- totally_ordered -->
+  <tr valign="top">
+    <td>
+      <code>totally_ordered&lt; T &gt;</code>
+    </td><td>
+      <code>equality_comparable&lt; T &gt;</code><br>
+      <code>less_than_comparable&lt; T &gt;</code>
+    </td>
+  </tr><tr valign="top">
+    <td>
+      <code>totally_ordered&lt; T, U &gt;</code>
+    </td><td>
+      <code>equality_comparable&lt; T, U &gt;</code><br>
+      <code>less_than_comparable&lt; T, U &gt;</code>
+    </td>
+  </tr>
+
+  <tr>
+    <th>Template</th><th>Provides</th>
+  </tr>
+
+  <!-- ring -->
+  <tr valign="top">
+    <td>
+      <code>commutative_ring&lt; T &gt;</code>
+    </td><td>
+      <code>commutative_addable&lt; T &gt;</code><br>
+      <code>subtractable&lt; T &gt;</code><br>
+      <code>commutative_multipliable&lt; T &gt;</code>
+    </td>
+  </tr><tr valign="top">
+    <td>
+      <code>commutative_ring&lt; T, U &gt;</code>
+    </td><td>
+      <code>commutative_addable&lt; T, U &gt;</code><br>
+      <code>subtractable&lt; T, U &gt;</code><br>
+      <code>subtractable_left&lt; T, U &gt;</code><br>
+      <code>commutative_multipliable&lt; T, U &gt;</code>
+    </td>
+  </tr><tr valign="top">
+    <td>
+      <code>ring&lt; T &gt;</code>
+    </td><td>
+      <code>commutative_addable&lt; T &gt;</code><br>
+      <code>subtractable&lt; T &gt;</code><br>
+      <code>multipliable&lt; T &gt;</code>
+    </td>
+  </tr><tr valign="top">
+    <td>
+      <code>ring&lt; T, U &gt;</code>
+    </td><td>
+      <code>commutative_addable&lt; T, U &gt;</code><br>
+      <code>subtractable&lt; T, U &gt;</code><br>
+      <code>subtractable_left&lt; T, U &gt;</code><br>
+      <code>multipliable&lt; T, U &gt;</code>
+    </td>
+  </tr>
+
+  <!-- field -->
+  <tr valign="top">
+    <td>
+      <code>field&lt; T &gt;</code>
+    </td><td>
+      <code>commutative_ring&lt; T &gt;</code><br>
+      <code>dividable&lt; T &gt;</code>
+    </td>
+  </tr><tr valign="top">
+    <td>
+      <code>field&lt; T, U &gt;</code>
+    </td><td>
+      <code>commutative_ring&lt; T, U &gt;</code><br>
+      <code>dividable&lt; T, U &gt;</code><br>
+      <code>dividable_left&lt; T, U &gt;</code>
+    </td>
+  </tr>
+
+  <!-- ordered_commutative_ring -->
+  <tr valign="top">
+    <td>
+      <code>ordered_commutative_ring&lt; T &gt;</code>
+    </td><td>
+      <code>commutative_ring&lt; T &gt;</code><br>
+      <code>totally_ordered&lt; T &gt;</code>
+    </td>
+  </tr><tr valign="top">
+    <td>
+      <code>ordered_commutative_ring&lt; T, U &gt;</code>
+    </td><td>
+      <code>commutative_ring&lt; T, U &gt;</code><br>
+      <code>totally_ordered&lt; T, U &gt;</code>
+    </td>
+  </tr>
+
+  <!-- ordered_ring -->
+  <tr valign="top">
+    <td>
+      <code>ordered_ring&lt; T &gt;</code>
+    </td><td>
+      <code>ring&lt; T &gt;</code><br>
+      <code>totally_ordered&lt; T &gt;</code>
+    </td>
+  </tr><tr valign="top">
+    <td>
+      <code>ordered_ring&lt; T, U &gt;</code>
+    </td><td>
+      <code>ring&lt; T, U &gt;</code><br>
+      <code>totally_ordered&lt; T, U &gt;</code>
+    </td>
+  </tr>
+
+  <!-- ordered_field -->
+  <tr valign="top">
+    <td>
+      <code>ordered_field&lt; T &gt;</code>
+    </td><td>
+      <code>field&lt; T &gt;</code><br>
+      <code>totally_ordered&lt; T &gt;</code>
+    </td>
+  </tr><tr valign="top">
+    <td>
+      <code>ordered_field&lt; T, U &gt;</code>
+    </td><td>
+      <code>field&lt; T, U &gt;</code><br>
+      <code>totally_ordered&lt; T, U &gt;</code>
+    </td>
+  </tr>
 
   <tr>
     <th>Template</th><th>Provides</th>
