@@ -9,7 +9,7 @@ Preface
 
 The **df.operators** library is the next logical step in the evolution of the
 [Boost.Operators](http://www.boost.org/doc/libs/1_53_0/libs/utility/operators.htm) library,
-whose maintainer I became in 2001. Since then, C++ has changed significiantly and
+whose maintainer I became in 2002. Since then, C++ has changed significiantly and
 with C++11, the time has come for a complete rewrite and to get rid of some
 *very* old legacy code and work-arounds.
 
@@ -82,7 +82,7 @@ Requirements
 ------------
 
 The library uses only a single C++11 feature, move semantics (aka rvalue references),
-to make it as portable as possible.
+to be as portable as possible.
 Support for this particular feature of C++11 is available in most modern compilers,
 the following compilers and versions are supported and tested:
 
@@ -91,7 +91,7 @@ the following compilers and versions are supported and tested:
 
 Remember to enable C++11, e.g., provide `--std=c++11` or similar options.
 
->Note: If you use or test the **df.operators** library other compilers, e.g., with
+>Note: If you use or test the **df.operators** library with other compilers, e.g., with
 >Visual C++, Intel C++, or any other compiler, I'd like to hear from you. I will add
 >the compiler (and the required minimum version) to the above list. Thank you in advance!
 
