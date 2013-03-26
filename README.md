@@ -815,7 +815,7 @@ of both.
     <th>Template</th><th>Provides</th>
   </tr>
 
-  <!-- commutative_bitwise -->
+  <!-- bitwise -->
   <tr valign="top">
     <td>
       <code>commutative_bitwise&lt; T &gt;</code>
@@ -832,10 +832,7 @@ of both.
       <code>commutative_orable&lt; T, U &gt;</code><br>
       <code>commutative_xorable&lt; T, U &gt;</code>
     </td>
-  </tr>
-
-  <!-- bitwise -->
-  <tr valign="top">
+  </tr><tr valign="top">
     <td>
       <code>bitwise&lt; T &gt;</code>
     </td><td>
@@ -850,6 +847,14 @@ of both.
       <code>andable&lt; T, U &gt;</code><br>
       <code>orable&lt; T, U &gt;</code><br>
       <code>xorable&lt; T, U &gt;</code>
+    </td>
+  </tr><tr valign="top">
+    <td>
+      <code>bitwise_left&lt; T, U &gt;</code>
+    </td><td>
+      <code>andable_left&lt; T, U &gt;</code><br>
+      <code>orable_left&lt; T, U &gt;</code><br>
+      <code>xorable_left&lt; T, U &gt;</code>
     </td>
   </tr>
 
