@@ -47,15 +47,15 @@ public:
 
   // copy and move constructor
   MyInt( const MyInt& v );
-  MyInt( MyInt&& v );
+  MyInt( MyInt&& v ); // optional
 
   // copy and move assignment
   MyInt& operator=( const MyInt& v );
-  MyInt& operator=( MyInt&& v );
+  MyInt& operator=( MyInt&& v ); // optional
 
   // addition of another MyInt
   MyInt& operator+=( const MyInt& v );
-  MyInt& operator+=( MyInt&& v );
+  MyInt& operator+=( MyInt&& v ); // optional
 
   // multiplication by a scalar
   MyInt& operator*=( const double v );
@@ -78,22 +78,30 @@ MyInt&& operator*( MyInt&&      lhs, const double& rhs );
 MyInt&& operator*( MyInt&&      lhs, double&&      rhs );
 ```
 
+>Note: The `// optional` in `class MyInt` above marks methods
+>that you typically only add when your class benefits from an
+>rvalue reference parameter. If there is no benetif for the
+>implementation, you can just omit these methods. If you leave
+>them out, **df.operators** will simply call the corresponding
+>non-movable version that takes the parameter by const lvalue
+>reference.
+
 Requirements
 ------------
 
-The library uses only a single C++11 feature, move semantics (aka rvalue references),
-to be as portable as possible.
-Support for this particular feature of C++11 is available in most modern compilers,
-the following compilers and versions are supported and tested:
+The library uses only a single C++11 feature, move semantics
+(aka rvalue references), to be as portable as possible.
+Support for this particular feature of C++11 is available in most
+modern compilers, the following compilers and versions are
+supported and tested:
 
 * GCC 4.4 or newer
 * Clang (any version)
 
 Remember to enable C++11, e.g., provide `--std=c++11` or similar options.
 
->Note: If you use or test the **df.operators** library with other compilers, e.g., with
->Visual C++, Intel C++, or any other compiler, I'd like to hear from you. I will add
->the compiler (and the required minimum version) to the above list. Thank you in advance!
+>Note: If you use or test the **df.operators** library with other compilers,
+>e.g., Visual C++, Intel C++, or any other compiler, I'd like to hear from you.
 
 Installation
 ------------
