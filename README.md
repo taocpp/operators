@@ -80,7 +80,7 @@ MyInt&& operator*( MyInt&&      lhs, double&&      rhs );
 
 >Note: The `// optional` in `class MyInt` above marks methods
 >that you typically only add when your class benefits from an
->rvalue reference parameter. If there is no benetif for the
+>rvalue reference parameter. If there is no benefit for the
 >implementation, you can just omit these methods. If you leave
 >them out, **df.operators** will simply call the corresponding
 >non-movable version that takes the parameter by const lvalue
