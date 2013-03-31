@@ -1018,6 +1018,17 @@ of both.
 
 </table>
 
+Commutativity
+-------------
+
+As you can see from the above tables, there are sometimes both commutative
+and non-commutative versions of a template available. If the class you are
+writing is commutative wrt to an operation, you should prefer the template
+with `commutative_` at the beginning. It will be more efficient in some
+cases because it can avoid to create a temporary and it has fewer requirements.
+For the two-argument version, `commutative_{OP}< T, U >` provides the operators
+of both `{OP}< T, U >` and `{OP}_left< T, U >`.
+
 Contact
 -------
 
