@@ -1021,13 +1021,22 @@ of both.
 Commutativity
 -------------
 
-As you can see from the above tables, there are sometimes both commutative
-and non-commutative versions of a template available. If the class you are
-writing is commutative wrt to an operation, you should prefer the template
-with `commutative_` at the beginning. It will be more efficient in some
-cases because it can avoid to create a temporary and it has fewer requirements.
+For some templates, there are both commutative and non-commutative
+versions available. If the class you are writing is commutative wrt an
+operation, you should prefer the commutative template, i.e., the one which
+has `commutative_` at the beginning.
+
+It will be *more efficient* in some cases because it can avoid to create an
+extra temporary for the result and it has *fewer requirements*.
+
+The one-argument version of the commutative template provides the same
+operators as the non-commutative one, but you can see from the result type
+in which cases creating a temporary (returning `T`) can be avoided
+(returning `T&&`).
+
 For the two-argument version, `commutative_{OP}< T, U >` provides the operators
-of both `{OP}< T, U >` and `{OP}_left< T, U >`.
+of both `{OP}< T, U >` and `{OP}_left< T, U >`, again the return type indicates
+those cases where an extra temporary is avoided.
 
 Contact
 -------
