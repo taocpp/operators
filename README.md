@@ -4,6 +4,18 @@ The df.operators library
 Welcome to the **df.operators** library, the perfect tool to build
 highly efficient, move-aware arithmetic data types with C++11.
 
+###Table of content
+
+[Preface](#preface)<br>
+[Rationale](#rationale)<br>
+[Example](#example)<br>
+[Requirements](#requirements)<br>
+[Installation](#installation)<br>
+[Provided templates](#provided-templates)<br>
+[Commutativity](#commutativity)<br>
+[Contact](#contact)<br>
+[License](#license)
+
 Preface
 -------
 
@@ -32,7 +44,8 @@ The operators are overloaded to take full advantage of move-aware types and
 are carefully written to allow the compiler to apply the
 Named-Return-Value-Optimization (NRVO) when possible to avoid unneccessary temporary objects.
 
-If, for example, you define a class like this:
+Example
+-------
 
 ```c++
 #include <df/operators.hpp>
