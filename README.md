@@ -25,10 +25,6 @@ whose maintainer I became in 2002. Since then, C++ has changed significiantly an
 with C++11, the time has come for a complete rewrite and to get rid of some
 *very* old legacy code and work-arounds.
 
-The aim of this library is, of course, the replacement of Boost.Operators and,
-eventually, the final inclusion in a future version of the C++ standard.
-That will be a long way, though.
-
 Rationale
 ---------
 
@@ -37,12 +33,14 @@ If you can write `x + y`, you probably also want to be able to write `x += y`.
 If you can write `x < y`, you also want `x > y`, `x >= y`, and `x <= y`.
 Moreover, unless your class has really surprising behavior, some of these related operators
 can be defined in terms of others (e.g. `x >= y` <=> `!(x < y)`).
-Replicating this boilerplate for multiple classes is both tedious and error-prone.
-The **df.operators** templates help by generating operators for you at namespace scope
+
+Replicating this for multiple classes is both tedious and error-prone.
+The **df.operators** templates help by generating operators for you
 based on other operators you've defined in your class.
+
 The operators are overloaded to take full advantage of move-aware types and
-are carefully written to allow the compiler to apply the
-Named-Return-Value-Optimization (NRVO) when possible to avoid unneccessary temporary objects.
+are carefully written to allow the compiler to apply important optimizations
+to avoid unneccessary temporary objects.
 
 Example
 -------
@@ -102,19 +100,24 @@ MyInt&& operator*( MyInt&&      lhs, double&&      rhs );
 Requirements
 ------------
 
-The library uses only a single C++11 feature, move semantics
+The library currently uses only a single C++11 feature, move semantics
 (aka rvalue references), to be as portable as possible.
 Support for this particular feature of C++11 is available in most
 modern compilers, the following compilers and versions are
 supported and tested:
 
 * GCC 4.4 or newer
-* Clang (any version)
+* Clang 3.2 or newer
 
 Remember to enable C++11, e.g., provide `--std=c++11` or similar options.
 
 >Note: If you use or test the **df.operators** library with other compilers,
->e.g., Visual C++, Intel C++, or any other compiler, I'd like to hear from you.
+>e.g., Visual C++, Intel C++, or any other compiler, or if you tested older
+>versions of Clang, I'd like to hear from you.
+
+>Note: Future version might use additional features from C++11,
+>namely `noexcept` and `constexpr`, once they are more generally
+>available and turn out to be applicable to **df.operators**.
 
 Installation
 ------------
