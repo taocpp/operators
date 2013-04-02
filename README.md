@@ -38,8 +38,8 @@ Replicating these operators for multiple classes is both tedious and error-prone
 The **df.operators** templates help by generating operators for you based on
 other operators you've defined in your class.
 
-The operators are overloaded to take full advantage of move-aware types and
-are carefully written to allow the compiler to apply important optimizations
+The generated operators are overloaded to take full advantage of move-aware types
+and are carefully written to allow the compiler to apply important optimizations
 to avoid unneccessary temporary objects.
 
 Example
