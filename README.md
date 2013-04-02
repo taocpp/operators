@@ -34,9 +34,9 @@ If you can write `x < y`, you also want `x > y`, `x >= y`, and `x <= y`.
 Moreover, unless your class has really surprising behavior, some of these related operators
 can be defined in terms of others (e.g. `x >= y` <=> `!(x < y)`).
 
-Replicating this for multiple classes is both tedious and error-prone.
-The **df.operators** templates help by generating operators for you
-based on other operators you've defined in your class.
+Replicating these operators for multiple classes is both tedious and error-prone.
+The **df.operators** templates help by generating operators for you based on
+other operators you've defined in your class.
 
 The operators are overloaded to take full advantage of move-aware types and
 are carefully written to allow the compiler to apply important optimizations
