@@ -115,8 +115,8 @@ Remember to enable C++11, e.g., provide `--std=c++11` or similar options.
 >e.g., Visual C++, Intel C++, or any other compiler, or if you tested older
 >versions of Clang, I'd like to hear from you.
 
->Note: Future version might use additional features from C++11,
->namely `noexcept` and `constexpr`, once they are more generally
+>Note: Future version might use additional features from C++11
+>(for example `noexcept`) once they are more generally
 >available and turn out to be applicable to **df.operators**.
 
 Installation
