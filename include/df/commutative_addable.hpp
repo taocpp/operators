@@ -17,6 +17,7 @@ namespace df
     class commutative_addable
     {
       friend T operator+( const T& lhs, const U& rhs )
+        noexcept( noexcept( T( lhs ), std::declval< T& >() += rhs, T( std::declval< T& >() ) ) )
       {
         T nrv( lhs );
         nrv += rhs;
@@ -24,6 +25,7 @@ namespace df
       }
 
       friend T operator+( const T& lhs, U&& rhs )
+        noexcept( noexcept( T( lhs ), std::declval< T& >() += std::move( rhs ), T( std::declval< T& >() ) ) )
       {
         T nrv( lhs );
         nrv += std::move( rhs );
@@ -31,18 +33,21 @@ namespace df
       }
 
       friend T&& operator+( T&& lhs, const U& rhs )
+        noexcept( noexcept( lhs += rhs ) )
       {
         lhs += rhs;
         return std::move( lhs );
       }
 
       friend T&& operator+( T&& lhs, U&& rhs )
+        noexcept( noexcept( lhs += std::move( rhs ) ) )
       {
         lhs += std::move( rhs );
         return std::move( lhs );
       }
 
       friend T operator+( const U& lhs, const T& rhs )
+        noexcept( noexcept( T( rhs ), std::declval< T& >() += lhs, T( std::declval< T& >() ) ) )
       {
         T nrv( rhs );
         nrv += lhs;
@@ -50,12 +55,14 @@ namespace df
       }
 
       friend T&& operator+( const U& lhs, T&& rhs )
+        noexcept( noexcept( rhs += lhs ) )
       {
         rhs += lhs;
         return std::move( rhs );
       }
 
       friend T operator+( U&& lhs, const T& rhs )
+        noexcept( noexcept( T( rhs ), std::declval< T& >() += std::move( lhs ) ) )
       {
         T nrv( rhs );
         nrv += std::move( lhs );
@@ -63,6 +70,7 @@ namespace df
       }
 
       friend T&& operator+( U&& lhs, T&& rhs )
+        noexcept( noexcept( rhs += std::move( lhs ) ) )
       {
         rhs += std::move( lhs );
         return std::move( rhs );
@@ -73,6 +81,7 @@ namespace df
     class commutative_addable< T >
     {
       friend T operator+( const T& lhs, const T& rhs )
+        noexcept( noexcept( T( lhs ), std::declval< T& >() += rhs, T( std::declval< T& >() ) ) )
       {
         T nrv( lhs );
         nrv += rhs;
@@ -80,18 +89,21 @@ namespace df
       }
 
       friend T&& operator+( const T& lhs, T&& rhs )
+        noexcept( noexcept( rhs += lhs ) )
       {
         rhs += lhs;
         return std::move( rhs );
       }
 
       friend T&& operator+( T&& lhs, const T& rhs )
+        noexcept( noexcept( lhs += rhs ) )
       {
         lhs += rhs;
         return std::move( lhs );
       }
 
       friend T&& operator+( T&& lhs, T&& rhs )
+        noexcept( noexcept( lhs += std::move( rhs ) ) )
       {
         lhs += std::move( rhs );
         return std::move( lhs );

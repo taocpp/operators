@@ -17,6 +17,7 @@ namespace df
     class multipliable_left
     {
       friend T operator*( const U& lhs, const T& rhs )
+        noexcept( noexcept( T( lhs ), std::declval< T& >() *= rhs, T( std::declval< T& >() ) ) )
       {
         T nrv( lhs );
         nrv *= rhs;
@@ -24,6 +25,7 @@ namespace df
       }
 
       friend T operator*( const U& lhs, T&& rhs )
+        noexcept( noexcept( T( lhs ), std::declval< T& >() *= std::move( rhs ), T( std::declval< T& >() ) ) )
       {
         T nrv( lhs );
         nrv *= std::move( rhs );
@@ -31,6 +33,7 @@ namespace df
       }
 
       friend T operator*( U&& lhs, const T& rhs )
+        noexcept( noexcept( T( std::move( lhs ) ), std::declval< T& >() *= rhs, T( std::declval< T& >() ) ) )
       {
         T nrv( std::move( lhs ) );
         nrv *= rhs;
@@ -38,6 +41,7 @@ namespace df
       }
 
       friend T operator*( U&& lhs, T&& rhs )
+        noexcept( noexcept( T( std::move( lhs ) ), std::declval< T& >() *= std::move( rhs ), T( std::declval< T& >() ) ) )
       {
         T nrv( std::move( lhs ) );
         nrv *= std::move( rhs );

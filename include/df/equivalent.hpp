@@ -15,6 +15,7 @@ namespace df
     class equivalent
     {
       friend bool operator==( const T& lhs, const U& rhs )
+        noexcept( noexcept( static_cast< bool >( lhs < rhs ), static_cast< bool >( lhs > rhs ) ) )
       {
         return !static_cast< bool >( lhs < rhs ) && !static_cast< bool >( lhs > rhs );
       }
@@ -24,6 +25,7 @@ namespace df
     class equivalent< T >
     {
       friend bool operator==( const T& lhs, const T& rhs )
+        noexcept( noexcept( static_cast< bool >( lhs < rhs ) ) )
       {
         return !static_cast< bool >( lhs < rhs ) && !static_cast< bool >( rhs < lhs );
       }

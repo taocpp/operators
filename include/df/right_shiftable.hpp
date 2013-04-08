@@ -17,6 +17,7 @@ namespace df
     class right_shiftable
     {
       friend T operator>>( const T& lhs, const U& rhs )
+        noexcept( noexcept( T( lhs ), std::declval< T& >() >>= rhs, T( std::declval< T& >() ) ) )
       {
         T nrv( lhs );
         nrv >>= rhs;
@@ -24,6 +25,7 @@ namespace df
       }
 
       friend T operator>>( const T& lhs, U&& rhs )
+        noexcept( noexcept( T( lhs ), std::declval< T& >() >>= std::move( rhs ), T( std::declval< T& >() ) ) )
       {
         T nrv( lhs );
         nrv >>= std::move( rhs );
@@ -31,12 +33,14 @@ namespace df
       }
 
       friend T&& operator>>( T&& lhs, const U& rhs )
+        noexcept( noexcept( lhs >>= rhs ) )
       {
         lhs >>= rhs;
         return std::move( lhs );
       }
 
       friend T&& operator>>( T&& lhs, U&& rhs )
+        noexcept( noexcept( lhs >>= std::move( rhs ) ) )
       {
         lhs >>= std::move( rhs );
         return std::move( lhs );

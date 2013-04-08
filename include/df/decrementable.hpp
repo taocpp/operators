@@ -15,6 +15,7 @@ namespace df
     class decrementable
     {
       friend T operator--( T& arg, int )
+        noexcept( noexcept( T( arg ), --arg, T( std::declval< T >() ) ) )
       {
         const T nrv( arg );
         --arg;

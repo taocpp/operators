@@ -13,6 +13,7 @@ highly efficient, move-aware arithmetic data types with C++11.
 [Installation](#installation)<br>
 [Provided templates](#provided-templates)<br>
 [Commutativity](#commutativity)<br>
+[noexcept](#noexcept)<br>
 [Contact](#contact)<br>
 [License](#license)
 
@@ -100,13 +101,9 @@ MyInt&& operator*( MyInt&&      lhs, double&&      rhs );
 Requirements
 ------------
 
-The library currently uses only a single C++11 feature, move semantics
-(aka rvalue references), to be as portable as possible.
-Support for this particular feature of C++11 is available in most
-modern compilers, the following compilers and versions are
-supported and tested:
+The following compilers and versions are supported and tested:
 
-* GCC 4.4 or newer
+* GCC 4.7 or newer
 * Clang 3.2 or newer
 
 Remember to enable C++11, e.g., provide `--std=c++11` or similar options.
@@ -115,9 +112,7 @@ Remember to enable C++11, e.g., provide `--std=c++11` or similar options.
 >e.g., Visual C++, Intel C++, or any other compiler, or if you tested older
 >versions of Clang, I'd like to hear from you.
 
->Note: Future version might use additional features from C++11
->(for example `noexcept`) once they are more generally
->available and turn out to be applicable to **df.operators**.
+>Note: For compilers that don't support `noexcept`, see chapter [noexcept](#noexcept).
 
 Installation
 ------------
@@ -1053,6 +1048,21 @@ in which cases creating a temporary (returning `T`) can be avoided
 For the two-argument version, `commutative_{OP}< T, U >` provides the operators
 of both `{OP}< T, U >` and `{OP}_left< T, U >`, again the return type indicates
 those cases where an extra temporary is avoided.
+
+noexcept
+--------
+
+If your compiler does not support `noexcept`, the following might be a viable
+work-around:
+
+```c++
+#include <utility> // make sure it's included before the following!
+#define noexcept(...)
+#include <df/operators.hpp>
+#undef noexcept
+```
+
+With this little hack, **df.operators** can be used with GCC 4.4+.
 
 Contact
 -------
