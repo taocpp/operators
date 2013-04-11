@@ -41,7 +41,9 @@ other operators you've defined in your class.
 
 The generated operators are overloaded to take full advantage of move-aware types
 and are carefully written to allow the compiler to apply important optimizations
-to avoid unneccessary temporary objects.
+to avoid unneccessary temporary objects. All generated operators are automatically
+marked `noexcept` when the underlying base operations are themself marked as
+`noexcept`.
 
 Example
 -------
@@ -89,8 +91,6 @@ MyInt   operator*( const MyInt& lhs, double&&      rhs ) noexcept;
 MyInt&& operator*( MyInt&&      lhs, const double& rhs ) noexcept;
 MyInt&& operator*( MyInt&&      lhs, double&&      rhs ) noexcept;
 ```
-
-**df.operators** is fully `noexcept`-enabled per operator overload.
 
 >Note: The `// optional` in `class MyInt` above marks methods
 >that you typically only add when your class benefits from an
