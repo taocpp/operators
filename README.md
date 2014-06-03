@@ -193,12 +193,12 @@ The following templates are available:
     </td>
   </tr><tr valign="top">
     <td>
-      <code>equivalent&lt; T, U &gt;</code>
+      <code>equivalent&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>bool operator==( const T&amp; t, const U&amp; u )</code>
+      <code>bool&nbsp;operator==(&nbsp;const T&amp;&nbsp;t,&nbsp;const&nbsp;U&amp;&nbsp;u&nbsp;)</code>
     </td><td>
-      <code>static_cast&lt; bool &gt;( t &lt; u )</code><br>
-      <code>static_cast&lt; bool &gt;( t &gt; u )</code>
+      <code>static_cast&lt;&nbsp;bool&nbsp;&gt;(&nbsp;t&nbsp;&lt;&nbsp;u&nbsp;)</code><br>
+      <code>static_cast&lt; bool&nbsp;&gt;(&nbsp;t&nbsp;&gt;&nbsp;u&nbsp;)</code>
     </td>
   </tr>
 
