@@ -30,10 +30,10 @@ Rationale
 ---------
 
 Overloaded operators for class types typically occur in groups.
-If you can write `x&nbsp;+&nbsp;y`, you probably also want to be able to write `x&nbsp;+=&nbsp;y`.
-If you can write `x&nbsp;<&nbsp;y`, you also want `x&nbsp;>&nbsp;y`, `x&nbsp;>=&nbsp;y`, and `x&nbsp;<=&nbsp;y`.
+If you can write `x + y`, you probably also want to be able to write `x += y`.
+If you can write `x < y`, you also want `x > y`, `x >= y`, and `x <= y`.
 Moreover, unless your class has really surprising behavior, some of these related operators
-can be defined in terms of others (e.g. `x&nbsp;>=&nbsp;y` <=> `!(x&nbsp;<&nbsp;y)`).
+can be defined in terms of others (e.g. `x >= y` <=> `!(x < y)`).
 
 Replicating these operators for multiple classes is both tedious and error-prone.
 The **df.operators** templates help by generating operators for you based on
@@ -92,7 +92,7 @@ MyInt&& operator*( MyInt&&      lhs, const double& rhs ) noexcept;
 MyInt&& operator*( MyInt&&      lhs, double&&      rhs ) noexcept;
 ```
 
->Note: The `//&nbsp;optional` in `class&nbsp;MyInt` above marks methods
+>Note: The `// optional` in `class MyInt` above marks methods
 >that you typically only add when your class benefits from an
 >rvalue reference parameter. If there is no benefit for the
 >implementation, you can just omit these methods. If you leave
@@ -121,7 +121,7 @@ Installation
 
 The **df.operators** library is a header-only library. There is nothing to build or install,
 just copy it somewhere and add the appropriate compiler option to add its `include` directory
-to the compiler's include path, e.g., `-I&nbsp;/path/to/df.operators/include`.
+to the compiler's include path, e.g., `-I /path/to/df.operators/include`.
 
 Provided templates
 ------------------
@@ -1047,8 +1047,8 @@ operators as the non-commutative one, but you can see from the result type
 in which cases creating a temporary (returning `T`) can be avoided
 (returning `T&&`).
 
-For the two-argument version, `commutative_{OP}<&nbsp;T,&nbsp;U&nbsp;>` provides the operators
-of both `{OP}<&nbsp;T,&nbsp;U&nbsp;>` and `{OP}_left<&nbsp;T,&nbsp;U&nbsp;>`, again the return type indicates
+For the two-argument version, `commutative_{OP}< T, U >` provides the operators
+of both `{OP}< T, U >` and `{OP}_left< T, U >`, again the return type indicates
 those cases where an extra temporary is avoided.
 
 noexcept
