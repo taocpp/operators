@@ -185,11 +185,11 @@ The following templates are available:
   <!-- equivalent -->
   <tr valign="top">
     <td>
-      <code>equivalent&lt; T &gt;</code>
+      <code>equivalent&lt;&nbsp;T&nbsp;&gt;</code>
     </td><td>
-      <code>bool operator==( const T&amp; t, const T&amp; t1 )</code>
+      <code>bool&nbsp;operator==(&nbsp;const&nbsp;T&amp;&nbsp;t,&nbsp;const&nbsp;T&amp;&nbsp;t1&nbsp;)</code>
     </td><td>
-      <code>static_cast&lt; bool &gt;( t &lt; t1 )</code>
+      <code>static_cast&lt;&nbsp;bool&nbsp;&gt;(&nbsp;t&nbsp;&lt;&nbsp;t1&nbsp;)</code>
     </td>
   </tr><tr valign="top">
     <td>
