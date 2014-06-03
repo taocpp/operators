@@ -1074,7 +1074,7 @@ In case of any question or feedback, send email to <d.frey@gmx.de>.
 License
 -------
 
-Copyright Daniel Frey 2013.<br>
+Copyright Daniel Frey 2013-2014.<br>
 Distributed under the Boost Software License, Version 1.0.<br>
 (See accompanying file `LICENSE_1_0.txt` or copy at <http://www.boost.org/LICENSE_1_0.txt>)
 
