@@ -33,7 +33,7 @@ Overloaded operators for class types typically occur in groups.
 If you can write `x + y`, you probably also want to be able to write `x += y`.
 If you can write `x < y`, you also want `x > y`, `x >= y`, and `x <= y`.
 Moreover, unless your class has really surprising behavior, some of these related operators
-can be defined in terms of others (e.g. `x >= y` <=> `!(x < y)`).
+can be defined in terms of others (e.g. `x >= y` &equiv; `!(x < y)`).
 
 Replicating these operators for multiple classes is both tedious and error-prone.
 The **df.operators** templates help by generating operators for you based on
@@ -131,13 +131,14 @@ The following templates are available:
 <table>
 
   <tr>
-    <th>Template</th><th>Provides</th><th>Requires</th>
+    <th>Template<br>Overview</th><th>Provides</th><th>Requires</th>
   </tr>
 
   <!-- equality_comparable -->
   <tr valign="top">
     <td>
-      <code>equality_comparable&lt;&nbsp;T&nbsp;&gt;</code>
+      <code>equality_comparable&lt;&nbsp;T&nbsp;&gt;</code><br>
+      <code>T&nbsp;!=&nbsp;T</code>&nbsp;&equiv;&nbsp;<code>!(&nbsp;T&nbsp;==&nbsp;T&nbsp;)</code>
     </td><td>
       <code>bool&nbsp;operator!=(&nbsp;const&nbsp;T&amp;&nbsp;t,&nbsp;const&nbsp;T&amp;&nbsp;t1&nbsp;)</code>
     </td><td>
