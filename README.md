@@ -108,7 +108,7 @@ The following compilers and versions are supported and tested:
 * GCC 4.7 or newer
 * Clang 3.2 or newer
 
-Remember to enable C++11, e.g., provide `--std=c++11` or similar options.
+Remember to enable C++11, e.g., provide `-std=c++11` or similar options.
 
 >Note: If you use or test the **df.operators** library with other compilers,
 >e.g., Visual C++, Intel C++, or any other compiler, or if you tested older
