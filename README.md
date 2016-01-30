@@ -131,7 +131,6 @@ The following templates are available:
   <tr valign="top">
     <td>
       <code>equality_comparable&lt;&nbsp;T&nbsp;&gt;</code><br>
-      <code>T&nbsp;!=&nbsp;T</code>&nbsp;&equiv;&nbsp;<code>!(&nbsp;T&nbsp;==&nbsp;T&nbsp;)</code>
     </td><td>
       <code>bool&nbsp;operator!=(&nbsp;const&nbsp;T&amp;&nbsp;t,&nbsp;const&nbsp;T&amp;&nbsp;t1&nbsp;)</code>
     </td><td>
