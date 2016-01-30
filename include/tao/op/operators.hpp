@@ -41,7 +41,7 @@
 
 #define TAOCPP_OPERATORS_BASIC_OP_LEFT( name, op )			\
   template< typename T, typename U >					\
-  class name								\
+  class name##_left							\
   {									\
     friend T operator op( const U& lhs, const T& rhs )			\
       noexcept( noexcept( T( lhs ), std::declval< T& >() op##= rhs, T( std::declval< T& >() ) ) ) \
@@ -76,9 +76,9 @@
     }									\
   }
 
-#define TAOCPP_OPERATORS_BASIC_OP_LEFT( name, op )			\
+#define TAOCPP_OPERATORS_BASIC_OP_COMMUTATIVE( name, op )		\
   template< typename T, typename U = T >				\
-  class name								\
+  class commutative_##name						\
   {									\
     friend T operator op( const T& lhs, const U& rhs )			\
       noexcept( noexcept( T( lhs ), std::declval< T& >() op##= rhs, T( std::declval< T& >() ) ) ) \
@@ -142,7 +142,7 @@
   };									\
 									\
   template< typename T >						\
-  class name< T >							\
+  class commutative_##name< T >						\
   {									\
     friend T operator op( const T& lhs, const T& rhs )			\
       noexcept( noexcept( T( lhs ), std::declval< T& >() op##= rhs, T( std::declval< T& >() ) ) ) \
@@ -363,21 +363,21 @@ namespace tao
       };
 
       TAOCPP_OPERATORS_BASIC_OP( addable, + );
-      TAOCPP_OPERATORS_BASIC_OP_LEFT( addable_left, + );
-      TAOCPP_OPERATORS_BASIC_OP_COMMUTATIVE( commutative_addable, + );
+      TAOCPP_OPERATORS_BASIC_OP_LEFT( addable, + );
+      TAOCPP_OPERATORS_BASIC_OP_COMMUTATIVE( addable, + );
 
       TAOCPP_OPERATORS_BASIC_OP( subtractable, - );
-      TAOCPP_OPERATORS_BASIC_OP_LEFT( subtractable_left, - );
+      TAOCPP_OPERATORS_BASIC_OP_LEFT( subtractable, - );
 
       TAOCPP_OPERATORS_BASIC_OP( multipliable, * );
-      TAOCPP_OPERATORS_BASIC_OP_LEFT( multipliable_left, * );
-      TAOCPP_OPERATORS_BASIC_OP_COMMUTATIVE( commutative_multipliable, * );
+      TAOCPP_OPERATORS_BASIC_OP_LEFT( multipliable, * );
+      TAOCPP_OPERATORS_BASIC_OP_COMMUTATIVE( multipliable, * );
 
       TAOCPP_OPERATORS_BASIC_OP( dividable, / );
-      TAOCPP_OPERATORS_BASIC_OP_LEFT( dividable_left, / );
+      TAOCPP_OPERATORS_BASIC_OP_LEFT( dividable, / );
 
       TAOCPP_OPERATORS_BASIC_OP( modable, % );
-      TAOCPP_OPERATORS_BASIC_OP_LEFT( modable_left, % );
+      TAOCPP_OPERATORS_BASIC_OP_LEFT( modable, % );
 
       template< typename T, typename U = T >
       class ring
@@ -434,16 +434,16 @@ namespace tao
       };
 
       TAOCPP_OPERATORS_BASIC_OP( andable, & );
-      TAOCPP_OPERATORS_BASIC_OP_LEFT( andable_left, & );
-      TAOCPP_OPERATORS_BASIC_OP_COMMUTATIVE( commutative_andable, & );
+      TAOCPP_OPERATORS_BASIC_OP_LEFT( andable, & );
+      TAOCPP_OPERATORS_BASIC_OP_COMMUTATIVE( andable, & );
 
       TAOCPP_OPERATORS_BASIC_OP( orable, | );
-      TAOCPP_OPERATORS_BASIC_OP_LEFT( orable_left, | );
-      TAOCPP_OPERATORS_BASIC_OP_COMMUTATIVE( commutative_orable, | );
+      TAOCPP_OPERATORS_BASIC_OP_LEFT( orable, | );
+      TAOCPP_OPERATORS_BASIC_OP_COMMUTATIVE( orable, | );
 
       TAOCPP_OPERATORS_BASIC_OP( xorable, ^ );
-      TAOCPP_OPERATORS_BASIC_OP_LEFT( xorable_left, ^ );
-      TAOCPP_OPERATORS_BASIC_OP_COMMUTATIVE( commutative_xorable, ^ );
+      TAOCPP_OPERATORS_BASIC_OP_LEFT( xorable, ^ );
+      TAOCPP_OPERATORS_BASIC_OP_COMMUTATIVE( xorable, ^ );
 
       template< typename T, typename U = T >
       class bitwise
