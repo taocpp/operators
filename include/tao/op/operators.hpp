@@ -142,7 +142,7 @@
   };									\
 									\
   template< typename T >						\
-  class commutative_addable< T >					\
+  class name< T >							\
   {									\
     friend T operator op( const T& lhs, const T& rhs )			\
       noexcept( noexcept( T( lhs ), std::declval< T& >() op##= rhs, T( std::declval< T& >() ) ) ) \
