@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/github/license/taocpp/operators.svg)](#license)
 [![Issues](https://img.shields.io/github/issues/taocpp/operators.svg)](https://github.com/taocpp/operators/issues)
 
-The Art of C++ / Operators is a zero-dependency C++11 header-only library that provides generated, highly efficient, move aware operators for arithmetic data types.
+The Art of C++ / Operators is a zero-dependency C++11 single-header library that provides highly efficient, move aware operators for arithmetic data types.
 
 ### Table of content
 
@@ -113,9 +113,8 @@ Remember to enable C++11, e.g., provide `-std=c++11` or similar options.
 
 ## Installation
 
-The Art of C++ / Operators is a header-only library. There is nothing to build or install,
-just copy it somewhere and add the appropriate compiler option to add its `include` directory
-to the compiler's include path, e.g., `-I /path/to/taocpp/operators/include`.
+The Art of C++ / Operators is a single-header library. There is nothing to build or install,
+just copy the header somewhere and include it in your code.
 
 ## Provided templates
 
