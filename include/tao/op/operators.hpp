@@ -4,6 +4,8 @@
 #ifndef TAOCPP_OPERATORS_INCLUDE_OPERATORS_HPP
 #define TAOCPP_OPERATORS_INCLUDE_OPERATORS_HPP
 
+#include <utility>
+
 #define TAOCPP_OPERATORS_BASIC_OP( name, op )				\
   template< typename T, typename U = T >				\
   class name								\
@@ -503,7 +505,7 @@ namespace tao
       };
     }
 
-    using impl;
+    using namespace impl;
   }
 }
 
