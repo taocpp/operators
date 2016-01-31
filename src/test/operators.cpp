@@ -43,6 +43,9 @@ int main()
   X x2( 2 );
   X x3( 3 );
 
+  static_assert( noexcept( x1 + x2 ), "oops" );
+  static_assert( !noexcept( x1 * x2 ), "oops" );
+
   assert( x1 == x1 );
   assert( x1 != x2 );
 
