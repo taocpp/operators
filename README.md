@@ -1026,10 +1026,10 @@ of both.
 
 ## Commutativity
 
-For some templates, there are both commutative and non-commutative
-versions available. If the class you are writing is commutative wrt an
-operation, you should prefer the commutative template, i.e., the one which
-has `commutative_` at the beginning.
+For some templates, there are both [commutative](https://en.wikipedia.org/wiki/Commutative_property)
+and non-commutative versions available. If the class you are writing is
+commutative wrt an operation, you should prefer the commutative template,
+i.e., the one which has `commutative_` at the beginning.
 
 It will be *more efficient* in some cases because it can avoid to create an
 extra temporary for the result and it has *fewer requirements*.
