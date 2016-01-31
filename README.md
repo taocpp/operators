@@ -2,6 +2,7 @@
 
 [![Release](https://img.shields.io/github/release/taocpp/operators.svg)](https://github.com/taocpp/operators/releases/latest)
 [![License](https://img.shields.io/github/license/taocpp/operators.svg)](#license)
+[![TravisCI](https://travis-ci.org/taocpp/operators.svg)](https://travis-ci.org/taocpp/operators)
 [![Issues](https://img.shields.io/github/issues/taocpp/operators.svg)](https://github.com/taocpp/operators/issues)
 
 The Art of C++ / Operators is a zero-dependency C++11 single-header library that provides highly efficient, move aware operators for arithmetic data types.
