@@ -1,15 +1,15 @@
 // The Art of C++ / Operators
 // Copyright (c) 2013-2016 Daniel Frey
 
-#include <tao/op/operators.hpp>
+#include <tao/operators.hpp>
 
 #include <cassert>
 
 struct X
-  : tao::op::ordered_field< X >,
-    tao::op::modable< X >,
-    tao::op::ordered_field< X, int >,
-    tao::op::modable< X, int >
+  : tao::operators::ordered_field< X >,
+    tao::operators::modable< X >,
+    tao::operators::ordered_field< X, int >,
+    tao::operators::modable< X, int >
 {
   int v_;
 

@@ -178,7 +178,7 @@
 
 namespace tao
 {
-  namespace op
+  namespace operators
   {
     namespace impl // ADL protector
     {
