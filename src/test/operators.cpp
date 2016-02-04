@@ -1,9 +1,11 @@
 // The Art of C++ / Operators
 // Copyright (c) 2013-2016 Daniel Frey
+// Please see LICENSE for license or visit https://github.com/taocpp/operators/
 
 #include <tao/operators.hpp>
 
 #include <cassert>
+#include <type_traits>
 
 class X
   : tao::operators::ordered_field< X >,
@@ -37,6 +39,15 @@ bool operator<( const X& lhs, const X& rhs ) { return lhs.v_ < rhs.v_; }
 bool operator==( const X& x, const int v ) { return x.v_ == v; }
 bool operator<( const X& x, const int v ) { return x.v_ < v; }
 bool operator>( const X& x, const int v ) { return x.v_ > v; }
+
+class E : tao::operators::addable< E > {};
+
+bool adl_test( const E& ) { return true; }
+
+namespace tao
+{
+  bool adl_test( const E& ) { return false; }
+}
 
 int main()
 {
@@ -95,4 +106,8 @@ int main()
 
   assert( x3 % x2 == 1 );
   assert( x3 % 2 == 1 );
+
+  static_assert( std::is_empty< E >::value, "oops" );
+
+  assert( adl_test( E() ) );
 }
