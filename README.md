@@ -101,14 +101,16 @@ MyInt&& operator*( MyInt&&      lhs, double&&      rhs ) noexcept;
 
 ## Requirements
 
-* Requires C++11 or newer.
-* Tested with GCC 4.7+ and Clang 3.2+.
+Requires C++11 or newer. Tested with:
+
+* GCC 4.7+
+* Clang 3.2+
+* Visual Studio 2015
 
 Remember to enable C++11, e.g., provide `-std=c++11` or similar options.
 
->Note: If you use or test the library with other compilers,
->e.g., Visual C++, Intel C++, or any other compiler, or if you tested older
->versions of Clang, I'd like to hear from you.
+>Note: If you use or test the library with other compilers/versions,
+>e.g., Visual C++, Intel C++, or any other compiler we'd like to hear from you.
 
 >Note: For compilers that don't support `noexcept`, see chapter [noexcept](#noexcept).
 
