@@ -40,7 +40,7 @@ bool operator==( const X& x, const int v ) { return x.v_ == v; }
 bool operator<( const X& x, const int v ) { return x.v_ < v; }
 bool operator>( const X& x, const int v ) { return x.v_ > v; }
 
-class E : tao::operators::addable< E > {};
+class E : tao::operators::ordered_field< E > {};
 
 bool adl_test( const E& ) { return true; }
 
