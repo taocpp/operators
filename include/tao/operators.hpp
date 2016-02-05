@@ -7,6 +7,7 @@
 
 #include <utility>
 
+#ifndef TAOCPP_NO_RVALUE_REFERENCE_RESULTS
 #define TAOCPP_OPERATORS_BASIC_OP( name, op )                           \
   template< typename T, typename U = T >                                \
   class name                                                            \
@@ -41,6 +42,44 @@
       return std::move( lhs );                                          \
     }                                                                   \
   }
+#else
+#define TAOCPP_OPERATORS_BASIC_OP( name, op )                           \
+  template< typename T, typename U = T >                                \
+  class name                                                            \
+  {                                                                     \
+    friend T operator op( const T& lhs, const U& rhs )                  \
+      noexcept( noexcept( T( lhs ), std::declval< T& >() op##= rhs, T( std::declval< T& >() ) ) ) \
+    {                                                                   \
+      T nrv( lhs );                                                     \
+      nrv op##= rhs;                                                    \
+      return nrv;                                                       \
+    }                                                                   \
+                                                                        \
+    friend T operator op( const T& lhs, U&& rhs )                       \
+      noexcept( noexcept( T( lhs ), std::declval< T& >() op##= std::move( rhs ), T( std::declval< T& >() ) ) ) \
+    {                                                                   \
+      T nrv( lhs );                                                     \
+      nrv op##= std::move( rhs );                                       \
+      return nrv;                                                       \
+    }                                                                   \
+                                                                        \
+    friend T operator op( T&& lhs, const U& rhs )                       \
+      noexcept( noexcept( T( std::move( lhs ) ), std::declval< T& >() op##= rhs, T( std::declval< T& >() ) ) ) \
+    {                                                                   \
+      T nrv( std::move( lhs ) );                                        \
+      nrv op##= rhs;                                                    \
+      return nrv;                                                       \
+    }                                                                   \
+                                                                        \
+    friend T operator op( T&& lhs, U&& rhs )                            \
+      noexcept( noexcept( T( std::move( lhs ) ), std::declval< T& >() op##= std::move( rhs ), T( std::declval< T& >() ) ) ) \
+    {                                                                   \
+      T nrv( std::move( lhs ) );                                        \
+      nrv op##= std::move( rhs );                                       \
+      return nrv;                                                       \
+    }                                                                   \
+  }
+#endif
 
 #define TAOCPP_OPERATORS_BASIC_OP_LEFT( name, op )                      \
   template< typename T, typename U >                                    \
@@ -79,6 +118,7 @@
     }                                                                   \
   }
 
+#ifndef TAOCPP_NO_RVALUE_REFERENCE_RESULTS
 #define TAOCPP_OPERATORS_BASIC_OP_COMMUTATIVE( name, op )               \
   template< typename T, typename U = T >                                \
   class commutative_##name                                              \
@@ -176,6 +216,112 @@
       return std::move( lhs );                                          \
     }                                                                   \
   }
+#else
+#define TAOCPP_OPERATORS_BASIC_OP_COMMUTATIVE( name, op )               \
+  template< typename T, typename U = T >                                \
+  class commutative_##name                                              \
+  {                                                                     \
+    friend T operator op( const T& lhs, const U& rhs )                  \
+      noexcept( noexcept( T( lhs ), std::declval< T& >() op##= rhs, T( std::declval< T& >() ) ) ) \
+    {                                                                   \
+      T nrv( lhs );                                                     \
+      nrv op##= rhs;                                                    \
+      return nrv;                                                       \
+    }                                                                   \
+                                                                        \
+    friend T operator op( const T& lhs, U&& rhs )                       \
+      noexcept( noexcept( T( lhs ), std::declval< T& >() op##= std::move( rhs ), T( std::declval< T& >() ) ) ) \
+    {                                                                   \
+      T nrv( lhs );                                                     \
+      nrv op##= std::move( rhs );                                       \
+      return nrv;                                                       \
+    }                                                                   \
+                                                                        \
+    friend T operator op( T&& lhs, const U& rhs )                       \
+      noexcept( noexcept( T( std::move( lhs ) ), std::declval< T& >() op##= rhs, T( std::declval< T& >() ) ) ) \
+    {                                                                   \
+      T nrv( std::move( lhs ) );                                        \
+      nrv op##= rhs;                                                    \
+      return nrv;                                                       \
+    }                                                                   \
+                                                                        \
+    friend T operator op( T&& lhs, U&& rhs )                            \
+      noexcept( noexcept( T( std::move( lhs ) ), std::declval< T& >() op##= std::move( rhs ), T( std::declval< T& >() ) ) ) \
+    {                                                                   \
+      T nrv( std::move( lhs ) );                                        \
+      nrv op##= std::move( rhs );                                       \
+      return nrv;                                                       \
+    }                                                                   \
+                                                                        \
+    friend T operator op( const U& lhs, const T& rhs )                  \
+      noexcept( noexcept( T( rhs ), std::declval< T& >() op##= lhs, T( std::declval< T& >() ) ) ) \
+    {                                                                   \
+      T nrv( rhs );                                                     \
+      nrv op##= lhs;                                                    \
+      return nrv;                                                       \
+    }                                                                   \
+                                                                        \
+    friend T operator op( const U& lhs, T&& rhs )                       \
+      noexcept( noexcept( T( std::move( rhs ) ), std::declval< T& >() op##= lhs, T( std::declval< T& >() ) ) ) \
+    {                                                                   \
+      T nrv( std::move( rhs ) );                                        \
+      nrv op##= lhs;                                                    \
+      return nrv;                                                       \
+    }                                                                   \
+                                                                        \
+    friend T operator op( U&& lhs, const T& rhs )                       \
+      noexcept( noexcept( T( rhs ), std::declval< T& >() op##= std::move( lhs ) ) ) \
+    {                                                                   \
+      T nrv( rhs );                                                     \
+      nrv op##= std::move( lhs );                                       \
+      return nrv;                                                       \
+    }                                                                   \
+                                                                        \
+    friend T operator op( U&& lhs, T&& rhs )                            \
+      noexcept( noexcept( T( std::move( rhs ) ), std::declval< T& >() op##= std::move( lhs ) ) ) \
+    {                                                                   \
+      T nrv( std::move( rhs ) );                                        \
+      nrv op##= std::move( lhs );                                       \
+      return nrv;                                                       \
+    }                                                                   \
+  };                                                                    \
+                                                                        \
+  template< typename T >                                                \
+  class commutative_##name< T >                                         \
+  {                                                                     \
+    friend T operator op( const T& lhs, const T& rhs )                  \
+      noexcept( noexcept( T( lhs ), std::declval< T& >() op##= rhs, T( std::declval< T& >() ) ) ) \
+    {                                                                   \
+      T nrv( lhs );                                                     \
+      nrv op##= rhs;                                                    \
+      return nrv;                                                       \
+    }                                                                   \
+                                                                        \
+    friend T operator op( const T& lhs, T&& rhs )                       \
+      noexcept( noexcept( T( lhs ), std::declval< T& >() op##= std::move( rhs ), T( std::declval< T& >() ) ) ) \
+    {                                                                   \
+      T nrv( lhs );                                                     \
+      nrv op##= std::move( rhs );                                       \
+      return nrv;                                                       \
+    }                                                                   \
+                                                                        \
+    friend T operator op( T&& lhs, const T& rhs )                       \
+      noexcept( noexcept( T( std::move( lhs ) ), std::declval< T& >() op##= rhs, T( std::declval< T& >() ) ) ) \
+    {                                                                   \
+      T nrv( std::move( lhs ) );                                        \
+      nrv op##= rhs;                                                    \
+      return nrv;                                                       \
+    }                                                                   \
+                                                                        \
+    friend T operator op( T&& lhs, T&& rhs )                            \
+      noexcept( noexcept( T( std::move( lhs ) ), std::declval< T& >() op##= std::move( rhs ), T( std::declval< T& >() ) ) ) \
+    {                                                                   \
+      T nrv( std::move( lhs ) );                                        \
+      nrv op##= std::move( rhs );                                       \
+      return nrv;                                                       \
+    }                                                                   \
+  }
+#endif
 
 namespace tao
 {
