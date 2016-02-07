@@ -9,14 +9,14 @@ The Art of C++ / Operators is a zero-dependency C++11 single-header library that
 
 ### Table of content
 
-[Preface](#preface)<br>
-[Rationale](#rationale)<br>
-[Example](#example)<br>
-[Requirements](#requirements)<br>
-[Installation](#installation)<br>
-[Provided templates](#provided-templates)<br>
-[Commutativity](#commutativity)<br>
-[noexcept](#noexcept)<br>
+[Preface](#preface)<br/>
+[Rationale](#rationale)<br/>
+[Example](#example)<br/>
+[Requirements](#requirements)<br/>
+[Installation](#installation)<br/>
+[Provided templates](#provided-templates)<br/>
+[Commutativity](#commutativity)<br/>
+[noexcept](#noexcept)<br/>
 [License](#license)
 
 ## Preface
@@ -126,13 +126,13 @@ The following templates are available:
 <table>
 
   <tr>
-    <th>Template<br>Overview</th><th>Provides</th><th>Requires</th>
+    <th>Template<br/>Overview</th><th>Provides</th><th>Requires</th>
   </tr>
 
   <!-- equality_comparable -->
   <tr valign="top">
     <td>
-      <code>equality_comparable&lt;&nbsp;T&nbsp;&gt;</code><br>
+      <code>equality_comparable&lt;&nbsp;T&nbsp;&gt;</code>
     </td><td>
       <code>T&nbsp;!=&nbsp;T</code>
     </td><td>
@@ -142,8 +142,8 @@ The following templates are available:
     <td>
       <code>equality_comparable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;!=&nbsp;U</code>
-      <code>U&nbsp;==&nbsp;T</code>
+      <code>T&nbsp;!=&nbsp;U</code><br/>
+      <code>U&nbsp;==&nbsp;T</code><br/>
       <code>U&nbsp;!=&nbsp;T</code>
     </td><td>
       <code>T&nbsp;!=&nbsp;U</code>
@@ -155,8 +155,8 @@ The following templates are available:
     <td>
       <code>less_than_comparable&lt;&nbsp;T&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;&gt;&nbsp;T</code>
-      <code>T&nbsp;&lt;=&nbsp;T</code>
+      <code>T&nbsp;&gt;&nbsp;T</code><br/>
+      <code>T&nbsp;&lt;=&nbsp;T</code><br/>
       <code>T&nbsp;&gt;=&nbsp;T</code>
     </td><td>
       <code>T&nbsp;&lt;&nbsp;T</code>
@@ -165,14 +165,14 @@ The following templates are available:
     <td>
       <code>less_than_comparable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;&lt;=&nbsp;U</code>
-      <code>T&nbsp;&gt;=&nbsp;U</code>
-      <code>U&nbsp;&lt;&nbsp;T</code>
-      <code>U&nbsp;&gt;&nbsp;T</code>
-      <code>U&nbsp;&lt;=&nbsp;T</code>
+      <code>T&nbsp;&lt;=&nbsp;U</code><br/>
+      <code>T&nbsp;&gt;=&nbsp;U</code><br/>
+      <code>U&nbsp;&lt;&nbsp;T</code><br/>
+      <code>U&nbsp;&gt;&nbsp;T</code><br/>
+      <code>U&nbsp;&lt;=&nbsp;T</code><br/>
       <code>U&nbsp;&gt;=&nbsp;T</code>
     </td><td>
-      <code>T&nbsp;&lt;&nbsp;U</code>
+      <code>T&nbsp;&lt;&nbsp;U</code><br/>
       <code>T&nbsp;&gt;&nbsp;U</code>
     </td>
   </tr>
@@ -192,7 +192,7 @@ The following templates are available:
     </td><td>
       <code>T&nbsp;==&nbsp;U</code>
     </td><td>
-      <code>T&nbsp;&lt;&nbsp;U</code>
+      <code>T&nbsp;&lt;&nbsp;U</code><br/>
       <code>T&nbsp;&gt;&nbsp;U</code>
     </td>
   </tr>
@@ -202,26 +202,26 @@ The following templates are available:
     <td>
       <code>partially_ordered&lt;&nbsp;T&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;&gt;&nbsp;T</code>
-      <code>T&nbsp;&lt;=&nbsp;T</code>
+      <code>T&nbsp;&gt;&nbsp;T</code><br/>
+      <code>T&nbsp;&lt;=&nbsp;T</code><br/>
       <code>T&nbsp;&gt;=&nbsp;T</code>
     </td><td>
-      <code>T&nbsp;&lt;&nbsp;T</code>
+      <code>T&nbsp;&lt;&nbsp;T</code><br/>
       <code>T&nbsp;==&nbsp;T</code>
     </td>
   </tr><tr valign="top">
     <td>
       <code>partially_ordered&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;&lt;=&nbsp;U</code>
-      <code>T&nbsp;&gt;=&nbsp;U</code>
-      <code>U&nbsp;&lt;&nbsp;T</code>
-      <code>U&nbsp;&gt;&nbsp;T</code>
-      <code>U&nbsp;&lt;=&nbsp;T</code>
+      <code>T&nbsp;&lt;=&nbsp;U</code><br/>
+      <code>T&nbsp;&gt;=&nbsp;U</code><br/>
+      <code>U&nbsp;&lt;&nbsp;T</code><br/>
+      <code>U&nbsp;&gt;&nbsp;T</code><br/>
+      <code>U&nbsp;&lt;=&nbsp;T</code><br/>
       <code>U&nbsp;&gt;=&nbsp;T</code>
     </td><td>
-      <code>T&nbsp;&lt;&nbsp;U</code>
-      <code>T&nbsp;&lt;&nbsp;U</code>
+      <code>T&nbsp;&lt;&nbsp;U</code><br/>
+      <code>T&nbsp;&lt;&nbsp;U</code><br/>
       <code>T&nbsp;==&nbsp;U</code>
     </td>
   </tr>
@@ -243,7 +243,7 @@ The following templates are available:
     <td>
       <code>commutative_addable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;+&nbsp;U</code>
+      <code>T&nbsp;+&nbsp;U</code><br/>
       <code>U&nbsp;+&nbsp;T</code>
     </td><td>
       <code>T&nbsp;+=&nbsp;U</code>
@@ -260,7 +260,7 @@ The following templates are available:
     <td>
       <code>addable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;+&nbsp;U</code>
+      <code>T&nbsp;+&nbsp;U</code><br/>
       <code>U&nbsp;+&nbsp;T</code>
     </td><td>
       <code>T&nbsp;+=&nbsp;U</code>
@@ -289,7 +289,7 @@ The following templates are available:
     <td>
       <code>subtractable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;-&nbsp;U</code>
+      <code>T&nbsp;-&nbsp;U</code><br/>
       <code>U&nbsp;-&nbsp;T</code>
     </td><td>
       <code>T&nbsp;-=&nbsp;U</code>
@@ -318,7 +318,7 @@ The following templates are available:
     <td>
       <code>commutative_multipliable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;*&nbsp;U</code>
+      <code>T&nbsp;*&nbsp;U</code><br/>
       <code>U&nbsp;*&nbsp;T</code>
     </td><td>
       <code>T&nbsp;*=&nbsp;U</code>
@@ -335,7 +335,7 @@ The following templates are available:
     <td>
       <code>multipliable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;*&nbsp;U</code>
+      <code>T&nbsp;*&nbsp;U</code><br/>
       <code>U&nbsp;*&nbsp;T</code>
     </td><td>
       <code>T&nbsp;*=&nbsp;U</code>
@@ -364,7 +364,7 @@ The following templates are available:
     <td>
       <code>dividable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;/&nbsp;U</code>
+      <code>T&nbsp;/&nbsp;U</code><br/>
       <code>U&nbsp;/&nbsp;T</code>
     </td><td>
       <code>T&nbsp;/=&nbsp;U</code>
@@ -393,7 +393,7 @@ The following templates are available:
     <td>
       <code>modable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;%&nbsp;U</code>
+      <code>T&nbsp;%&nbsp;U</code><br/>
       <code>U&nbsp;%&nbsp;T</code>
     </td><td>
       <code>T&nbsp;%=&nbsp;U</code>
@@ -426,7 +426,7 @@ The following templates are available:
     <td>
       <code>commutative_andable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;&amp;&nbsp;U</code>
+      <code>T&nbsp;&amp;&nbsp;U</code><br/>
       <code>U&nbsp;&amp;&nbsp;T</code>
     </td><td>
       <code>T&nbsp;&amp;=&nbsp;U</code>
@@ -443,7 +443,7 @@ The following templates are available:
     <td>
       <code>andable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;&amp;&nbsp;U</code>
+      <code>T&nbsp;&amp;&nbsp;U</code><br/>
       <code>U&nbsp;&amp;&nbsp;T</code>
     </td><td>
       <code>T&nbsp;&amp;=&nbsp;U</code>
@@ -472,7 +472,7 @@ The following templates are available:
     <td>
       <code>commutative_orable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;|&nbsp;U</code>
+      <code>T&nbsp;|&nbsp;U</code><br/>
       <code>U&nbsp;|&nbsp;T</code>
     </td><td>
       <code>T&nbsp;|=&nbsp;U</code>
@@ -489,7 +489,7 @@ The following templates are available:
     <td>
       <code>orable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;|&nbsp;U</code>
+      <code>T&nbsp;|&nbsp;U</code><br/>
       <code>U&nbsp;|&nbsp;T</code>
     </td><td>
       <code>T&nbsp;|=&nbsp;U</code>
@@ -518,7 +518,7 @@ The following templates are available:
     <td>
       <code>commutative_xorable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;^&nbsp;U</code>
+      <code>T&nbsp;^&nbsp;U</code><br/>
       <code>U&nbsp;^&nbsp;T</code>
     </td><td>
       <code>T&nbsp;^=&nbsp;U</code>
@@ -535,7 +535,7 @@ The following templates are available:
     <td>
       <code>xorable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;^&nbsp;U</code>
+      <code>T&nbsp;^&nbsp;U</code><br/>
       <code>U&nbsp;^&nbsp;T</code>
     </td><td>
       <code>T&nbsp;^=&nbsp;U</code>
@@ -568,7 +568,7 @@ The following templates are available:
     <td>
       <code>left_shiftable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;&lt;&lt;&nbsp;U</code>
+      <code>T&nbsp;&lt;&lt;&nbsp;U</code><br/>
       <code>U&nbsp;&lt;&lt;&nbsp;T</code>
     </td><td>
       <code>T&nbsp;&lt;&lt;=&nbsp;U</code>
@@ -588,7 +588,7 @@ The following templates are available:
     <td>
       <code>right_shiftable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;&gt;&gt;&nbsp;U</code>
+      <code>T&nbsp;&gt;&gt;&nbsp;U</code><br/>
       <code>U&nbsp;&gt;&gt;&nbsp;T</code>
     </td><td>
       <code>T&nbsp;&gt;&gt;=&nbsp;U</code>
@@ -639,14 +639,14 @@ of both.
     <td>
       <code>totally_ordered&lt;&nbsp;T&nbsp;&gt;</code>
     </td><td>
-      <code>equality_comparable&lt;&nbsp;T&nbsp;&gt;</code><br>
+      <code>equality_comparable&lt;&nbsp;T&nbsp;&gt;</code><br/>
       <code>less_than_comparable&lt;&nbsp;T&nbsp;&gt;</code>
     </td>
   </tr><tr valign="top">
     <td>
       <code>totally_ordered&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>equality_comparable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br>
+      <code>equality_comparable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br/>
       <code>less_than_comparable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td>
   </tr>
@@ -656,34 +656,34 @@ of both.
     <td>
       <code>commutative_ring&lt;&nbsp;T&nbsp;&gt;</code>
     </td><td>
-      <code>commutative_addable&lt;&nbsp;T&nbsp;&gt;</code><br>
-      <code>subtractable&lt;&nbsp;T&nbsp;&gt;</code><br>
+      <code>commutative_addable&lt;&nbsp;T&nbsp;&gt;</code><br/>
+      <code>subtractable&lt;&nbsp;T&nbsp;&gt;</code><br/>
       <code>commutative_multipliable&lt;&nbsp;T&nbsp;&gt;</code>
     </td>
   </tr><tr valign="top">
     <td>
       <code>commutative_ring&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>commutative_addable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br>
-      <code>subtractable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br>
-      <code>subtractable_left&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br>
+      <code>commutative_addable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br/>
+      <code>subtractable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br/>
+      <code>subtractable_left&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br/>
       <code>commutative_multipliable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td>
   </tr><tr valign="top">
     <td>
       <code>ring&lt;&nbsp;T&nbsp;&gt;</code>
     </td><td>
-      <code>commutative_addable&lt;&nbsp;T&nbsp;&gt;</code><br>
-      <code>subtractable&lt;&nbsp;T&nbsp;&gt;</code><br>
+      <code>commutative_addable&lt;&nbsp;T&nbsp;&gt;</code><br/>
+      <code>subtractable&lt;&nbsp;T&nbsp;&gt;</code><br/>
       <code>multipliable&lt;&nbsp;T&nbsp;&gt;</code>
     </td>
   </tr><tr valign="top">
     <td>
       <code>ring&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>commutative_addable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br>
-      <code>subtractable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br>
-      <code>subtractable_left&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br>
+      <code>commutative_addable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br/>
+      <code>subtractable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br/>
+      <code>subtractable_left&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br/>
       <code>multipliable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td>
   </tr>
@@ -693,15 +693,15 @@ of both.
     <td>
       <code>field&lt;&nbsp;T&nbsp;&gt;</code>
     </td><td>
-      <code>commutative_ring&lt;&nbsp;T&nbsp;&gt;</code><br>
+      <code>commutative_ring&lt;&nbsp;T&nbsp;&gt;</code><br/>
       <code>dividable&lt;&nbsp;T&nbsp;&gt;</code>
     </td>
   </tr><tr valign="top">
     <td>
       <code>field&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>commutative_ring&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br>
-      <code>dividable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br>
+      <code>commutative_ring&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br/>
+      <code>dividable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br/>
       <code>dividable_left&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td>
   </tr>
@@ -711,14 +711,14 @@ of both.
     <td>
       <code>ordered_commutative_ring&lt;&nbsp;T&nbsp;&gt;</code>
     </td><td>
-      <code>commutative_ring&lt;&nbsp;T&nbsp;&gt;</code><br>
+      <code>commutative_ring&lt;&nbsp;T&nbsp;&gt;</code><br/>
       <code>totally_ordered&lt;&nbsp;T&nbsp;&gt;</code>
     </td>
   </tr><tr valign="top">
     <td>
       <code>ordered_commutative_ring&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>commutative_ring&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br>
+      <code>commutative_ring&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br/>
       <code>totally_ordered&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td>
   </tr>
@@ -728,14 +728,14 @@ of both.
     <td>
       <code>ordered_ring&lt;&nbsp;T&nbsp;&gt;</code>
     </td><td>
-      <code>ring&lt;&nbsp;T&nbsp;&gt;</code><br>
+      <code>ring&lt;&nbsp;T&nbsp;&gt;</code><br/>
       <code>totally_ordered&lt;&nbsp;T&nbsp;&gt;</code>
     </td>
   </tr><tr valign="top">
     <td>
       <code>ordered_ring&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>ring&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br>
+      <code>ring&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br/>
       <code>totally_ordered&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td>
   </tr>
@@ -745,14 +745,14 @@ of both.
     <td>
       <code>ordered_field&lt;&nbsp;T&nbsp;&gt;</code>
     </td><td>
-      <code>field&lt;&nbsp;T&nbsp;&gt;</code><br>
+      <code>field&lt;&nbsp;T&nbsp;&gt;</code><br/>
       <code>totally_ordered&lt;&nbsp;T&nbsp;&gt;</code>
     </td>
   </tr><tr valign="top">
     <td>
       <code>ordered_field&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>field&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br>
+      <code>field&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br/>
       <code>totally_ordered&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td>
   </tr>
@@ -762,40 +762,40 @@ of both.
     <td>
       <code>commutative_bitwise&lt;&nbsp;T&nbsp;&gt;</code>
     </td><td>
-      <code>commutative_andable&lt;&nbsp;T&nbsp;&gt;</code><br>
-      <code>commutative_orable&lt;&nbsp;T&nbsp;&gt;</code><br>
+      <code>commutative_andable&lt;&nbsp;T&nbsp;&gt;</code><br/>
+      <code>commutative_orable&lt;&nbsp;T&nbsp;&gt;</code><br/>
       <code>commutative_xorable&lt;&nbsp;T&nbsp;&gt;</code>
     </td>
   </tr><tr valign="top">
     <td>
       <code>commutative_bitwise&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>commutative_andable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br>
-      <code>commutative_orable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br>
+      <code>commutative_andable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br/>
+      <code>commutative_orable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br/>
       <code>commutative_xorable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td>
   </tr><tr valign="top">
     <td>
       <code>bitwise&lt;&nbsp;T&nbsp;&gt;</code>
     </td><td>
-      <code>andable&lt;&nbsp;T&nbsp;&gt;</code><br>
-      <code>orable&lt;&nbsp;T&nbsp;&gt;</code><br>
+      <code>andable&lt;&nbsp;T&nbsp;&gt;</code><br/>
+      <code>orable&lt;&nbsp;T&nbsp;&gt;</code><br/>
       <code>xorable&lt;&nbsp;T&nbsp;&gt;</code>
     </td>
   </tr><tr valign="top">
     <td>
       <code>bitwise&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>andable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br>
-      <code>orable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br>
+      <code>andable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br/>
+      <code>orable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br/>
       <code>xorable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td>
   </tr><tr valign="top">
     <td>
       <code>bitwise_left&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>andable_left&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br>
-      <code>orable_left&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br>
+      <code>andable_left&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br/>
+      <code>orable_left&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br/>
       <code>xorable_left&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td>
   </tr>
@@ -805,14 +805,14 @@ of both.
     <td>
       <code>shiftable&lt;&nbsp;T&nbsp;&gt;</code>
     </td><td>
-      <code>left_shiftable&lt;&nbsp;T&nbsp;&gt;</code><br>
+      <code>left_shiftable&lt;&nbsp;T&nbsp;&gt;</code><br/>
       <code>right_shiftable&lt;&nbsp;T&nbsp;&gt;</code>
     </td>
   </tr><tr valign="top">
     <td>
       <code>shiftable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>left_shiftable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br>
+      <code>left_shiftable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code><br/>
       <code>right_shiftable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td>
   </tr>
@@ -822,7 +822,7 @@ of both.
     <td>
       <code>unit_steppable&lt;&nbsp;T&nbsp;&gt;</code>
     </td><td>
-      <code>incrementable&lt;&nbsp;T&nbsp;&gt;</code><br>
+      <code>incrementable&lt;&nbsp;T&nbsp;&gt;</code><br/>
       <code>decrementable&lt;&nbsp;T&nbsp;&gt;</code>
     </td>
   </tr>
