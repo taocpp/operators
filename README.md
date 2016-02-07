@@ -271,7 +271,7 @@ The following templates are available:
     </td><td>
       <code>U&nbsp;+&nbsp;T</code>
     </td><td>
-      <code>T(U)</code>
+      <code>T(U)</code><br/>
       <code>T&nbsp;+=&nbsp;T</code>
     </td>
   </tr>
@@ -300,7 +300,7 @@ The following templates are available:
     </td><td>
       <code>U&nbsp;-&nbsp;T</code>
     </td><td>
-      <code>T(U)</code>
+      <code>T(U)</code><br/>
       <code>T&nbsp;-=&nbsp;T</code>
     </td>
   </tr>
@@ -346,7 +346,7 @@ The following templates are available:
     </td><td>
       <code>U&nbsp;*&nbsp;T</code>
     </td><td>
-      <code>T(U)</code>
+      <code>T(U)</code><br/>
       <code>T&nbsp;*=&nbsp;T</code>
     </td>
   </tr>
@@ -375,7 +375,7 @@ The following templates are available:
     </td><td>
       <code>U&nbsp;/&nbsp;T</code>
     </td><td>
-      <code>T(U)</code>
+      <code>T(U)</code><br/>
       <code>T&nbsp;/=&nbsp;T</code>
     </td>
   </tr>
@@ -404,7 +404,7 @@ The following templates are available:
     </td><td>
       <code>U&nbsp;%&nbsp;T</code>
     </td><td>
-      <code>T(U)</code>
+      <code>T(U)</code><br/>
       <code>T&nbsp;%=&nbsp;T</code>
     </td>
   </tr>
@@ -454,7 +454,7 @@ The following templates are available:
     </td><td>
       <code>U&nbsp;&amp;&nbsp;T</code>
     </td><td>
-      <code>T(U)</code>
+      <code>T(U)</code><br/>
       <code>T&nbsp;&amp;=&nbsp;T</code>
     </td>
   </tr>
@@ -500,7 +500,7 @@ The following templates are available:
     </td><td>
       <code>U&nbsp;|&nbsp;T</code>
     </td><td>
-      <code>T(U)</code>
+      <code>T(U)</code><br/>
       <code>T&nbsp;|=&nbsp;T</code>
     </td>
   </tr>
@@ -546,7 +546,7 @@ The following templates are available:
     </td><td>
       <code>U&nbsp;^&nbsp;T</code>
     </td><td>
-      <code>T(U)</code>
+      <code>T(U)</code><br/>
       <code>T&nbsp;^=&nbsp;T</code>
     </td>
   </tr>
