@@ -121,7 +121,15 @@ just copy the header somewhere and include it in your code.
 
 ## Provided templates
 
-The following templates are available:
+The following table gives an overview of the available templates.
+Note that the "Provides" and "Requires" columns are just a basic overview.
+Multiple overloads per provided operator might exist to ensure the most
+efficient implementation for each case, exploiting move-semantics when
+possible and (unless explicitly disabled) pass-through of temporary
+values to avoid creating new temporaries.
+
+Each overload of an operator is marked `noexcept` when the required operation(s)
+that are used to implement it are also marked `noexcept`.
 
 <table>
 
