@@ -146,7 +146,7 @@ The following templates are available:
       <code>U&nbsp;==&nbsp;T</code><br/>
       <code>U&nbsp;!=&nbsp;T</code>
     </td><td>
-      <code>T&nbsp;!=&nbsp;U</code>
+      <code>T&nbsp;==&nbsp;U</code>
     </td>
   </tr>
 
@@ -224,10 +224,6 @@ The following templates are available:
       <code>T&nbsp;&lt;&nbsp;U</code><br/>
       <code>T&nbsp;==&nbsp;U</code>
     </td>
-  </tr>
-
-  <tr>
-    <th>Template</th><th>Provides</th><th>Requires</th>
   </tr>
 
   <!-- addable -->
@@ -409,10 +405,6 @@ The following templates are available:
     </td>
   </tr>
 
-  <tr>
-    <th>Template</th><th>Provides</th><th>Requires</th>
-  </tr>
-
   <!-- andable -->
   <tr valign="top">
     <td>
@@ -551,10 +543,6 @@ The following templates are available:
     </td>
   </tr>
 
-  <tr>
-    <th>Template</th><th>Provides</th><th>Requires</th>
-  </tr>
-
   <!-- left_shiftable -->
   <tr valign="top">
     <td>
@@ -593,10 +581,6 @@ The following templates are available:
     </td><td>
       <code>T&nbsp;&gt;&gt;=&nbsp;U</code>
     </td>
-  </tr>
-
-  <tr>
-    <th>Template</th><th>Provides</th><th>Requires</th>
   </tr>
 
   <!-- incrementable -->
