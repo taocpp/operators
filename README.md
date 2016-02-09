@@ -221,7 +221,7 @@ The following templates are available:
       <code>U&nbsp;&gt;=&nbsp;T</code>
     </td><td>
       <code>T&nbsp;&lt;&nbsp;U</code><br/>
-      <code>T&nbsp;&lt;&nbsp;U</code><br/>
+      <code>T&nbsp;&gt;&nbsp;U</code><br/>
       <code>T&nbsp;==&nbsp;U</code>
     </td>
   </tr>
@@ -256,8 +256,7 @@ The following templates are available:
     <td>
       <code>addable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;+&nbsp;U</code><br/>
-      <code>U&nbsp;+&nbsp;T</code>
+      <code>T&nbsp;+&nbsp;U</code>
     </td><td>
       <code>T&nbsp;+=&nbsp;U</code>
     </td>
@@ -285,8 +284,7 @@ The following templates are available:
     <td>
       <code>subtractable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;-&nbsp;U</code><br/>
-      <code>U&nbsp;-&nbsp;T</code>
+      <code>T&nbsp;-&nbsp;U</code>
     </td><td>
       <code>T&nbsp;-=&nbsp;U</code>
     </td>
@@ -331,8 +329,7 @@ The following templates are available:
     <td>
       <code>multipliable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;*&nbsp;U</code><br/>
-      <code>U&nbsp;*&nbsp;T</code>
+      <code>T&nbsp;*&nbsp;U</code>
     </td><td>
       <code>T&nbsp;*=&nbsp;U</code>
     </td>
@@ -360,8 +357,7 @@ The following templates are available:
     <td>
       <code>dividable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;/&nbsp;U</code><br/>
-      <code>U&nbsp;/&nbsp;T</code>
+      <code>T&nbsp;/&nbsp;U</code>
     </td><td>
       <code>T&nbsp;/=&nbsp;U</code>
     </td>
@@ -389,8 +385,7 @@ The following templates are available:
     <td>
       <code>modable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;%&nbsp;U</code><br/>
-      <code>U&nbsp;%&nbsp;T</code>
+      <code>T&nbsp;%&nbsp;U</code>
     </td><td>
       <code>T&nbsp;%=&nbsp;U</code>
     </td>
@@ -435,8 +430,7 @@ The following templates are available:
     <td>
       <code>andable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;&amp;&nbsp;U</code><br/>
-      <code>U&nbsp;&amp;&nbsp;T</code>
+      <code>T&nbsp;&amp;&nbsp;U</code>
     </td><td>
       <code>T&nbsp;&amp;=&nbsp;U</code>
     </td>
@@ -481,8 +475,7 @@ The following templates are available:
     <td>
       <code>orable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;|&nbsp;U</code><br/>
-      <code>U&nbsp;|&nbsp;T</code>
+      <code>T&nbsp;|&nbsp;U</code>
     </td><td>
       <code>T&nbsp;|=&nbsp;U</code>
     </td>
@@ -527,8 +520,7 @@ The following templates are available:
     <td>
       <code>xorable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;^&nbsp;U</code><br/>
-      <code>U&nbsp;^&nbsp;T</code>
+      <code>T&nbsp;^&nbsp;U</code>
     </td><td>
       <code>T&nbsp;^=&nbsp;U</code>
     </td>
@@ -556,8 +548,7 @@ The following templates are available:
     <td>
       <code>left_shiftable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;&lt;&lt;&nbsp;U</code><br/>
-      <code>U&nbsp;&lt;&lt;&nbsp;T</code>
+      <code>T&nbsp;&lt;&lt;&nbsp;U</code>
     </td><td>
       <code>T&nbsp;&lt;&lt;=&nbsp;U</code>
     </td>
@@ -576,8 +567,7 @@ The following templates are available:
     <td>
       <code>right_shiftable&lt;&nbsp;T,&nbsp;U&nbsp;&gt;</code>
     </td><td>
-      <code>T&nbsp;&gt;&gt;&nbsp;U</code><br/>
-      <code>U&nbsp;&gt;&gt;&nbsp;T</code>
+      <code>T&nbsp;&gt;&gt;&nbsp;U</code>
     </td><td>
       <code>T&nbsp;&gt;&gt;=&nbsp;U</code>
     </td>
