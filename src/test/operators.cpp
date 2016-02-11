@@ -42,11 +42,11 @@ bool operator>( const X& x, const int v ) { return x.v_ > v; }
 
 class E : tao::operators::ordered_field< E > {};
 
-bool adl_test( const E& ) { return true; }
+void adl_test( const E& ) {}
 
 namespace tao
 {
-  bool adl_test( const E& ) { return false; }
+  void adl_test( const E& );
 }
 
 int main()
@@ -109,5 +109,5 @@ int main()
 
   static_assert( std::is_empty< E >::value, "oops" );
 
-  assert( adl_test( E() ) );
+  adl_test( E() );
 }
