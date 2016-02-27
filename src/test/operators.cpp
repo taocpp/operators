@@ -49,6 +49,13 @@ namespace tao
   void adl_test( const E& );
 }
 
+struct S : tao::operators::addable< S >
+{
+  S() {}
+  S( const S& a, const S& b ) : S( a + b ) {}
+  S& operator+=( const S& ) noexcept { return *this; }
+};
+
 int main()
 {
   X x1( 1 );
@@ -110,4 +117,7 @@ int main()
   static_assert( std::is_empty< E >::value, "oops" );
 
   adl_test( E() );
+
+  S s;
+  S s2( s, s );
 }
