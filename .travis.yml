@@ -35,6 +35,14 @@ matrix:
       env: COMPILER=g++-5
 
     - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-6']
+      env: COMPILER=g++-6
+
+    - os: linux
       compiler: clang
       env: COMPILER=clang++
 
@@ -61,6 +69,14 @@ matrix:
           sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-precise-3.7']
           packages: ['clang-3.7']
       env: COMPILER=clang++-3.7
+
+    - os: linux
+      compiler: clang
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-precise-3.8']
+          packages: ['clang-3.8']
+      env: COMPILER=clang++-3.8
 
     - os: osx
       compiler: clang
@@ -96,14 +112,14 @@ matrix:
       addons:
         apt:
           sources: ['ubuntu-toolchain-r-test']
-          packages: ['g++-5']
+          packages: ['g++-6']
       env:
-        - COMPILER=g++-5
+        - COMPILER=g++-6
         - CXXFLAGS="-O0 --coverage"
       before_script:
         - pip install --user cpp-coveralls
       after_success:
-        - coveralls --gcov gcov-5 --gcov-options '\-lp' --exclude src
+        - coveralls --gcov gcov-6 --gcov-options '\-lp' --exclude src
 
 script:
   make CXX=$COMPILER -j3
