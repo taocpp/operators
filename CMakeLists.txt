@@ -21,7 +21,7 @@ enable_testing ()
 
 include_directories (${CMAKE_SOURCE_DIR}/include)
 
-file (GLOB testsources src/test/operators/*.cc)
+file (GLOB testsources src/test/operators/*.cpp)
 foreach (testsourcefile ${testsources})
   get_filename_component (exename ${testsourcefile} NAME_WE)
   add_executable (${exename} ${testsourcefile})
