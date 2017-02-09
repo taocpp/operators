@@ -5,7 +5,7 @@
 .SECONDARY:
 
 CPPFLAGS ?= -pedantic
-CXXSTD ?= c++11
+CXXSTD ?= -std=c++11
 CXXFLAGS ?= -Wall -Wextra -Werror -O3
 
 SOURCES := $(shell find src -name '*.cpp')
