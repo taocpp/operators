@@ -1,18 +1,12 @@
 # The Art of C++
-# Copyright (c) 2015-2016 Daniel Frey
+# Copyright (c) 2015-2017 Daniel Frey
 
 .SUFFIXES:
 .SECONDARY:
 
-ifeq ($(OS),Windows_NT)
-UNAME_S := $(OS)
-else
-UNAME_S := $(shell uname -s)
-endif
-
 CPPFLAGS ?= -pedantic
 CXXSTD ?= c++11
-CXXFLAGS ?= -O3 -Wall -Wextra -Werror
+CXXFLAGS ?= -Wall -Wextra -Werror -O3
 
 SOURCES := $(shell find src -name '*.cpp')
 DEPENDS := $(SOURCES:%.cpp=build/%.d)
@@ -31,10 +25,10 @@ clean:
 
 build/%.d: %.cpp Makefile
 	@mkdir -p $(@D)
-	$(CXX) -std=$(CXXSTD) -Iinclude $(CPPFLAGS) -MM -MQ $@ $< -o $@
+	$(CXX) $(CXXSTD) -Iinclude $(CPPFLAGS) -MM -MQ $@ $< -o $@
 
 build/%: %.cpp build/%.d
-	$(CXX) -std=$(CXXSTD) -Iinclude $(CPPFLAGS) $(CXXFLAGS) $< -o $@
+	$(CXX) $(CXXSTD) -Iinclude $(CPPFLAGS) $(CXXFLAGS) $< -o $@
 
 ifeq ($(findstring $(MAKECMDGOALS),clean),)
 -include $(DEPENDS)
