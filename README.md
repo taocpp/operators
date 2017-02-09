@@ -3,6 +3,7 @@
 [![Release](https://img.shields.io/github/release/taocpp/operators.svg)](https://github.com/taocpp/operators/releases/latest)
 [![License](https://img.shields.io/github/license/taocpp/operators.svg)](#license)
 [![TravisCI](https://travis-ci.org/taocpp/operators.svg)](https://travis-ci.org/taocpp/operators)
+[![AppVeyor](https://ci.appveyor.com/api/projects/status/github/taocpp/operators?svg=true)](https://ci.appveyor.com/project/taocpp/operators)
 [![Coverage](https://img.shields.io/coveralls/taocpp/operators.svg)](https://coveralls.io/github/taocpp/operators)
 [![Issues](https://img.shields.io/github/issues/taocpp/operators.svg)](https://github.com/taocpp/operators/issues)
 
