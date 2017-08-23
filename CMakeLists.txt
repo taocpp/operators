@@ -1,29 +1,33 @@
-cmake_minimum_required (VERSION 2.8.0 FATAL_ERROR)
-project (TAOCPP_OPERATORS)
+cmake_minimum_required (VERSION 3.2.0 FATAL_ERROR)
 
-if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
-  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /utf-8 /W4 /WX")
-elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-  set (CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG")
-  set (CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O3 -g -DNDEBUG")
-  set (CMAKE_CXX_FLAGS_DEBUG "-O0 -g")
-  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -Wextra -Werror")
-elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-  set (CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG")
-  set (CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O3 -g -DNDEBUG")
-  set (CMAKE_CXX_FLAGS_DEBUG "-O0 -g")
-  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -Wextra -Werror")
-else ()
-  message (FATAL_ERROR "Unknown C++ compiler")
+# set project and version
+project (taocpp-operators VERSION 1.0.0 LANGUAGES CXX)
+
+# define a header-only library
+add_library (taocpp-operators INTERFACE)
+add_library (taocpp::operators ALIAS taocpp-operators)
+target_include_directories (taocpp-operators INTERFACE
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>
+)
+
+# features used by taocpp/operators
+target_compile_features (taocpp-operators INTERFACE
+  cxx_noexcept
+  cxx_rvalue_references
+)
+
+# testing
+enable_testing ()
+option (TAOCPP_OPERATORS_BUILD_TESTS "Build test programs" ON)
+if (TAOCPP_OPERATORS_BUILD_TESTS)
+  add_subdirectory (src/test/operators)
 endif ()
 
-enable_testing ()
+# installation directories
+set (TAOCPP_OPERATORS_INSTALL_INCLUDE_DIR "include" CACHE STRING "The installation include directory")
+set (TAOCPP_OPERATORS_INSTALL_DOC_DIR "share/doc/tao/operators" CACHE STRING "The installation doc directory")
 
-include_directories (${CMAKE_SOURCE_DIR}/include)
-
-file (GLOB testsources src/test/operators/*.cpp)
-foreach (testsourcefile ${testsources})
-  get_filename_component (exename ${testsourcefile} NAME_WE)
-  add_executable (${exename} ${testsourcefile})
-  add_test (NAME ${exename} WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND ${CMAKE_BINARY_DIR}/${exename})
-endforeach (testsourcefile)
+# install
+install (DIRECTORY include/ DESTINATION ${TAOCPP_OPERATORS_INSTALL_INCLUDE_DIR})
+install (FILES LICENSE DESTINATION ${TAOCPP_OPERATORS_INSTALL_DOC_DIR})
