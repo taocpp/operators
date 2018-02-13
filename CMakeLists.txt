@@ -1,21 +1,13 @@
 cmake_minimum_required (VERSION 3.2.0 FATAL_ERROR)
 
-# set project and version
 project (taocpp-operators VERSION 1.0.0 LANGUAGES CXX)
 
-# define a header-only library
-add_library (taocpp-operators INTERFACE)
-add_library (taocpp::operators ALIAS taocpp-operators)
-target_include_directories (taocpp-operators INTERFACE
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-  $<INSTALL_INTERFACE:include>
-)
+set (CMAKE_CXX_STANDARD 11)
+set (CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# features used by taocpp/operators
-target_compile_features (taocpp-operators INTERFACE
-  cxx_noexcept
-  cxx_rvalue_references
-)
+# taocpp/operators
+include ("taocpp-operators.cmake")
+include_directories (${TAOCPP_OPERATORS_INCLUDE_DIRS})
 
 # testing
 enable_testing ()

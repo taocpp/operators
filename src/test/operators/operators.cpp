@@ -1,5 +1,5 @@
 // The Art of C++ / Operators
-// Copyright (c) 2013-2017 Daniel Frey
+// Copyright (c) 2013-2018 Daniel Frey
 // Please see LICENSE for license or visit https://github.com/taocpp/operators/
 
 #include <tao/operators.hpp>
@@ -8,118 +8,203 @@
 #include <type_traits>
 
 class X
-  : tao::operators::ordered_field< X >,
-    tao::operators::modable< X >,
-    tao::operators::ordered_field< X, int >,
-    tao::operators::modable< X, int >
+   : tao::operators::ordered_field< X >,
+     tao::operators::modable< X >,
+     tao::operators::ordered_field< X, int >,
+     tao::operators::modable< X, int >
 {
 public:
-  explicit X( const int v ) noexcept : v_( v ) {}
+   explicit X( const int v ) noexcept
+      : v_( v )
+   {
+   }
 
-  X( const X& x ) noexcept : v_( x.v_ ) {}
+   X( const X& x )
+   noexcept
+      : v_( x.v_ )
+   {
+   }
 
-  X& operator+=( const X& x ) noexcept { v_ += x.v_; return *this; }
-  X& operator-=( const X& x ) { v_ -= x.v_; return *this; }
-  X& operator*=( const X& x ) { v_ *= x.v_; return *this; }
-  X& operator/=( const X& x ) { v_ /= x.v_; return *this; }
-  X& operator%=( const X& x ) { v_ %= x.v_; return *this; }
+   X& operator+=( const X& x ) noexcept
+   {
+      v_ += x.v_;
+      return *this;
+   }
 
-  X& operator+=( const int v ) { v_ += v; return *this; }
-  X& operator-=( const int v ) { v_ -= v; return *this; }
-  X& operator*=( const int v ) { v_ *= v; return *this; }
-  X& operator/=( const int v ) { v_ /= v; return *this; }
-  X& operator%=( const int v ) { v_ %= v; return *this; }
+   X& operator-=( const X& x )
+   {
+      v_ -= x.v_;
+      return *this;
+   }
 
-  int v_;
+   X& operator*=( const X& x )
+   {
+      v_ *= x.v_;
+      return *this;
+   }
+
+   X& operator/=( const X& x )
+   {
+      v_ /= x.v_;
+      return *this;
+   }
+
+   X& operator%=( const X& x )
+   {
+      v_ %= x.v_;
+      return *this;
+   }
+
+   X& operator+=( const int v )
+   {
+      v_ += v;
+      return *this;
+   }
+
+   X& operator-=( const int v )
+   {
+      v_ -= v;
+      return *this;
+   }
+
+   X& operator*=( const int v )
+   {
+      v_ *= v;
+      return *this;
+   }
+
+   X& operator/=( const int v )
+   {
+      v_ /= v;
+      return *this;
+   }
+
+   X& operator%=( const int v )
+   {
+      v_ %= v;
+      return *this;
+   }
+
+   int v_;
 };
 
-bool operator==( const X& lhs, const X& rhs ) { return lhs.v_ == rhs.v_; }
-bool operator<( const X& lhs, const X& rhs ) { return lhs.v_ < rhs.v_; }
+bool operator==( const X& lhs, const X& rhs )
+{
+   return lhs.v_ == rhs.v_;
+}
 
-bool operator==( const X& x, const int v ) { return x.v_ == v; }
-bool operator<( const X& x, const int v ) { return x.v_ < v; }
-bool operator>( const X& x, const int v ) { return x.v_ > v; }
+bool operator<( const X& lhs, const X& rhs )
+{
+   return lhs.v_ < rhs.v_;
+}
 
-class E : tao::operators::ordered_field< E > {};
+bool operator==( const X& x, const int v )
+{
+   return x.v_ == v;
+}
+
+bool operator<( const X& x, const int v )
+{
+   return x.v_ < v;
+}
+
+bool operator>( const X& x, const int v )
+{
+   return x.v_ > v;
+}
+
+class E
+   : tao::operators::ordered_field< E >
+{
+};
 
 void adl_test( const E& ) {}
 
 namespace tao
 {
-  void adl_test( const E& );
+   void adl_test( const E& );
 }
 
-struct S : tao::operators::addable< S >
+struct S
+   : tao::operators::addable< S >
 {
-  S() {}
-  S( const S& a, const S& b ) : S( a + b ) {}
-  S& operator+=( const S& ) noexcept { return *this; }
+   S() {}
+
+   S( const S& a, const S& b )
+      : S( a + b )
+   {
+   }
+
+   S& operator+=( const S& ) noexcept
+   {
+      return *this;
+   }
 };
 
 int main()
 {
-  X x1( 1 );
-  X x2( 2 );
-  X x3( 3 );
+   X x1( 1 );
+   X x2( 2 );
+   X x3( 3 );
 
-  static_assert( noexcept( x1 + x2 ), "oops" );
-  static_assert( !noexcept( x1 * x2 ), "oops" );
+   static_assert( noexcept( x1 + x2 ), "oops" );
+   static_assert( !noexcept( x1 * x2 ), "oops" );
 
-  assert( x1 == x1 );
-  assert( x1 != x2 );
+   assert( x1 == x1 );
+   assert( x1 != x2 );
 
-  assert( x1 == 1 );
-  assert( 2 == x2 );
-  assert( x3 != 1 );
-  assert( 2 != x3 );
+   assert( x1 == 1 );
+   assert( 2 == x2 );
+   assert( x3 != 1 );
+   assert( 2 != x3 );
 
-  assert( x1 < x2 );
-  assert( x1 <= x2 );
-  assert( x2 <= x2 );
-  assert( x3 > x2 );
-  assert( x3 >= x2 );
-  assert( x2 >= x2 );
+   assert( x1 < x2 );
+   assert( x1 <= x2 );
+   assert( x2 <= x2 );
+   assert( x3 > x2 );
+   assert( x3 >= x2 );
+   assert( x2 >= x2 );
 
-  assert( x1 < 2 );
-  assert( x1 <= 2 );
-  assert( x2 <= 2 );
-  assert( x3 > 2 );
-  assert( x3 >= 2 );
-  assert( x2 >= 2 );
+   assert( x1 < 2 );
+   assert( x1 <= 2 );
+   assert( x2 <= 2 );
+   assert( x3 > 2 );
+   assert( x3 >= 2 );
+   assert( x2 >= 2 );
 
-  assert( 1 < x2 );
-  assert( 1 <= x2 );
-  assert( 2 <= x2 );
-  assert( 3 > x2 );
-  assert( 3 >= x2 );
-  assert( 2 >= x2 );
+   assert( 1 < x2 );
+   assert( 1 <= x2 );
+   assert( 2 <= x2 );
+   assert( 3 > x2 );
+   assert( 3 >= x2 );
+   assert( 2 >= x2 );
 
-  assert( x1 + x2 == x3 );
-  assert( 1 + x2 == x3 );
-  assert( x1 + 2 == x3 );
-  assert( x2 + x1 == 3 );
+   assert( x1 + x2 == x3 );
+   assert( 1 + x2 == x3 );
+   assert( x1 + 2 == x3 );
+   assert( x2 + x1 == 3 );
 
-  assert( x3 - x1 == x2 );
-  assert( 3 - x1 == x2 );
-  assert( x3 - 1 == x2 );
-  assert( x1 - x3 == -2 );
+   assert( x3 - x1 == x2 );
+   assert( 3 - x1 == x2 );
+   assert( x3 - 1 == x2 );
+   assert( x1 - x3 == -2 );
 
-  assert( x2 * x2 == 4 );
-  assert( x2 * 3 == 6 );
-  assert( 4 * x2 == 8 );
+   assert( x2 * x2 == 4 );
+   assert( x2 * 3 == 6 );
+   assert( 4 * x2 == 8 );
 
-  assert( ( x3 + x1 ) / x2 == 2 );
-  assert( ( x1 + x3 ) / 2 == x2 );
+   assert( ( x3 + x1 ) / x2 == 2 );
+   assert( ( x1 + x3 ) / 2 == x2 );
 
-  assert( x3 % x2 == 1 );
-  assert( x3 % 2 == 1 );
+   assert( x3 % x2 == 1 );
+   assert( x3 % 2 == 1 );
 
 #ifndef _WIN32
-  static_assert( std::is_empty< E >::value, "oops" );
+   static_assert( std::is_empty< E >::value, "oops" );
 #endif
 
-  adl_test( E() );
+   adl_test( E{} );
 
-  S s;
-  S s2( s, s );
+   S s;
+   S s2( s, s );
 }

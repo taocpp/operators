@@ -24,7 +24,7 @@ The Art of C++ / Operators is a zero-dependency C++11 single-header library that
 ## Preface
 
 The Art of C++ / Operators is the next logical step in the evolution of the
-[Boost.Operators](http://www.boost.org/doc/libs/1_53_0/libs/utility/operators.htm) library,
+[Boost.Operators](http://www.boost.org/doc/libs/1_66_0/libs/utility/operators.htm) library,
 whose maintainer I became in 2002. Since then, C++ has changed significiantly and
 with C++11, the time has come for a complete rewrite and to get rid of some
 *very* old legacy code and work-arounds.
@@ -850,7 +850,7 @@ With this little hack, The Art of C++ / Operators can be used with GCC 4.4+.
 
 The Art of C++ is certified [Open Source](http://www.opensource.org/docs/definition.html) software. It may be used for any purpose, including commercial purposes, at absolutely no cost. It is distributed under the terms of the [MIT license](http://www.opensource.org/licenses/mit-license.html) reproduced here.
 
-> Copyright (c) 2013-2017 Daniel Frey
+> Copyright (c) 2013-2018 Daniel Frey
 >
 > Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 >
