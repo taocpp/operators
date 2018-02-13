@@ -9,15 +9,16 @@
 
 The Art of C++ / Operators is a zero-dependency C++11 single-header library that provides highly efficient, move aware operators for arithmetic data types.
 
-### Table of content
+### Table of Content
 
 [Preface](#preface)<br/>
 [Rationale](#rationale)<br/>
 [Example](#example)<br/>
 [Requirements](#requirements)<br/>
 [Installation](#installation)<br/>
-[Provided templates](#provided-templates)<br/>
+[Provided Templates](#provided-templates)<br/>
 [Commutativity](#commutativity)<br/>
+[RValue References](#rvalue-references)<br/>
 [noexcept](#noexcept)<br/>
 [License](#license)
 
@@ -107,7 +108,7 @@ Requires C++11 or newer. Tested with:
 
 * GCC 4.7+
 * Clang 3.2+
-* Visual Studio 2015
+* Visual Studio 2015+
 
 Remember to enable C++11, e.g., provide `-std=c++11` or similar options.
 
@@ -121,7 +122,7 @@ Remember to enable C++11, e.g., provide `-std=c++11` or similar options.
 The Art of C++ / Operators is a single-header library. There is nothing to build or install,
 just copy the header somewhere and include it in your code.
 
-## Provided templates
+## Provided Templates
 
 The following table gives an overview of the available templates.
 Note that the "Provides" and "Requires" columns are just a basic overview.
@@ -831,6 +832,54 @@ in which cases creating a temporary (returning `T`) can be avoided
 For the two-argument version, `commutative_{OP}< T, U >` provides the operators
 of both `{OP}< T, U >` and `{OP}_left< T, U >`, again the return type indicates
 those cases where an extra temporary is avoided.
+
+## RValue References
+
+As you can see above, several overloads of some operators return rvalue references.
+This helps to eliminate temporaries in more complicated expressions, but some people
+consider it dangerous. The argument against returning rvalue references usually
+is something like:
+
+```c++
+const auto& result = a + b + c;
+```
+
+where they expect a temporary to be returned from the expression `a + b + c`,
+and the lifetime of the temporary can be extended by binding it to a reference.
+
+While this would work if an actual temporary value is returned, it does not work with
+the second operator `+` returning an rvalue reference to the *intermediate* temporary
+created by the first operator `+`.
+
+I consider the above code bad style that has no place in modern C++. It should be
+replaced by
+
+```c++
+const auto result = a + b + c;
+```
+
+and the problem goes away. Also, if you *expect* an expression to return a temporary
+value, but you don't *verify* your assumption, it is your fault for basing your code
+on those assumptions.
+
+There is, however, one problem where the above binding to a references happens behind
+the scenes, i.e. without being immediately visible. It may happen if you are using
+a range-based for-loop. The problem in this case is not limited to returning rvalue
+references, hence you should always make sure that you do not mix any kind of expression
+other than directly naming a variable when using a range-based for-loop. Example:
+
+```c++
+// instead of this:
+for( const auto& e : a + b + c ) { ... }
+
+// always use something like this:
+const auto r = a + b + c;
+for( const auto& e : r ) { ... }
+```
+
+With all that said, you can disable returning rvalue references by defining
+`TAO_OPERATORS_NO_RVALUE_REFERENCE_RESULTS`. If it is set, all operators will
+return a value (an rvalue) instead of rvalue references.
 
 ## noexcept
 
