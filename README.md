@@ -20,6 +20,7 @@ The Art of C++ / Operators is a zero-dependency C++11 single-header library that
 [Commutativity](#commutativity)<br/>
 [RValue References](#rvalue-references)<br/>
 [noexcept](#noexcept)<br/>
+[Changelog](#changelog)<br/>
 [License](#license)
 
 ## Preface
@@ -894,6 +895,14 @@ work-around:
 ```
 
 With this little hack, The Art of C++ / Operators can be used with GCC 4.4+.
+
+## Changelog
+
+### 1.0.0
+
+Released 2018-02-13
+
+* Initial release.
 
 ## License
 
