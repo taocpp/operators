@@ -1,11 +1,9 @@
 # The Art of C++ / Operators
 
 [![Release](https://img.shields.io/github/release/taocpp/operators.svg)](https://github.com/taocpp/operators/releases/latest)
-[![License](https://img.shields.io/github/license/taocpp/operators.svg)](#license)
-[![TravisCI](https://travis-ci.org/taocpp/operators.svg)](https://travis-ci.org/taocpp/operators)
-[![AppVeyor](https://ci.appveyor.com/api/projects/status/github/taocpp/operators?svg=true)](https://ci.appveyor.com/project/taocpp/operators)
-[![Coverage](https://img.shields.io/coveralls/taocpp/operators.svg)](https://coveralls.io/github/taocpp/operators)
-[![Issues](https://img.shields.io/github/issues/taocpp/operators.svg)](https://github.com/taocpp/operators/issues)
+[![TravisCI](https://travis-ci.org/taocpp/operators.svg?branch=master)](https://travis-ci.org/taocpp/operators)
+[![AppVeyor](https://ci.appveyor.com/api/projects/status/794d875ucgic4sq0/branch/master?svg=true)](https://ci.appveyor.com/project/taocpp/operators)
+[![Coverage](https://coveralls.io/repos/github/taocpp/operators/badge.svg?branch=master)](https://coveralls.io/github/taocpp/operators)
 
 The Art of C++ / Operators is a zero-dependency C++11 single-header library that provides highly efficient, move aware operators for arithmetic data types.
 
