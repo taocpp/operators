@@ -581,7 +581,7 @@ namespace tao
       template< typename T >
       class incrementable
       {
-         friend T operator++(T& arg, int)noexcept( noexcept( T( arg ), ++arg, T( std::declval< T >() ) ) )
+         friend T operator++( T& arg, int /*unused*/ ) noexcept( noexcept( T( arg ), ++arg, T( std::declval< T >() ) ) )  // NOLINT
          {
             const T nrv( arg );
             ++arg;
@@ -592,7 +592,7 @@ namespace tao
       template< typename T >
       class decrementable
       {
-         friend T operator--(T& arg, int)noexcept( noexcept( T( arg ), --arg, T( std::declval< T >() ) ) )
+         friend T operator--( T& arg, int /*unused*/ ) noexcept( noexcept( T( arg ), --arg, T( std::declval< T >() ) ) )  // NOLINT
          {
             const T nrv( arg );
             --arg;
@@ -606,8 +606,10 @@ namespace tao
            decrementable< T >
       {
       };
-   }
-}
+
+   }  // namespace operators
+
+}  // namespace tao
 
 #undef TAO_OPERATORS_BASIC_OP
 #undef TAO_OPERATORS_BASIC_OP_LEFT

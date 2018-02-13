@@ -19,11 +19,13 @@ public:
    {
    }
 
-   X( const X& x )
-   noexcept
-      : v_( x.v_ )
-   {
-   }
+   X( const X& ) = default;
+   X( X&& ) = default;
+
+   ~X() = default;
+
+   X& operator=( const X& ) = delete;
+   X& operator=( X&& ) = delete;
 
    X& operator+=( const X& x ) noexcept
    {
@@ -118,24 +120,25 @@ class E
 {
 };
 
-void adl_test( const E& ) {}
+void adl_test( const E& /*unused*/ ) {}
 
 namespace tao
 {
    void adl_test( const E& );
-}
+
+}  // namespace tao
 
 struct S
    : tao::operators::addable< S >
 {
-   S() {}
+   S() = default;
 
    S( const S& a, const S& b )
       : S( a + b )
    {
    }
 
-   S& operator+=( const S& ) noexcept
+   S& operator+=( const S& /*unused*/ ) noexcept
    {
       return *this;
    }
