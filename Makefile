@@ -1,5 +1,5 @@
 # The Art of C++
-# Copyright (c) 2015-2017 Daniel Frey
+# Copyright (c) 2015-2018 Daniel Frey
 # Please see LICENSE for license or visit https://github.com/taocpp/json
 
 .SUFFIXES:
@@ -27,7 +27,7 @@ endif
 # changed if desired.
 
 CPPFLAGS ?= -pedantic
-CXXFLAGS ?= -Wall -Wextra -Werror -O3
+CXXFLAGS ?= -Wall -Wextra -Wshadow -Werror -O3
 
 .PHONY: all clean
 
