@@ -7,6 +7,12 @@
 
 #include <utility>
 
+#if defined( _MSC_VER ) && !defined( __clang__ )
+#define TAO_OPERATORS_BROKEN_EBO __declspec( empty_bases )
+#else
+#define TAO_OPERATORS_BROKEN_EBO
+#endif
+
 #ifndef TAO_OPERATORS_NO_RVALUE_REFERENCE_RESULTS
 #define TAO_OPERATORS_BASIC_OP( name, op )                                                                                                                    \
    template< typename T, typename U = T >                                                                                                                     \
@@ -373,7 +379,7 @@ namespace tao
       };
 
       template< typename T, typename U = T >
-      class totally_ordered
+      class TAO_OPERATORS_BROKEN_EBO totally_ordered
          : less_than_comparable< T, U >,
            equality_comparable< T, U >
       {
@@ -468,7 +474,7 @@ namespace tao
       TAO_OPERATORS_BASIC_OP_LEFT( modable, % );
 
       template< typename T, typename U = T >
-      class ring
+      class TAO_OPERATORS_BROKEN_EBO ring
          : commutative_addable< T, U >,
            subtractable< T, U >,
            subtractable_left< T, U >,
@@ -477,20 +483,22 @@ namespace tao
       };
 
       template< typename T >
-      class ring< T >
-         : commutative_addable< T >, subtractable< T >, multipliable< T >
+      class TAO_OPERATORS_BROKEN_EBO ring< T >
+         : commutative_addable< T >,
+           subtractable< T >,
+           multipliable< T >
       {
       };
 
       template< typename T, typename U = T >
-      class ordered_ring
+      class TAO_OPERATORS_BROKEN_EBO ordered_ring
          : ring< T, U >,
            totally_ordered< T, U >
       {
       };
 
       template< typename T, typename U = T >
-      class commutative_ring
+      class TAO_OPERATORS_BROKEN_EBO commutative_ring
          : commutative_addable< T, U >,
            subtractable< T, U >,
            subtractable_left< T, U >,
@@ -499,20 +507,22 @@ namespace tao
       };
 
       template< typename T >
-      class commutative_ring< T >
-         : commutative_addable< T >, subtractable< T >, commutative_multipliable< T >
+      class TAO_OPERATORS_BROKEN_EBO commutative_ring< T >
+         : commutative_addable< T >,
+           subtractable< T >,
+           commutative_multipliable< T >
       {
       };
 
       template< typename T, typename U = T >
-      class ordered_commutative_ring
+      class TAO_OPERATORS_BROKEN_EBO ordered_commutative_ring
          : commutative_ring< T, U >,
            totally_ordered< T, U >
       {
       };
 
       template< typename T, typename U = T >
-      class field
+      class TAO_OPERATORS_BROKEN_EBO field
          : commutative_ring< T, U >,
            dividable< T, U >,
            dividable_left< T, U >
@@ -520,13 +530,14 @@ namespace tao
       };
 
       template< typename T >
-      class field< T >
-         : commutative_ring< T >, dividable< T >
+      class TAO_OPERATORS_BROKEN_EBO field< T >
+         : commutative_ring< T >,
+           dividable< T >
       {
       };
 
       template< typename T, typename U = T >
-      class ordered_field
+      class TAO_OPERATORS_BROKEN_EBO ordered_field
          : field< T, U >,
            totally_ordered< T, U >
       {
@@ -545,7 +556,7 @@ namespace tao
       TAO_OPERATORS_BASIC_OP_COMMUTATIVE( xorable, ^);
 
       template< typename T, typename U = T >
-      class bitwise
+      class TAO_OPERATORS_BROKEN_EBO bitwise
          : andable< T, U >,
            orable< T, U >,
            xorable< T, U >
@@ -553,7 +564,7 @@ namespace tao
       };
 
       template< typename T, typename U >
-      class bitwise_left
+      class TAO_OPERATORS_BROKEN_EBO bitwise_left
          : andable_left< T, U >,
            orable_left< T, U >,
            xorable_left< T, U >
@@ -561,7 +572,7 @@ namespace tao
       };
 
       template< typename T, typename U = T >
-      class commutative_bitwise
+      class TAO_OPERATORS_BROKEN_EBO commutative_bitwise
          : commutative_andable< T, U >,
            commutative_orable< T, U >,
            commutative_xorable< T, U >
@@ -572,7 +583,7 @@ namespace tao
       TAO_OPERATORS_BASIC_OP( right_shiftable, >> );
 
       template< typename T, typename U = T >
-      class shiftable
+      class TAO_OPERATORS_BROKEN_EBO shiftable
          : left_shiftable< T, U >,
            right_shiftable< T, U >
       {
@@ -601,7 +612,7 @@ namespace tao
       };
 
       template< typename T >
-      class unit_steppable
+      class TAO_OPERATORS_BROKEN_EBO unit_steppable
          : incrementable< T >,
            decrementable< T >
       {
@@ -614,5 +625,6 @@ namespace tao
 #undef TAO_OPERATORS_BASIC_OP
 #undef TAO_OPERATORS_BASIC_OP_LEFT
 #undef TAO_OPERATORS_BASIC_OP_COMMUTATIVE
+#undef TAO_OPERATORS_BROKEN_EBO
 
 #endif

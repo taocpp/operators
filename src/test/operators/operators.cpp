@@ -202,9 +202,7 @@ int main()
    assert( x3 % x2 == 1 );
    assert( x3 % 2 == 1 );
 
-#ifndef _WIN32
    static_assert( std::is_empty< E >::value, "oops" );
-#endif
 
    adl_test( E{} );
 
