@@ -896,6 +896,12 @@ With this little hack, The Art of C++ / Operators can be used with GCC 4.4+.
 
 ## Changelog
 
+### 1.0.1
+
+Released 2018-04-23
+
+* Work-around for MSVC to fix broken EBO.
+
 ### 1.0.0
 
 Released 2018-02-13
