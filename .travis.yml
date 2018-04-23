@@ -65,9 +65,9 @@ matrix:
       addons:
         apt:
           sources: ['ubuntu-toolchain-r-test']
-          packages: ['g++-6']
+          packages: ['g++-7']
       env:
-        - CXX=g++-6
+        - CXX=g++-7
         - CXXSTD=-std=c++17
 
     - dist: precise
