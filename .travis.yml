@@ -185,8 +185,8 @@ matrix:
     - compiler: clang
       addons:
         apt:
-          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-trusty-5.0']
-          packages: ['clang-5.0', 'clang-tidy-5.0']
+          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-trusty-6.0']
+          packages: ['clang-6.0', 'clang-tidy-6.0']
       env:
         - CXX=clang++-6.0
         - CLANG_TIDY=clang-tidy-6.0
