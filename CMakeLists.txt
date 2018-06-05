@@ -1,13 +1,25 @@
 cmake_minimum_required (VERSION 3.2.0 FATAL_ERROR)
 
-project (taocpp-operators VERSION 1.0.0 LANGUAGES CXX)
+project (taocpp-operators VERSION 1.0.2 LANGUAGES CXX)
 
-set (CMAKE_CXX_STANDARD 11)
-set (CMAKE_CXX_STANDARD_REQUIRED ON)
+# installation directories
+set (TAOCPP_OPERATORS_INSTALL_INCLUDE_DIR "include" CACHE STRING "The installation include directory")
+set (TAOCPP_OPERATORS_INSTALL_DOC_DIR "share/doc/tao/operators" CACHE STRING "The installation doc directory")
+set (TAOCPP_OPERATORS_INSTALL_CMAKE_DIR "share/tao/operators/cmake" CACHE STRING "The installation cmake directory")
 
-# taocpp/operators
-include ("taocpp-operators.cmake")
-include_directories (${TAOCPP_OPERATORS_INCLUDE_DIRS})
+# define a header-only library
+add_library (taocpp-operators INTERFACE)
+add_library (taocpp::operators ALIAS taocpp-operators)
+target_include_directories (taocpp-operators INTERFACE
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:${TAOCPP_OPERATORS_INSTALL_INCLUDE_DIR}>
+)
+
+# features used by taocpp/operators
+target_compile_features (${TAOCPP_OPERATORS_LIBRARY} INTERFACE
+  cxx_noexcept
+  cxx_rvalue_references
+)
 
 # testing
 enable_testing ()
@@ -16,10 +28,14 @@ if (TAOCPP_OPERATORS_BUILD_TESTS)
   add_subdirectory (src/test/operators)
 endif ()
 
-# installation directories
-set (TAOCPP_OPERATORS_INSTALL_INCLUDE_DIR "include" CACHE STRING "The installation include directory")
-set (TAOCPP_OPERATORS_INSTALL_DOC_DIR "share/doc/tao/operators" CACHE STRING "The installation doc directory")
+# install and export target
+install (TARGETS taocpp-operators EXPORT taocpp-operators-targets)
 
-# install
+install (EXPORT taocpp-operators-targets
+  FILE taocpp-operators-config.cmake
+  NAMESPACE taocpp::
+  DESTINATION ${TAOCPP_OPERATORS_INSTALL_CMAKE_DIR}
+)
+
 install (DIRECTORY include/ DESTINATION ${TAOCPP_OPERATORS_INSTALL_INCLUDE_DIR})
 install (FILES LICENSE DESTINATION ${TAOCPP_OPERATORS_INSTALL_DOC_DIR})

@@ -1,6 +1,7 @@
 # The Art of C++ / Operators
 
 [![Release](https://img.shields.io/github/release/taocpp/operators.svg)](https://github.com/taocpp/operators/releases/latest)
+[![Download](https://api.bintray.com/packages/taocpp/public-conan/taocpp-operators%3Ataocpp/images/download.svg)](https://bintray.com/taocpp/public-conan/taocpp-operators%3Ataocpp/_latestVersion)
 [![TravisCI](https://travis-ci.org/taocpp/operators.svg?branch=master)](https://travis-ci.org/taocpp/operators)
 [![AppVeyor](https://ci.appveyor.com/api/projects/status/794d875ucgic4sq0/branch/master?svg=true)](https://ci.appveyor.com/project/taocpp/operators)
 [![Coverage](https://coveralls.io/repos/github/taocpp/operators/badge.svg?branch=master)](https://coveralls.io/github/taocpp/operators)
@@ -120,6 +121,8 @@ Remember to enable C++11, e.g., provide `-std=c++11` or similar options.
 
 The Art of C++ / Operators is a single-header library. There is nothing to build or install,
 just copy the header somewhere and include it in your code.
+
+[Conan packages](https://bintray.com/taocpp/public-conan/taocpp-operators%3Ataocpp) are available.
 
 ## Provided Templates
 
@@ -895,6 +898,13 @@ work-around:
 With this little hack, The Art of C++ / Operators can be used with GCC 4.4+.
 
 ## Changelog
+
+### 1.0.2
+
+Released 2018-06-05
+
+* Improve CMake support.
+* Conan support.
 
 ### 1.0.1
 
