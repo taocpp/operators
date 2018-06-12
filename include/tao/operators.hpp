@@ -7,12 +7,20 @@
 
 #include <utility>
 
+#ifndef TAO_OPERATORS_BROKEN_EBO
 #if defined( _MSC_VER ) && !defined( __clang__ )
 #define TAO_OPERATORS_BROKEN_EBO __declspec( empty_bases )
-#define TAO_OPERATORS_CONSTEXPR
 #else
 #define TAO_OPERATORS_BROKEN_EBO
+#endif
+#endif
+
+#ifndef TAO_OPERATORS_CONSTEXPR
+#if defined( _MSC_VER ) && !defined( __clang__ )
+#define TAO_OPERATORS_CONSTEXPR
+#else
 #define TAO_OPERATORS_CONSTEXPR constexpr
+#endif
 #endif
 
 #ifndef TAO_OPERATORS_NO_RVALUE_REFERENCE_RESULTS
@@ -627,7 +635,5 @@ namespace tao
 #undef TAO_OPERATORS_BASIC_OP
 #undef TAO_OPERATORS_BASIC_OP_LEFT
 #undef TAO_OPERATORS_BASIC_OP_COMMUTATIVE
-#undef TAO_OPERATORS_BROKEN_EBO
-#undef TAO_OPERATORS_CONSTEXPR
 
 #endif

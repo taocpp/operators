@@ -18,6 +18,7 @@ The Art of C++ / Operators is a zero-dependency C++11 single-header library that
 [Provided Templates](#provided-templates)<br/>
 [Commutativity](#commutativity)<br/>
 [RValue References](#rvalue-references)<br/>
+[constexpr](#constexpr)<br/>
 [noexcept](#noexcept)<br/>
 [Changelog](#changelog)<br/>
 [License](#license)
@@ -46,7 +47,8 @@ The generated operators are overloaded to take full advantage of move-aware type
 and are carefully written to allow the compiler to apply important optimizations
 to avoid unneccessary temporary objects. All generated operators are automatically
 marked `noexcept` when the underlying base operations are themself marked as
-`noexcept`.
+`noexcept`. The generated comparison operators are also marked `constexpr`
+(currently excluding Visual C++).
 
 ## Example
 
@@ -883,6 +885,19 @@ With all that said, you can disable returning rvalue references by defining
 `TAO_OPERATORS_NO_RVALUE_REFERENCE_RESULTS`. If it is set, all operators will
 return a value (an rvalue) instead of rvalue references.
 
+## constexpr
+
+All comparison operators are marked `constexpr` for GCC and Clang,
+Visual Studio has problems with `constexpr` support, hence it is disabled.
+
+If you want to switch of `constexpr` support manually, you can set
+
+```c++
+#define TAO_OPERATORS_CONSTEXPR
+```
+
+before including `<tao/operators.hpp>`.
+
 ## noexcept
 
 If your compiler does not support `noexcept`, the following might be a viable
@@ -891,6 +906,8 @@ work-around:
 ```c++
 #include <utility> // make sure it's included before the following!
 #define noexcept(...)
+// you probably also need this for older compilers:
+#define TAO_OPERATORS_CONSTEXPR
 #include <tao/operators.hpp>
 #undef noexcept
 ```
@@ -898,6 +915,12 @@ work-around:
 With this little hack, The Art of C++ / Operators can be used with GCC 4.4+.
 
 ## Changelog
+
+### 1.1.0
+
+Released 2018-??-??
+
+* Add `constexpr` support for comparison operators.
 
 ### 1.0.2
 
