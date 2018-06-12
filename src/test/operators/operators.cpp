@@ -144,7 +144,7 @@ struct S
    }
 };
 
-#if defined( _MSC_VER ) && !defined( __clang__ )
+#if !defined( _MSC_VER ) || defined( __clang__ )
 
 struct C
    : tao::operators::less_than_comparable< C >
@@ -229,7 +229,7 @@ int main()
    S s;
    S s2( s, s );
 
-#if defined( _MSC_VER ) && !defined( __clang__ )
+#if !defined( _MSC_VER ) || defined( __clang__ )
 
    constexpr C c1( 1 );
    constexpr C c2( 2 );
