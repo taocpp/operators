@@ -300,17 +300,17 @@ namespace tao
       template< typename T, typename U = T >
       class equality_comparable
       {
-         friend bool operator!=( const T& lhs, const U& rhs ) noexcept( noexcept( static_cast< bool >( lhs == rhs ) ) )
+         friend constexpr bool operator!=( const T& lhs, const U& rhs ) noexcept( noexcept( static_cast< bool >( lhs == rhs ) ) )
          {
             return !static_cast< bool >( lhs == rhs );
          }
 
-         friend bool operator==( const U& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs == lhs ) ) )
+         friend constexpr bool operator==( const U& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs == lhs ) ) )
          {
             return static_cast< bool >( rhs == lhs );
          }
 
-         friend bool operator!=( const U& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs != lhs ) ) )
+         friend constexpr bool operator!=( const U& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs != lhs ) ) )
          {
             return static_cast< bool >( rhs != lhs );
          }
@@ -319,7 +319,7 @@ namespace tao
       template< typename T >
       class equality_comparable< T >
       {
-         friend bool operator!=( const T& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( lhs == rhs ) ) )
+         friend constexpr bool operator!=( const T& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( lhs == rhs ) ) )
          {
             return !static_cast< bool >( lhs == rhs );
          }
@@ -328,32 +328,32 @@ namespace tao
       template< typename T, typename U = T >
       class less_than_comparable
       {
-         friend bool operator<=( const T& lhs, const U& rhs ) noexcept( noexcept( static_cast< bool >( lhs > rhs ) ) )
+         friend constexpr bool operator<=( const T& lhs, const U& rhs ) noexcept( noexcept( static_cast< bool >( lhs > rhs ) ) )
          {
             return !static_cast< bool >( lhs > rhs );
          }
 
-         friend bool operator>=( const T& lhs, const U& rhs ) noexcept( noexcept( static_cast< bool >( lhs < rhs ) ) )
+         friend constexpr bool operator>=( const T& lhs, const U& rhs ) noexcept( noexcept( static_cast< bool >( lhs < rhs ) ) )
          {
             return !static_cast< bool >( lhs < rhs );
          }
 
-         friend bool operator<( const U& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs > lhs ) ) )
+         friend constexpr bool operator<( const U& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs > lhs ) ) )
          {
             return static_cast< bool >( rhs > lhs );
          }
 
-         friend bool operator>( const U& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs < lhs ) ) )
+         friend constexpr bool operator>( const U& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs < lhs ) ) )
          {
             return static_cast< bool >( rhs < lhs );
          }
 
-         friend bool operator<=( const U& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs >= lhs ) ) )
+         friend constexpr bool operator<=( const U& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs >= lhs ) ) )
          {
             return static_cast< bool >( rhs >= lhs );
          }
 
-         friend bool operator>=( const U& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs <= lhs ) ) )
+         friend constexpr bool operator>=( const U& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs <= lhs ) ) )
          {
             return static_cast< bool >( rhs <= lhs );
          }
@@ -362,17 +362,17 @@ namespace tao
       template< typename T >
       class less_than_comparable< T >
       {
-         friend bool operator>( const T& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs < lhs ) ) )
+         friend constexpr bool operator>( const T& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs < lhs ) ) )
          {
             return static_cast< bool >( rhs < lhs );
          }
 
-         friend bool operator<=( const T& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs < lhs ) ) )
+         friend constexpr bool operator<=( const T& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs < lhs ) ) )
          {
             return !static_cast< bool >( rhs < lhs );
          }
 
-         friend bool operator>=( const T& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( lhs < rhs ) ) )
+         friend constexpr bool operator>=( const T& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( lhs < rhs ) ) )
          {
             return !static_cast< bool >( lhs < rhs );
          }
@@ -388,7 +388,7 @@ namespace tao
       template< typename T, typename U = T >
       class equivalent
       {
-         friend bool operator==( const T& lhs, const U& rhs ) noexcept( noexcept( static_cast< bool >( lhs < rhs ), static_cast< bool >( lhs > rhs ) ) )
+         friend constexpr bool operator==( const T& lhs, const U& rhs ) noexcept( noexcept( static_cast< bool >( lhs < rhs ), static_cast< bool >( lhs > rhs ) ) )
          {
             return !static_cast< bool >( lhs < rhs ) && !static_cast< bool >( lhs > rhs );
          }
@@ -397,7 +397,7 @@ namespace tao
       template< typename T >
       class equivalent< T >
       {
-         friend bool operator==( const T& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( lhs < rhs ) ) )
+         friend constexpr bool operator==( const T& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( lhs < rhs ) ) )
          {
             return !static_cast< bool >( lhs < rhs ) && !static_cast< bool >( rhs < lhs );
          }
@@ -406,32 +406,32 @@ namespace tao
       template< typename T, typename U = T >
       class partially_ordered
       {
-         friend bool operator<=( const T& lhs, const U& rhs ) noexcept( noexcept( static_cast< bool >( lhs < rhs ), static_cast< bool >( lhs == rhs ) ) )
+         friend constexpr bool operator<=( const T& lhs, const U& rhs ) noexcept( noexcept( static_cast< bool >( lhs < rhs ), static_cast< bool >( lhs == rhs ) ) )
          {
             return static_cast< bool >( lhs < rhs ) || static_cast< bool >( lhs == rhs );
          }
 
-         friend bool operator>=( const T& lhs, const U& rhs ) noexcept( noexcept( static_cast< bool >( lhs > rhs ), static_cast< bool >( lhs == rhs ) ) )
+         friend constexpr bool operator>=( const T& lhs, const U& rhs ) noexcept( noexcept( static_cast< bool >( lhs > rhs ), static_cast< bool >( lhs == rhs ) ) )
          {
             return static_cast< bool >( lhs > rhs ) || static_cast< bool >( lhs == rhs );
          }
 
-         friend bool operator<( const U& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs > lhs ) ) )
+         friend constexpr bool operator<( const U& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs > lhs ) ) )
          {
             return static_cast< bool >( rhs > lhs );
          }
 
-         friend bool operator>( const U& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs < lhs ) ) )
+         friend constexpr bool operator>( const U& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs < lhs ) ) )
          {
             return static_cast< bool >( rhs < lhs );
          }
 
-         friend bool operator<=( const U& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs >= lhs ) ) )
+         friend constexpr bool operator<=( const U& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs >= lhs ) ) )
          {
             return static_cast< bool >( rhs >= lhs );
          }
 
-         friend bool operator>=( const U& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs <= lhs ) ) )
+         friend constexpr bool operator>=( const U& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs <= lhs ) ) )
          {
             return static_cast< bool >( rhs <= lhs );
          }
@@ -440,17 +440,17 @@ namespace tao
       template< typename T >
       class partially_ordered< T >
       {
-         friend bool operator>( const T& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs < lhs ) ) )
+         friend constexpr bool operator>( const T& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs < lhs ) ) )
          {
             return static_cast< bool >( rhs < lhs );
          }
 
-         friend bool operator<=( const T& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( lhs < rhs ), static_cast< bool >( lhs == rhs ) ) )
+         friend constexpr bool operator<=( const T& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( lhs < rhs ), static_cast< bool >( lhs == rhs ) ) )
          {
             return static_cast< bool >( lhs < rhs ) || static_cast< bool >( lhs == rhs );
          }
 
-         friend bool operator>=( const T& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs < lhs ), static_cast< bool >( lhs == rhs ) ) )
+         friend constexpr bool operator>=( const T& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs < lhs ), static_cast< bool >( lhs == rhs ) ) )
          {
             return static_cast< bool >( rhs < lhs ) || static_cast< bool >( lhs == rhs );
          }

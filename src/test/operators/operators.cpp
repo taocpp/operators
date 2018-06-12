@@ -144,6 +144,22 @@ struct S
    }
 };
 
+struct C
+   : tao::operators::less_than_comparable< C >
+{
+   int i_;
+
+   constexpr C( int i ) noexcept
+      : i_( i )
+   {
+   }
+};
+
+constexpr bool operator<( const C& lhs, const C& rhs ) noexcept
+{
+   return lhs.i_ < rhs.i_;
+}
+
 int main()
 {
    X x1( 1 );
@@ -208,4 +224,29 @@ int main()
 
    S s;
    S s2( s, s );
+
+   constexpr C c1( 1 );
+   constexpr C c2( 2 );
+   constexpr C c3( 3 );
+
+   static_assert( c1 < c2, "oops" );
+   static_assert( c2 < c3, "oops" );
+   static_assert( c1 < c3, "oops" );
+
+   static_assert( c1 <= c2, "oops" );
+   static_assert( c2 <= c3, "oops" );
+   static_assert( c1 <= c3, "oops" );
+
+   static_assert( c2 > c1, "oops" );
+   static_assert( c3 > c2, "oops" );
+   static_assert( c3 > c1, "oops" );
+
+   static_assert( c2 >= c1, "oops" );
+   static_assert( c3 >= c2, "oops" );
+   static_assert( c3 >= c1, "oops" );
+
+   static_assert( !( c1 < c1 ), "oops" );
+   static_assert( !( c1 > c1 ), "oops" );
+   static_assert( c1 <= c1, "oops" );
+   static_assert( c1 >= c1, "oops" );
 }

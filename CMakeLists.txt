@@ -17,6 +17,7 @@ target_include_directories (taocpp-operators INTERFACE
 
 # features used by taocpp/operators
 target_compile_features (taocpp-operators INTERFACE
+  cxx_constexpr
   cxx_noexcept
   cxx_rvalue_references
 )
