@@ -144,12 +144,14 @@ struct S
    }
 };
 
+#if defined( _MSC_VER ) && !defined( __clang__ )
+
 struct C
    : tao::operators::less_than_comparable< C >
 {
-   int i_;
+   const int i_;
 
-   constexpr C( int i ) noexcept
+   explicit constexpr C( int i ) noexcept
       : i_( i )
    {
    }
@@ -159,6 +161,8 @@ constexpr bool operator<( const C& lhs, const C& rhs ) noexcept
 {
    return lhs.i_ < rhs.i_;
 }
+
+#endif
 
 int main()
 {
@@ -225,6 +229,8 @@ int main()
    S s;
    S s2( s, s );
 
+#if defined( _MSC_VER ) && !defined( __clang__ )
+
    constexpr C c1( 1 );
    constexpr C c2( 2 );
    constexpr C c3( 3 );
@@ -245,8 +251,10 @@ int main()
    static_assert( c3 >= c2, "oops" );
    static_assert( c3 >= c1, "oops" );
 
-   static_assert( !( c1 < c1 ), "oops" );
-   static_assert( !( c1 > c1 ), "oops" );
-   static_assert( c1 <= c1, "oops" );
-   static_assert( c1 >= c1, "oops" );
+   static_assert( !( c1 < c1 ), "oops" );  // NOLINT
+   static_assert( !( c1 > c1 ), "oops" );  // NOLINT
+   static_assert( c1 <= c1, "oops" );      // NOLINT
+   static_assert( c1 >= c1, "oops" );      // NOLINT
+
+#endif
 }
