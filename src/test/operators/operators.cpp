@@ -147,7 +147,8 @@ struct S
 #if !defined( _MSC_VER ) || defined( __clang__ )
 
 struct C
-   : tao::operators::less_than_comparable< C >
+   : tao::operators::less_than_comparable< C >,
+     tao::operators::less_than_comparable< C, int >
 {
    const int i_;
 
@@ -160,6 +161,16 @@ struct C
 constexpr bool operator<( const C& lhs, const C& rhs ) noexcept
 {
    return lhs.i_ < rhs.i_;
+}
+
+constexpr bool operator<( const C& lhs, const int rhs ) noexcept
+{
+   return lhs.i_ < rhs;
+}
+
+constexpr bool operator>( const C& lhs, const int rhs ) noexcept
+{
+   return lhs.i_ > rhs;
 }
 
 #endif
@@ -239,17 +250,45 @@ int main()
    static_assert( c2 < c3, "oops" );
    static_assert( c1 < c3, "oops" );
 
+   static_assert( c1 < 2, "oops" );
+   static_assert( c2 < 3, "oops" );
+   static_assert( c1 < 3, "oops" );
+
    static_assert( c1 <= c2, "oops" );
    static_assert( c2 <= c3, "oops" );
    static_assert( c1 <= c3, "oops" );
+
+   static_assert( c1 <= 2, "oops" );
+   static_assert( c2 <= 3, "oops" );
+   static_assert( c1 <= 3, "oops" );
+
+   static_assert( 1 <= c2, "oops" );
+   static_assert( 2 <= c3, "oops" );
+   static_assert( 1 <= c3, "oops" );
 
    static_assert( c2 > c1, "oops" );
    static_assert( c3 > c2, "oops" );
    static_assert( c3 > c1, "oops" );
 
+   static_assert( c2 > 1, "oops" );
+   static_assert( c3 > 2, "oops" );
+   static_assert( c3 > 1, "oops" );
+
+   static_assert( 2 > c1, "oops" );
+   static_assert( 3 > c2, "oops" );
+   static_assert( 3 > c1, "oops" );
+
    static_assert( c2 >= c1, "oops" );
    static_assert( c3 >= c2, "oops" );
    static_assert( c3 >= c1, "oops" );
+
+   static_assert( c2 >= 1, "oops" );
+   static_assert( c3 >= 2, "oops" );
+   static_assert( c3 >= 1, "oops" );
+
+   static_assert( 2 >= c1, "oops" );
+   static_assert( 3 >= c2, "oops" );
+   static_assert( 3 >= c1, "oops" );
 
    static_assert( !( c1 < c1 ), "oops" );  // NOLINT
    static_assert( !( c1 > c1 ), "oops" );  // NOLINT
