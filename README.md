@@ -890,7 +890,7 @@ return a value (an rvalue) instead of rvalue references.
 All comparison operators are marked `constexpr` for GCC and Clang,
 Visual Studio has problems with `constexpr` support, hence it is disabled.
 
-If you want to switch of `constexpr` support manually, you can set
+If you want to switch off `constexpr` support manually, you can set
 
 ```c++
 #define TAO_OPERATORS_CONSTEXPR
