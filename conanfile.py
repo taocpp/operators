@@ -1,5 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from conans import ConanFile, CMake
-import os
 
 class OperatorsConan(ConanFile):
     name = "operators"
@@ -8,7 +9,13 @@ class OperatorsConan(ConanFile):
     url = homepage
     license = "MIT"
     author = "taocpp@icemx.net"
-    exports_sources = "include*", "LICENSE", "CMakeLists.txt"
+    settings = "compiler", "arch"
+    exports = "LICENSE"
+    exports_sources = "include/*", "CMakeLists.txt"
+    no_copy_source = True
+
+    def build(self):
+        pass
 
     def package(self):
         cmake = CMake(self)

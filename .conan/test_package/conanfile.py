@@ -10,6 +10,7 @@ class TestPackageConan(ConanFile):
 
     def build(self):
         cmake = CMake(self)
+        cmake.definitions["CMAKE_PREFIX_PATH"] = os.path.join(self.deps_cpp_info["operators"].rootpath, "share", "tao", "operators")
         cmake.configure()
         cmake.build()
 
