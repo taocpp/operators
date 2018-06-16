@@ -9,4 +9,4 @@ conan_basic_setup()
 find_package(taocpp-operators REQUIRED CONFIG)
 
 add_executable(${PROJECT_NAME} test_package.cpp)
-target_link_libraries(${PROJECT_NAME} taocpp::taocpp-operators)
+target_link_libraries(${PROJECT_NAME} taocpp::operators)

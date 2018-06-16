@@ -209,6 +209,21 @@ matrix:
       script:
         - python .conan/build.py
 
+    - compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-6']
+      env:
+        - CXX=g++-6
+      script:
+        - $CXX --version
+        - mkdir build
+        - cd build
+        - cmake ..
+        - cmake --build .
+        - cmake --build . --target test
+
 script:
   - $CXX --version
   - make -kj3
