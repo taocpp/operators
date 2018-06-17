@@ -48,7 +48,7 @@ and are carefully written to allow the compiler to apply important optimizations
 to avoid unneccessary temporary objects. All generated operators are automatically
 marked `noexcept` when the underlying base operations are themself marked as
 `noexcept`. The generated comparison operators are also marked `constexpr`
-(currently excluding Visual C++).
+(if properly supported by the compiler).
 
 ## Example
 
@@ -887,13 +887,21 @@ return a value (an rvalue) instead of rvalue references.
 
 ## constexpr
 
-All comparison operators are marked `constexpr` for GCC and Clang,
-Visual Studio has problems with `constexpr` support, hence it is disabled.
-
+All generated comparison operators are marked `constexpr` by default.
 If you want to switch off `constexpr` support manually, you can set
 
 ```c++
 #define TAO_OPERATORS_CONSTEXPR
+```
+
+before including `<tao/operators.hpp>`.
+
+Note that Visual C++ seems to have some problems with `constexpr` depending
+on compile mode (debug/release), etc. and `constexpr` support is therefore
+disabled by default. If you want to manually enable it, try setting
+
+```c++
+#define TAO_OPERATORS_CONSTEXPR constexpr
 ```
 
 before including `<tao/operators.hpp>`.
