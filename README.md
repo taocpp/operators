@@ -814,7 +814,7 @@ and non-commutative versions available. If the class you are writing is
 commutative wrt an operation, you should prefer the commutative template,
 i.e., the one which has `commutative_` at the beginning.
 
-It will be *more efficient* in some cases because it can avoid to create an
+It will be *more efficient* in some cases because it can avoid an
 extra temporary for the result and it has *fewer requirements*.
 
 The one-argument version of the commutative template provides the same
@@ -876,8 +876,8 @@ return a value (an rvalue) instead of rvalue references.
 
 ## constexpr
 
-All generated comparison operators are marked `constexpr` by default.
-If you want to switch off `constexpr` support manually, you can set
+All generated comparison operators are `constexpr` by default.
+To switch off `constexpr` support simply
 
 ```c++
 #define TAO_OPERATORS_CONSTEXPR
@@ -887,7 +887,7 @@ before including `<tao/operators.hpp>`.
 
 Note that Visual C++ seems to have some problems with `constexpr` depending
 on compile mode (debug/release), etc. and `constexpr` support is therefore
-disabled by default. If you want to manually enable it, try setting
+disabled by default. To manually enable it again use
 
 ```c++
 #define TAO_OPERATORS_CONSTEXPR constexpr
@@ -897,7 +897,7 @@ before including `<tao/operators.hpp>`.
 
 ## noexcept
 
-If your compiler does not support `noexcept`, the following might be a viable
+For compilers that do not support `noexcept`, the following might be a viable
 work-around:
 
 ```c++
@@ -908,8 +908,6 @@ work-around:
 #include <tao/operators.hpp>
 #undef noexcept
 ```
-
-With this little hack, The Art of C++ / Operators can be used with GCC 4.4+.
 
 ## Changelog
 
