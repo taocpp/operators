@@ -915,7 +915,7 @@ work-around:
 
 ### 1.1.0
 
-Released 2018-??-??
+Released 2018-06-17
 
 * Add `constexpr` support for comparison operators.
 
