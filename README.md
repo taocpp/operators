@@ -10,8 +10,7 @@ The Art of C++ / Operators is a zero-dependency C++11 single-header library that
 
 ### Table of Content
 
-[Preface](#preface)<br/>
-[Rationale](#rationale)<br/>
+[Overview](#overview)<br/>
 [Example](#example)<br/>
 [Requirements](#requirements)<br/>
 [Installation](#installation)<br/>
@@ -21,34 +20,24 @@ The Art of C++ / Operators is a zero-dependency C++11 single-header library that
 [constexpr](#constexpr)<br/>
 [noexcept](#noexcept)<br/>
 [Changelog](#changelog)<br/>
+[History](#history)<br/>
 [License](#license)
 
-## Preface
+## Overview
 
-The Art of C++ / Operators is the next logical step in the evolution of the
-[Boost.Operators](http://www.boost.org/doc/libs/1_66_0/libs/utility/operators.htm) library,
-whose maintainer I became in 2002. Since then, C++ has changed significiantly and
-with C++11, the time has come for a complete rewrite and to get rid of some
-*very* old legacy code and work-arounds.
+Overloaded operators for class types typically don't come alone.
+For example, when `x + y` is possible then `x += y` should be, too.
+When `x < y` is possible then `x > y`, `x >= y`, and `x <= y` should be, too.
 
-## Rationale
+Implementing large sets of operators, possibly for multiple classes, is both tedious and error-prone.
+However, more often than not, some of these operators can be defined in terms of others.
+For example `x >= y` can frequently be defined as `!(x < y)`.
 
-Overloaded operators for class types typically occur in groups.
-If you can write `x + y`, you probably also want to be able to write `x += y`.
-If you can write `x < y`, you also want `x > y`, `x >= y`, and `x <= y`.
-Moreover, unless your class has really surprising behavior, some of these related operators
-can be defined in terms of others (e.g. `x >= y` &equiv; `!(x < y)`).
+Given the implementation of some basic operators, the templates in the Art of C++ / Operators can generate many more operators automatically.
 
-Replicating these operators for multiple classes is both tedious and error-prone.
-The Art of C++ / Operators templates help by generating operators for you based on
-other operators you've defined in your class.
-
-The generated operators are overloaded to take full advantage of move-aware types
-and are carefully written to allow the compiler to apply important optimizations
-to avoid unneccessary temporary objects. All generated operators are automatically
-marked `noexcept` when the underlying base operations are themself marked as
-`noexcept`. The generated comparison operators are also marked `constexpr`
-(if properly supported by the compiler).
+The generated operators are overloaded to take advantage of movable types, and allow the compiler to avoid unneccessary temporary objects wherever possible.
+All generated operators are `noexcept` when the underlying operations are `noexcept`.
+Generated comparison operators are `constexpr` (when supported by the compiler).
 
 ## Example
 
@@ -948,6 +937,10 @@ Released 2018-04-23
 Released 2018-02-13
 
 * Initial release.
+
+## History
+
+The Art of C++ / Operators is a modernised C++11 rewrite of the [Boost.Operators](http://www.boost.org/doc/libs/1_66_0/libs/utility/operators.htm) library.
 
 ## License
 
