@@ -913,6 +913,12 @@ work-around:
 
 ## Changelog
 
+### 1.1.1
+
+Released 2018-06-17
+
+* Automatic upload of Conan packages on release.
+
 ### 1.1.0
 
 Released 2018-06-17
