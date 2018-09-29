@@ -143,10 +143,18 @@ matrix:
     - compiler: clang
       addons:
         apt:
-          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-trusty-6.0']
-          packages: ['clang-6.0']
+          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-trusty-7']
+          packages: ['clang-7']
       env:
-        - CXX=clang++-6.0
+        - CXX=clang++-7
+
+    - compiler: clang
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-trusty-7']
+          packages: ['clang-7']
+      env:
+        - CXX=clang++-7
         - CPPFLAGS=-fms-extensions
 
     - os: osx
@@ -173,6 +181,12 @@ matrix:
       env:
         - CXX=clang++
 
+    - os: osx
+      osx_image: xcode10
+      compiler: clang
+      env:
+        - CXX=clang++
+
     - compiler: gcc
       addons:
         apt:
@@ -189,11 +203,11 @@ matrix:
     - compiler: clang
       addons:
         apt:
-          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-trusty-6.0']
-          packages: ['clang-6.0', 'clang-tidy-6.0']
+          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-trusty-7']
+          packages: ['clang-7', 'clang-tidy-7']
       env:
-        - CXX=clang++-6.0
-        - CLANG_TIDY=clang-tidy-6.0
+        - CXX=clang++-7
+        - CLANG_TIDY=clang-tidy-7
       script:
         - make -kj3 clang-tidy
 
@@ -213,9 +227,9 @@ matrix:
       addons:
         apt:
           sources: ['ubuntu-toolchain-r-test']
-          packages: ['g++-6']
+          packages: ['g++-8']
       env:
-        - CXX=g++-6
+        - CXX=g++-8
       script:
         - $CXX --version
         - mkdir build
