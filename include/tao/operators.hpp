@@ -26,7 +26,7 @@
 #ifndef TAO_OPERATORS_NO_RVALUE_REFERENCE_RESULTS
 #define TAO_OPERATORS_BASIC_OP( name, op )                                                                                                                    \
    template< typename T, typename U = T >                                                                                                                     \
-   class name                                                                                                                                                 \
+   class name /* NOLINT */                                                                                                                                    \
    {                                                                                                                                                          \
       friend T operator op( const T& lhs, const U& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )         \
       {                                                                                                                                                       \
