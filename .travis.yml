@@ -1,6 +1,6 @@
 language: generic
 os: linux
-dist: trusty
+dist: xenial
 
 matrix:
   include:
@@ -119,7 +119,7 @@ matrix:
     - compiler: clang
       addons:
         apt:
-          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-trusty-4.0']
+          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-xenial-4.0']
           packages: ['clang-4.0']
       env:
         - CXX=clang++-4.0
@@ -127,7 +127,7 @@ matrix:
     - compiler: clang
       addons:
         apt:
-          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-trusty-5.0']
+          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-xenial-5.0']
           packages: ['clang-5.0']
       env:
         - CXX=clang++-5.0
@@ -135,7 +135,7 @@ matrix:
     - compiler: clang
       addons:
         apt:
-          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-trusty-6.0']
+          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-xenial-6.0']
           packages: ['clang-6.0']
       env:
         - CXX=clang++-6.0
@@ -143,7 +143,7 @@ matrix:
     - compiler: clang
       addons:
         apt:
-          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-trusty-7']
+          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-xenial-7']
           packages: ['clang-7']
       env:
         - CXX=clang++-7
@@ -151,10 +151,18 @@ matrix:
     - compiler: clang
       addons:
         apt:
-          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-trusty-7']
-          packages: ['clang-7']
+          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-xenial-8']
+          packages: ['clang-8']
       env:
-        - CXX=clang++-7
+        - CXX=clang++-8
+
+    - compiler: clang
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-xenial-8']
+          packages: ['clang-8']
+      env:
+        - CXX=clang++-8
         - CPPFLAGS=-fms-extensions
 
     - os: osx
@@ -182,7 +190,7 @@ matrix:
         - CXX=clang++
 
     - os: osx
-      osx_image: xcode10
+      osx_image: xcode10.1
       compiler: clang
       env:
         - CXX=clang++
@@ -203,7 +211,7 @@ matrix:
     - compiler: clang
       addons:
         apt:
-          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-trusty-7']
+          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-xenial-7']
           packages: ['clang-7', 'clang-tidy-7']
       env:
         - CXX=clang++-7
