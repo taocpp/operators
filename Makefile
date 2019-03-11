@@ -1,5 +1,5 @@
 # The Art of C++
-# Copyright (c) 2015-2018 Daniel Frey
+# Copyright (c) 2015-2019 Daniel Frey
 # Please see LICENSE for license or visit https://github.com/taocpp/json
 
 .SUFFIXES:
@@ -61,7 +61,7 @@ build/%: %.cpp build/%.d
 	$(CXX) $(CXXSTD) -Iinclude $(CPPFLAGS) $(CXXFLAGS) $< -o $@
 
 build/%.clang-tidy: %
-	$(CLANG_TIDY) -extra-arg "-Iinclude" -extra-arg "-std=c++11" -checks=*,-fuchsia-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay,-misc-macro-parentheses,-hicpp-no-array-decay -warnings-as-errors=* $< 2>/dev/null
+	$(CLANG_TIDY) -extra-arg "-Iinclude" -extra-arg "-std=c++11" -checks=*,-fuchsia-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay,-cppcoreguidelines-macro-usage,-misc-macro-parentheses,-hicpp-no-array-decay -warnings-as-errors=* $< 2>/dev/null
 	@mkdir -p $(@D)
 	@touch $@
 

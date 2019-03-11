@@ -1,5 +1,5 @@
 // The Art of C++ / Operators
-// Copyright (c) 2013-2018 Daniel Frey
+// Copyright (c) 2013-2019 Daniel Frey
 // Please see LICENSE for license or visit https://github.com/taocpp/operators/
 
 #include <tao/operators.hpp>
@@ -87,7 +87,7 @@ public:
       return *this;
    }
 
-   int v_;
+   int v_;  // NOLINT
 };
 
 bool operator==( const X& lhs, const X& rhs )
@@ -150,7 +150,7 @@ struct C
    : tao::operators::less_than_comparable< C >,
      tao::operators::less_than_comparable< C, int >
 {
-   const int i_;
+   const int i_;  // NOLINT
 
    explicit constexpr C( int i ) noexcept
       : i_( i )

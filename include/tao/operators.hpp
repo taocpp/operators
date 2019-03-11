@@ -1,5 +1,5 @@
 // The Art of C++ / Operators
-// Copyright (c) 2013-2018 Daniel Frey
+// Copyright (c) 2013-2019 Daniel Frey
 // Please see LICENSE for license or visit https://github.com/taocpp/operators/
 
 #ifndef TAO_OPERATORS_HPP
@@ -19,7 +19,7 @@
 #if defined( _MSC_VER ) && !defined( __clang__ )
 #define TAO_OPERATORS_CONSTEXPR
 #else
-#define TAO_OPERATORS_CONSTEXPR constexpr
+#define TAO_OPERATORS_CONSTEXPR constexpr  // NOLINT
 #endif
 #endif
 
