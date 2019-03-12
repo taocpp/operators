@@ -215,6 +215,13 @@ matrix:
     - compiler: clang
       addons:
         apt:
+          packages: ['clang-tools']
+      env:
+        - CXX=scan-build
+
+    - compiler: clang
+      addons:
+        apt:
           sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-xenial-8']
           packages: ['clang-8', 'clang-tidy-8']
       env:
