@@ -10,7 +10,7 @@ class OperatorsConan(ConanFile):
     license = "MIT"
     author = "taocpp@icemx.net"
     exports = "LICENSE"
-    exports_sources = "include/*", "CMakeLists.txt"
+    exports_sources = "cmake/*", "include/*", "CMakeLists.txt"
     no_copy_source = True
 
     def build(self):
