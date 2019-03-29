@@ -20,6 +20,7 @@
 [RValue References](#rvalue-references)<br/>
 [constexpr](#constexpr)<br/>
 [noexcept](#noexcept)<br/>
+[nodiscard](#nodiscard)<br/>
 [Changelog](#changelog)<br/>
 [History](#history)<br/>
 [License](#license)
@@ -912,7 +913,24 @@ work-around:
 #undef noexcept
 ```
 
+## nodiscard
+
+When compiling with C++17 or higher, all generated methods are marked `[[nodiscard]]`.
+For compilers that do not support `[[nodiscard]]` or when it is causing trouble,
+you can disable it defining `TAO_OPERATORS_NODISCARD`:
+
+```c++
+#define TAO_OPERATORS_NODISCARD
+#include <tao/operators.hpp>
+```
+
 ## Changelog
+
+### 1.2.0
+
+Released 2019-03-30
+
+* Add support for `[[nodiscard]]`.
 
 ### 1.1.1
 
