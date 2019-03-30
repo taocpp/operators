@@ -29,15 +29,15 @@ set(TAOCPP_OPERATORS_INSTALL_DOC_DIR "share/doc/tao/operators" CACHE STRING "The
 set(TAOCPP_OPERATORS_INSTALL_CMAKE_DIR "share/taocpp-operators/cmake" CACHE STRING "The installation cmake directory")
 
 # define a header-only library
-add_library(taocpp-operators INTERFACE)
-add_library(taocpp::operators ALIAS taocpp-operators)
-target_include_directories(taocpp-operators INTERFACE
+add_library(operators INTERFACE)
+add_library(taocpp::operators ALIAS operators)
+target_include_directories(operators INTERFACE
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:${TAOCPP_OPERATORS_INSTALL_INCLUDE_DIR}>
 )
 
 # features used by taocpp/operators
-target_compile_features(taocpp-operators INTERFACE
+target_compile_features(operators INTERFACE
   cxx_constexpr
   cxx_noexcept
   cxx_rvalue_references
@@ -54,9 +54,9 @@ endif()
 configure_file(cmake/dummy-config.cmake.in taocpp-operators-config.cmake @ONLY)
 
 # install and export target
-install(TARGETS taocpp-operators EXPORT taocpp-operators-targets)
+install(TARGETS operators EXPORT operators-targets)
 
-install(EXPORT taocpp-operators-targets
+install(EXPORT operators-targets
   FILE taocpp-operators-config.cmake
   NAMESPACE taocpp::
   DESTINATION ${TAOCPP_OPERATORS_INSTALL_CMAKE_DIR}
