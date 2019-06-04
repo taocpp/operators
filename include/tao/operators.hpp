@@ -34,7 +34,7 @@
 #ifndef TAO_OPERATORS_NO_RVALUE_REFERENCE_RESULTS
 #define TAO_OPERATORS_BASIC_OP( name, op )                                                                                                                    \
    template< typename T, typename U = T >                                                                                                                     \
-   class name /* NOLINT */                                                                                                                                    \
+   class TAO_OPERATORS_BROKEN_EBO name /* NOLINT */                                                                                                                                    \
    {                                                                                                                                                          \
       friend T operator op( const T& lhs, const U& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )         \
       {                                                                                                                                                       \
@@ -65,7 +65,7 @@
 #else
 #define TAO_OPERATORS_BASIC_OP( name, op )                                                                                                                                                    \
    template< typename T, typename U = T >                                                                                                                                                     \
-   class name                                                                                                                                                                                 \
+   class TAO_OPERATORS_BROKEN_EBO name                                                                                                                                                                                 \
    {                                                                                                                                                                                          \
       TAO_OPERATORS_NODISCARD friend T operator op( const T& lhs, const U& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )                 \
       {                                                                                                                                                                                       \
@@ -99,7 +99,7 @@
 
 #define TAO_OPERATORS_BASIC_OP_LEFT( name, op )                                                                                                                                               \
    template< typename T, typename U >                                                                                                                                                         \
-   class name##_left                                                                                                                                                                          \
+   class TAO_OPERATORS_BROKEN_EBO name##_left                                                                                                                                                                          \
    {                                                                                                                                                                                          \
       TAO_OPERATORS_NODISCARD friend T operator op( const U& lhs, const T& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )                 \
       {                                                                                                                                                                                       \
@@ -133,7 +133,7 @@
 #ifndef TAO_OPERATORS_NO_RVALUE_REFERENCE_RESULTS
 #define TAO_OPERATORS_BASIC_OP_COMMUTATIVE( name, op )                                                                                                                                \
    template< typename T, typename U = T >                                                                                                                                             \
-   class commutative_##name                                                                                                                                                           \
+   class TAO_OPERATORS_BROKEN_EBO commutative_##name                                                                                                                                                           \
    {                                                                                                                                                                                  \
       TAO_OPERATORS_NODISCARD friend T operator op( const T& lhs, const U& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )         \
       {                                                                                                                                                                               \
@@ -189,7 +189,7 @@
    };                                                                                                                                                                                 \
                                                                                                                                                                                       \
    template< typename T >                                                                                                                                                             \
-   class commutative_##name< T >                                                                                                                                                      \
+   class TAO_OPERATORS_BROKEN_EBO commutative_##name< T >                                                                                                                                                      \
    {                                                                                                                                                                                  \
       TAO_OPERATORS_NODISCARD friend T operator op( const T& lhs, const T& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )         \
       {                                                                                                                                                                               \
@@ -219,7 +219,7 @@
 #else
 #define TAO_OPERATORS_BASIC_OP_COMMUTATIVE( name, op )                                                                                                                                        \
    template< typename T, typename U = T >                                                                                                                                                     \
-   class commutative_##name                                                                                                                                                                   \
+   class TAO_OPERATORS_BROKEN_EBO commutative_##name                                                                                                                                                                   \
    {                                                                                                                                                                                          \
       TAO_OPERATORS_NODISCARD friend T operator op( const T& lhs, const U& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )                 \
       {                                                                                                                                                                                       \
@@ -279,7 +279,7 @@
    };                                                                                                                                                                                         \
                                                                                                                                                                                               \
    template< typename T >                                                                                                                                                                     \
-   class commutative_##name< T >                                                                                                                                                              \
+   class TAO_OPERATORS_BROKEN_EBO commutative_##name< T >                                                                                                                                                              \
    {                                                                                                                                                                                          \
       TAO_OPERATORS_NODISCARD friend T operator op( const T& lhs, const T& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )                 \
       {                                                                                                                                                                                       \
@@ -316,7 +316,7 @@ namespace tao
    namespace operators
    {
       template< typename T, typename U = T >
-      class equality_comparable
+      class TAO_OPERATORS_BROKEN_EBO equality_comparable
       {
          TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR bool operator!=( const T& lhs, const U& rhs ) noexcept( noexcept( static_cast< bool >( lhs == rhs ) ) )
          {
@@ -335,7 +335,7 @@ namespace tao
       };
 
       template< typename T >
-      class equality_comparable< T >
+      class TAO_OPERATORS_BROKEN_EBO equality_comparable< T >
       {
          TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR bool operator!=( const T& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( lhs == rhs ) ) )
          {
@@ -344,7 +344,7 @@ namespace tao
       };
 
       template< typename T, typename U = T >
-      class less_than_comparable
+      class TAO_OPERATORS_BROKEN_EBO less_than_comparable
       {
          TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR bool operator<=( const T& lhs, const U& rhs ) noexcept( noexcept( static_cast< bool >( lhs > rhs ) ) )
          {
@@ -378,7 +378,7 @@ namespace tao
       };
 
       template< typename T >
-      class less_than_comparable< T >
+      class TAO_OPERATORS_BROKEN_EBO less_than_comparable< T >
       {
          TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR bool operator>( const T& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs < lhs ) ) )
          {
@@ -404,7 +404,7 @@ namespace tao
       };
 
       template< typename T, typename U = T >
-      class equivalent
+      class TAO_OPERATORS_BROKEN_EBO equivalent
       {
          TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR bool operator==( const T& lhs, const U& rhs ) noexcept( noexcept( static_cast< bool >( lhs < rhs ), static_cast< bool >( lhs > rhs ) ) )
          {
@@ -413,7 +413,7 @@ namespace tao
       };
 
       template< typename T >
-      class equivalent< T >
+      class TAO_OPERATORS_BROKEN_EBO equivalent< T >
       {
          TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR bool operator==( const T& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( lhs < rhs ) ) )
          {
@@ -422,7 +422,7 @@ namespace tao
       };
 
       template< typename T, typename U = T >
-      class partially_ordered
+      class TAO_OPERATORS_BROKEN_EBO partially_ordered
       {
          TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR bool operator<=( const T& lhs, const U& rhs ) noexcept( noexcept( static_cast< bool >( lhs < rhs ), static_cast< bool >( lhs == rhs ) ) )
          {
@@ -456,7 +456,7 @@ namespace tao
       };
 
       template< typename T >
-      class partially_ordered< T >
+      class TAO_OPERATORS_BROKEN_EBO partially_ordered< T >
       {
          TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR bool operator>( const T& lhs, const T& rhs ) noexcept( noexcept( static_cast< bool >( rhs < lhs ) ) )
          {
@@ -608,7 +608,7 @@ namespace tao
       };
 
       template< typename T >
-      class incrementable
+      class TAO_OPERATORS_BROKEN_EBO incrementable
       {
          TAO_OPERATORS_NODISCARD friend T operator++( T& arg, int /*unused*/ ) noexcept( noexcept( T( arg ), ++arg, T( std::declval< T >() ) ) )  // NOLINT
          {
@@ -619,7 +619,7 @@ namespace tao
       };
 
       template< typename T >
-      class decrementable
+      class TAO_OPERATORS_BROKEN_EBO decrementable
       {
          TAO_OPERATORS_NODISCARD friend T operator--( T& arg, int /*unused*/ ) noexcept( noexcept( T( arg ), --arg, T( std::declval< T >() ) ) )  // NOLINT
          {
