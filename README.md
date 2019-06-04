@@ -926,6 +926,12 @@ you can disable it defining `TAO_OPERATORS_NODISCARD`:
 
 ## Changelog
 
+### 1.2.1
+
+Released 2019-06-04
+
+* Add work-around for MSVC to fix broken EBO in more cases.
+
 ### 1.2.0
 
 Released 2019-03-30
