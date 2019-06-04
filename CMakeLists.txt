@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.2.0 FATAL_ERROR)
 
-project(taocpp-operators VERSION 1.2.0 LANGUAGES CXX)
+project(taocpp-operators VERSION 1.2.2 LANGUAGES CXX)
 
 if(${PROJECT_NAME}_FOUND)
   # multiple versions can't co-exist

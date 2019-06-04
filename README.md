@@ -926,6 +926,12 @@ you can disable it defining `TAO_OPERATORS_NODISCARD`:
 
 ## Changelog
 
+### 1.2.2
+
+Released 2019-06-04
+
+* Fix `CMakeLists.txt` version number.
+
 ### 1.2.1
 
 Released 2019-06-04
