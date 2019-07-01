@@ -610,7 +610,7 @@ namespace tao
       template< typename T >
       class TAO_OPERATORS_BROKEN_EBO incrementable
       {
-         TAO_OPERATORS_NODISCARD friend T operator++( T& arg, int /*unused*/ ) noexcept( noexcept( T( arg ), ++arg, T( std::declval< T >() ) ) )  // NOLINT
+         friend T operator++( T& arg, int /*unused*/ ) noexcept( noexcept( T( arg ), ++arg, T( std::declval< T >() ) ) )  // NOLINT
          {
             const T nrv( arg );
             ++arg;
@@ -621,7 +621,7 @@ namespace tao
       template< typename T >
       class TAO_OPERATORS_BROKEN_EBO decrementable
       {
-         TAO_OPERATORS_NODISCARD friend T operator--( T& arg, int /*unused*/ ) noexcept( noexcept( T( arg ), --arg, T( std::declval< T >() ) ) )  // NOLINT
+         friend T operator--( T& arg, int /*unused*/ ) noexcept( noexcept( T( arg ), --arg, T( std::declval< T >() ) ) )  // NOLINT
          {
             const T nrv( arg );
             --arg;

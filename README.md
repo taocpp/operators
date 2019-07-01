@@ -915,7 +915,7 @@ work-around:
 
 ## nodiscard
 
-When compiling with C++17 or higher, all generated methods are marked `[[nodiscard]]`.
+When compiling with C++17 or higher, all generated methods except increment / decrement are marked `[[nodiscard]]`.
 For compilers that do not support `[[nodiscard]]` or when it is causing trouble,
 you can disable it defining `TAO_OPERATORS_NODISCARD`:
 
