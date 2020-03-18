@@ -1,7 +1,7 @@
 # The Art of C++ / Operators
 
 [![Release](https://img.shields.io/github/release/taocpp/operators.svg)](https://github.com/taocpp/operators/releases/latest)
-[![Download](https://api.bintray.com/packages/taocpp/public-conan/operators%3Ataocpp/images/download.svg)](https://bintray.com/taocpp/public-conan/operators%3Ataocpp/_latestVersion)
+[![Download](https://api.bintray.com/packages/conan/conan-center/taocpp-operatorss%3A_/images/download.svg)](https://bintray.com/conan/conan-center/taocpp-operators%3A_/_latestVersion)
 [![TravisCI](https://travis-ci.org/taocpp/operators.svg?branch=master)](https://travis-ci.org/taocpp/operators)
 [![AppVeyor](https://ci.appveyor.com/api/projects/status/794d875ucgic4sq0/branch/master?svg=true)](https://ci.appveyor.com/project/taocpp/operators)
 [![Coverage](https://coveralls.io/repos/github/taocpp/operators/badge.svg?branch=master)](https://coveralls.io/github/taocpp/operators)
@@ -117,7 +117,13 @@ Remember to enable C++11, e.g., provide `-std=c++11` or similar options.
 The Art of C++ / Operators is a single-header library. There is nothing to build or install,
 just copy the header somewhere and include it in your code.
 
-[Conan packages](https://bintray.com/taocpp/public-conan/operators%3Ataocpp) are available.
+## Package Managers
+
+You can download and install taopq using the [Conan](https://github.com/conan-io/conan) package manager:
+
+    conan install taocpp-operators/1.2.2@
+
+The taopq package in conan is kept up to date by Conan team members and community contributors. If the version is out-of-date, please [create an issue or pull request](https://github.com/conan-io/conan-center-index) on the Conan Center Index repository.
 
 ## Provided Templates
 
