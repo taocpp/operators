@@ -119,11 +119,12 @@ just copy the header somewhere and include it in your code.
 
 ## Package Managers
 
-You can download and install taopq using the [Conan](https://github.com/conan-io/conan) package manager:
+You can download and install taocpp-operators using the [Conan](https://github.com/conan-io/conan) package manager:
 
     conan install taocpp-operators/1.2.2@
 
-The taopq package in conan is kept up to date by Conan team members and community contributors. If the version is out-of-date, please [create an issue or pull request](https://github.com/conan-io/conan-center-index) on the Conan Center Index repository.
+The taocpp-operators package in conan is kept up to date by Conan team members and community contributors.
+If the version is out-of-date, please [create an issue or pull request](https://github.com/conan-io/conan-center-index) on the Conan Center Index repository.
 
 ## Provided Templates
 
