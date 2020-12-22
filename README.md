@@ -27,6 +27,8 @@
 
 ## Overview
 
+<a href="https://discord.gg/VQYkppcgqN"><img align="right" src="https://discordapp.com/api/guilds/790164930083028993/embed.png?style=banner2" alt="Join us on Discord"></a>
+
 Overloaded operators for class types typically don't come alone.
 For example, when `x + y` is possible then `x += y` should be, too.
 When `x < y` is possible then `x > y`, `x >= y`, and `x <= y` should be, too.
