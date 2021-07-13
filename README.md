@@ -2,9 +2,9 @@
 
 [![Release](https://img.shields.io/github/release/taocpp/operators.svg)](https://github.com/taocpp/operators/releases/latest)
 [![Download](https://api.bintray.com/packages/conan/conan-center/taocpp-operatorss%3A_/images/download.svg)](https://bintray.com/conan/conan-center/taocpp-operators%3A_/_latestVersion)
-[![TravisCI](https://travis-ci.org/taocpp/operators.svg?branch=master)](https://travis-ci.org/taocpp/operators)
-[![AppVeyor](https://ci.appveyor.com/api/projects/status/794d875ucgic4sq0/branch/master?svg=true)](https://ci.appveyor.com/project/taocpp/operators)
-[![Coverage](https://coveralls.io/repos/github/taocpp/operators/badge.svg?branch=master)](https://coveralls.io/github/taocpp/operators)
+[![TravisCI](https://travis-ci.org/taocpp/operators.svg?branch=main)](https://travis-ci.org/taocpp/operators)
+[![AppVeyor](https://ci.appveyor.com/api/projects/status/794d875ucgic4sq0/branch/main?svg=true)](https://ci.appveyor.com/project/taocpp/operators)
+[![Coverage](https://coveralls.io/repos/github/taocpp/operators/badge.svg?branch=main)](https://coveralls.io/github/taocpp/operators)
 [![Language grade: C/C++](https://img.shields.io/lgtm/grade/cpp/g/taocpp/operators.svg)](https://lgtm.com/projects/g/taocpp/operators/context:cpp)
 
 [The Art of C++](https://taocpp.github.io/) / Operators is a zero-dependency C++11 single-header library that provides highly efficient, move aware operators for arithmetic data types.
