@@ -32,282 +32,282 @@
 #endif
 
 #ifndef TAO_OPERATORS_NO_RVALUE_REFERENCE_RESULTS
-#define TAO_OPERATORS_BASIC_OP( name, op )                                                                                                                    \
-   template< typename T, typename U = T >                                                                                                                     \
-   class TAO_OPERATORS_BROKEN_EBO name /* NOLINT */                                                                                                                                    \
-   {                                                                                                                                                          \
-      friend T operator op( const T& lhs, const U& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )         \
-      {                                                                                                                                                       \
-         T nrv( lhs );                                                                                                                                        \
-         nrv op## = rhs;                                                                                                                                      \
-         return nrv;                                                                                                                                          \
-      }                                                                                                                                                       \
-                                                                                                                                                              \
-      friend T operator op( const T& lhs, U&& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = std::move( rhs ), T( std::declval< T& >() ) ) ) \
-      {                                                                                                                                                       \
-         T nrv( lhs );                                                                                                                                        \
-         nrv op## = std::move( rhs );                                                                                                                         \
-         return nrv;                                                                                                                                          \
-      }                                                                                                                                                       \
-                                                                                                                                                              \
-      friend T&& operator op( T&& lhs, const U& rhs ) noexcept( noexcept( lhs op## = rhs ) )                                                                  \
-      {                                                                                                                                                       \
-         lhs op## = rhs;                                                                                                                                      \
-         return std::move( lhs );                                                                                                                             \
-      }                                                                                                                                                       \
-                                                                                                                                                              \
-      friend T&& operator op( T&& lhs, U&& rhs ) noexcept( noexcept( lhs op## = std::move( rhs ) ) )                                                          \
-      {                                                                                                                                                       \
-         lhs op## = std::move( rhs );                                                                                                                         \
-         return std::move( lhs );                                                                                                                             \
-      }                                                                                                                                                       \
-   }
-#else
-#define TAO_OPERATORS_BASIC_OP( name, op )                                                                                                                                                    \
-   template< typename T, typename U = T >                                                                                                                                                     \
-   class TAO_OPERATORS_BROKEN_EBO name                                                                                                                                                                                 \
-   {                                                                                                                                                                                          \
-      TAO_OPERATORS_NODISCARD friend T operator op( const T& lhs, const U& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )                 \
-      {                                                                                                                                                                                       \
-         T nrv( lhs );                                                                                                                                                                        \
-         nrv op## = rhs;                                                                                                                                                                      \
-         return nrv;                                                                                                                                                                          \
-      }                                                                                                                                                                                       \
-                                                                                                                                                                                              \
-      TAO_OPERATORS_NODISCARD friend T operator op( const T& lhs, U&& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = std::move( rhs ), T( std::declval< T& >() ) ) )         \
-      {                                                                                                                                                                                       \
-         T nrv( lhs );                                                                                                                                                                        \
-         nrv op## = std::move( rhs );                                                                                                                                                         \
-         return nrv;                                                                                                                                                                          \
-      }                                                                                                                                                                                       \
-                                                                                                                                                                                              \
-      TAO_OPERATORS_NODISCARD friend T operator op( T&& lhs, const U& rhs ) noexcept( noexcept( T( std::move( lhs ) ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )         \
-      {                                                                                                                                                                                       \
-         T nrv( std::move( lhs ) );                                                                                                                                                           \
-         nrv op## = rhs;                                                                                                                                                                      \
-         return nrv;                                                                                                                                                                          \
-      }                                                                                                                                                                                       \
-                                                                                                                                                                                              \
-      TAO_OPERATORS_NODISCARD friend T operator op( T&& lhs, U&& rhs ) noexcept( noexcept( T( std::move( lhs ) ), std::declval< T& >() op## = std::move( rhs ), T( std::declval< T& >() ) ) ) \
-      {                                                                                                                                                                                       \
-         T nrv( std::move( lhs ) );                                                                                                                                                           \
-         nrv op## = std::move( rhs );                                                                                                                                                         \
-         return nrv;                                                                                                                                                                          \
-      }                                                                                                                                                                                       \
-   }
-#endif
-
-#define TAO_OPERATORS_BASIC_OP_LEFT( name, op )                                                                                                                                               \
-   template< typename T, typename U >                                                                                                                                                         \
-   class TAO_OPERATORS_BROKEN_EBO name##_left                                                                                                                                                                          \
-   {                                                                                                                                                                                          \
-      TAO_OPERATORS_NODISCARD friend T operator op( const U& lhs, const T& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )                 \
-      {                                                                                                                                                                                       \
-         T nrv( lhs );                                                                                                                                                                        \
-         nrv op## = rhs;                                                                                                                                                                      \
-         return nrv;                                                                                                                                                                          \
-      }                                                                                                                                                                                       \
-                                                                                                                                                                                              \
-      TAO_OPERATORS_NODISCARD friend T operator op( const U& lhs, T&& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = std::move( rhs ), T( std::declval< T& >() ) ) )         \
-      {                                                                                                                                                                                       \
-         T nrv( lhs );                                                                                                                                                                        \
-         nrv op## = std::move( rhs );                                                                                                                                                         \
-         return nrv;                                                                                                                                                                          \
-      }                                                                                                                                                                                       \
-                                                                                                                                                                                              \
-      TAO_OPERATORS_NODISCARD friend T operator op( U&& lhs, const T& rhs ) noexcept( noexcept( T( std::move( lhs ) ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )         \
-      {                                                                                                                                                                                       \
-         T nrv( std::move( lhs ) );                                                                                                                                                           \
-         nrv op## = rhs;                                                                                                                                                                      \
-         return nrv;                                                                                                                                                                          \
-      }                                                                                                                                                                                       \
-                                                                                                                                                                                              \
-      TAO_OPERATORS_NODISCARD friend T operator op( U&& lhs, T&& rhs ) noexcept( noexcept( T( std::move( lhs ) ), std::declval< T& >() op## = std::move( rhs ), T( std::declval< T& >() ) ) ) \
-      {                                                                                                                                                                                       \
-         T nrv( std::move( lhs ) );                                                                                                                                                           \
-         nrv op## = std::move( rhs );                                                                                                                                                         \
-         return nrv;                                                                                                                                                                          \
-      }                                                                                                                                                                                       \
-   }
-
-#ifndef TAO_OPERATORS_NO_RVALUE_REFERENCE_RESULTS
-#define TAO_OPERATORS_BASIC_OP_COMMUTATIVE( name, op )                                                                                                                                \
+#define TAO_OPERATORS_BASIC_OP( name, op )                                                                                                                                            \
    template< typename T, typename U = T >                                                                                                                                             \
-   class TAO_OPERATORS_BROKEN_EBO commutative_##name                                                                                                                                                           \
+   class TAO_OPERATORS_BROKEN_EBO name /* NOLINT */                                                                                                                                   \
    {                                                                                                                                                                                  \
-      TAO_OPERATORS_NODISCARD friend T operator op( const T& lhs, const U& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )         \
+      friend TAO_OPERATORS_CONSTEXPR T operator op( const T& lhs, const U& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )         \
       {                                                                                                                                                                               \
          T nrv( lhs );                                                                                                                                                                \
          nrv op## = rhs;                                                                                                                                                              \
          return nrv;                                                                                                                                                                  \
       }                                                                                                                                                                               \
                                                                                                                                                                                       \
-      TAO_OPERATORS_NODISCARD friend T operator op( const T& lhs, U&& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = std::move( rhs ), T( std::declval< T& >() ) ) ) \
+      friend TAO_OPERATORS_CONSTEXPR T operator op( const T& lhs, U&& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = std::move( rhs ), T( std::declval< T& >() ) ) ) \
       {                                                                                                                                                                               \
          T nrv( lhs );                                                                                                                                                                \
          nrv op## = std::move( rhs );                                                                                                                                                 \
          return nrv;                                                                                                                                                                  \
       }                                                                                                                                                                               \
                                                                                                                                                                                       \
-      TAO_OPERATORS_NODISCARD friend T&& operator op( T&& lhs, const U& rhs ) noexcept( noexcept( lhs op## = rhs ) )                                                                  \
+      friend TAO_OPERATORS_CONSTEXPR T&& operator op( T&& lhs, const U& rhs ) noexcept( noexcept( lhs op## = rhs ) )                                                                  \
       {                                                                                                                                                                               \
          lhs op## = rhs;                                                                                                                                                              \
          return std::move( lhs );                                                                                                                                                     \
       }                                                                                                                                                                               \
                                                                                                                                                                                       \
-      TAO_OPERATORS_NODISCARD friend T&& operator op( T&& lhs, U&& rhs ) noexcept( noexcept( lhs op## = std::move( rhs ) ) )                                                          \
-      {                                                                                                                                                                               \
-         lhs op## = std::move( rhs );                                                                                                                                                 \
-         return std::move( lhs );                                                                                                                                                     \
-      }                                                                                                                                                                               \
-                                                                                                                                                                                      \
-      TAO_OPERATORS_NODISCARD friend T operator op( const U& lhs, const T& rhs ) noexcept( noexcept( T( rhs ), std::declval< T& >() op## = lhs, T( std::declval< T& >() ) ) )         \
-      {                                                                                                                                                                               \
-         T nrv( rhs );                                                                                                                                                                \
-         nrv op## = lhs;                                                                                                                                                              \
-         return nrv;                                                                                                                                                                  \
-      }                                                                                                                                                                               \
-                                                                                                                                                                                      \
-      TAO_OPERATORS_NODISCARD friend T&& operator op( const U& lhs, T&& rhs ) noexcept( noexcept( rhs op## = lhs ) )                                                                  \
-      {                                                                                                                                                                               \
-         rhs op## = lhs;                                                                                                                                                              \
-         return std::move( rhs );                                                                                                                                                     \
-      }                                                                                                                                                                               \
-                                                                                                                                                                                      \
-      TAO_OPERATORS_NODISCARD friend T operator op( U&& lhs, const T& rhs ) noexcept( noexcept( T( rhs ), std::declval< T& >() op## = std::move( lhs ) ) )                            \
-      {                                                                                                                                                                               \
-         T nrv( rhs );                                                                                                                                                                \
-         nrv op## = std::move( lhs );                                                                                                                                                 \
-         return nrv;                                                                                                                                                                  \
-      }                                                                                                                                                                               \
-                                                                                                                                                                                      \
-      TAO_OPERATORS_NODISCARD friend T&& operator op( U&& lhs, T&& rhs ) noexcept( noexcept( rhs op## = std::move( lhs ) ) )                                                          \
-      {                                                                                                                                                                               \
-         rhs op## = std::move( lhs );                                                                                                                                                 \
-         return std::move( rhs );                                                                                                                                                     \
-      }                                                                                                                                                                               \
-   };                                                                                                                                                                                 \
-                                                                                                                                                                                      \
-   template< typename T >                                                                                                                                                             \
-   class TAO_OPERATORS_BROKEN_EBO commutative_##name< T >                                                                                                                                                      \
-   {                                                                                                                                                                                  \
-      TAO_OPERATORS_NODISCARD friend T operator op( const T& lhs, const T& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )         \
-      {                                                                                                                                                                               \
-         T nrv( lhs );                                                                                                                                                                \
-         nrv op## = rhs;                                                                                                                                                              \
-         return nrv;                                                                                                                                                                  \
-      }                                                                                                                                                                               \
-                                                                                                                                                                                      \
-      TAO_OPERATORS_NODISCARD friend T&& operator op( const T& lhs, T&& rhs ) noexcept( noexcept( rhs op## = lhs ) )                                                                  \
-      {                                                                                                                                                                               \
-         rhs op## = lhs;                                                                                                                                                              \
-         return std::move( rhs );                                                                                                                                                     \
-      }                                                                                                                                                                               \
-                                                                                                                                                                                      \
-      TAO_OPERATORS_NODISCARD friend T&& operator op( T&& lhs, const T& rhs ) noexcept( noexcept( lhs op## = rhs ) )                                                                  \
-      {                                                                                                                                                                               \
-         lhs op## = rhs;                                                                                                                                                              \
-         return std::move( lhs );                                                                                                                                                     \
-      }                                                                                                                                                                               \
-                                                                                                                                                                                      \
-      TAO_OPERATORS_NODISCARD friend T&& operator op( T&& lhs, T&& rhs ) noexcept( noexcept( lhs op## = std::move( rhs ) ) )                                                          \
+      friend TAO_OPERATORS_CONSTEXPR T&& operator op( T&& lhs, U&& rhs ) noexcept( noexcept( lhs op## = std::move( rhs ) ) )                                                          \
       {                                                                                                                                                                               \
          lhs op## = std::move( rhs );                                                                                                                                                 \
          return std::move( lhs );                                                                                                                                                     \
       }                                                                                                                                                                               \
    }
 #else
-#define TAO_OPERATORS_BASIC_OP_COMMUTATIVE( name, op )                                                                                                                                        \
-   template< typename T, typename U = T >                                                                                                                                                     \
-   class TAO_OPERATORS_BROKEN_EBO commutative_##name                                                                                                                                                                   \
-   {                                                                                                                                                                                          \
-      TAO_OPERATORS_NODISCARD friend T operator op( const T& lhs, const U& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )                 \
-      {                                                                                                                                                                                       \
-         T nrv( lhs );                                                                                                                                                                        \
-         nrv op## = rhs;                                                                                                                                                                      \
-         return nrv;                                                                                                                                                                          \
-      }                                                                                                                                                                                       \
-                                                                                                                                                                                              \
-      TAO_OPERATORS_NODISCARD friend T operator op( const T& lhs, U&& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = std::move( rhs ), T( std::declval< T& >() ) ) )         \
-      {                                                                                                                                                                                       \
-         T nrv( lhs );                                                                                                                                                                        \
-         nrv op## = std::move( rhs );                                                                                                                                                         \
-         return nrv;                                                                                                                                                                          \
-      }                                                                                                                                                                                       \
-                                                                                                                                                                                              \
-      TAO_OPERATORS_NODISCARD friend T operator op( T&& lhs, const U& rhs ) noexcept( noexcept( T( std::move( lhs ) ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )         \
-      {                                                                                                                                                                                       \
-         T nrv( std::move( lhs ) );                                                                                                                                                           \
-         nrv op## = rhs;                                                                                                                                                                      \
-         return nrv;                                                                                                                                                                          \
-      }                                                                                                                                                                                       \
-                                                                                                                                                                                              \
-      TAO_OPERATORS_NODISCARD friend T operator op( T&& lhs, U&& rhs ) noexcept( noexcept( T( std::move( lhs ) ), std::declval< T& >() op## = std::move( rhs ), T( std::declval< T& >() ) ) ) \
-      {                                                                                                                                                                                       \
-         T nrv( std::move( lhs ) );                                                                                                                                                           \
-         nrv op## = std::move( rhs );                                                                                                                                                         \
-         return nrv;                                                                                                                                                                          \
-      }                                                                                                                                                                                       \
-                                                                                                                                                                                              \
-      TAO_OPERATORS_NODISCARD friend T operator op( const U& lhs, const T& rhs ) noexcept( noexcept( T( rhs ), std::declval< T& >() op## = lhs, T( std::declval< T& >() ) ) )                 \
-      {                                                                                                                                                                                       \
-         T nrv( rhs );                                                                                                                                                                        \
-         nrv op## = lhs;                                                                                                                                                                      \
-         return nrv;                                                                                                                                                                          \
-      }                                                                                                                                                                                       \
-                                                                                                                                                                                              \
-      TAO_OPERATORS_NODISCARD friend T operator op( const U& lhs, T&& rhs ) noexcept( noexcept( T( std::move( rhs ) ), std::declval< T& >() op## = lhs, T( std::declval< T& >() ) ) )         \
-      {                                                                                                                                                                                       \
-         T nrv( std::move( rhs ) );                                                                                                                                                           \
-         nrv op## = lhs;                                                                                                                                                                      \
-         return nrv;                                                                                                                                                                          \
-      }                                                                                                                                                                                       \
-                                                                                                                                                                                              \
-      TAO_OPERATORS_NODISCARD friend T operator op( U&& lhs, const T& rhs ) noexcept( noexcept( T( rhs ), std::declval< T& >() op## = std::move( lhs ) ) )                                    \
-      {                                                                                                                                                                                       \
-         T nrv( rhs );                                                                                                                                                                        \
-         nrv op## = std::move( lhs );                                                                                                                                                         \
-         return nrv;                                                                                                                                                                          \
-      }                                                                                                                                                                                       \
-                                                                                                                                                                                              \
-      TAO_OPERATORS_NODISCARD friend T operator op( U&& lhs, T&& rhs ) noexcept( noexcept( T( std::move( rhs ) ), std::declval< T& >() op## = std::move( lhs ) ) )                            \
-      {                                                                                                                                                                                       \
-         T nrv( std::move( rhs ) );                                                                                                                                                           \
-         nrv op## = std::move( lhs );                                                                                                                                                         \
-         return nrv;                                                                                                                                                                          \
-      }                                                                                                                                                                                       \
-   };                                                                                                                                                                                         \
-                                                                                                                                                                                              \
-   template< typename T >                                                                                                                                                                     \
-   class TAO_OPERATORS_BROKEN_EBO commutative_##name< T >                                                                                                                                                              \
-   {                                                                                                                                                                                          \
-      TAO_OPERATORS_NODISCARD friend T operator op( const T& lhs, const T& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )                 \
-      {                                                                                                                                                                                       \
-         T nrv( lhs );                                                                                                                                                                        \
-         nrv op## = rhs;                                                                                                                                                                      \
-         return nrv;                                                                                                                                                                          \
-      }                                                                                                                                                                                       \
-                                                                                                                                                                                              \
-      TAO_OPERATORS_NODISCARD friend T operator op( const T& lhs, T&& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = std::move( rhs ), T( std::declval< T& >() ) ) )         \
-      {                                                                                                                                                                                       \
-         T nrv( lhs );                                                                                                                                                                        \
-         nrv op## = std::move( rhs );                                                                                                                                                         \
-         return nrv;                                                                                                                                                                          \
-      }                                                                                                                                                                                       \
-                                                                                                                                                                                              \
-      TAO_OPERATORS_NODISCARD friend T operator op( T&& lhs, const T& rhs ) noexcept( noexcept( T( std::move( lhs ) ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )         \
-      {                                                                                                                                                                                       \
-         T nrv( std::move( lhs ) );                                                                                                                                                           \
-         nrv op## = rhs;                                                                                                                                                                      \
-         return nrv;                                                                                                                                                                          \
-      }                                                                                                                                                                                       \
-                                                                                                                                                                                              \
-      TAO_OPERATORS_NODISCARD friend T operator op( T&& lhs, T&& rhs ) noexcept( noexcept( T( std::move( lhs ) ), std::declval< T& >() op## = std::move( rhs ), T( std::declval< T& >() ) ) ) \
-      {                                                                                                                                                                                       \
-         T nrv( std::move( lhs ) );                                                                                                                                                           \
-         nrv op## = std::move( rhs );                                                                                                                                                         \
-         return nrv;                                                                                                                                                                          \
-      }                                                                                                                                                                                       \
+#define TAO_OPERATORS_BASIC_OP( name, op )                                                                                                                                                                            \
+   template< typename T, typename U = T >                                                                                                                                                                             \
+   class TAO_OPERATORS_BROKEN_EBO name                                                                                                                                                                                \
+   {                                                                                                                                                                                                                  \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T operator op( const T& lhs, const U& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )                 \
+      {                                                                                                                                                                                                               \
+         T nrv( lhs );                                                                                                                                                                                                \
+         nrv op## = rhs;                                                                                                                                                                                              \
+         return nrv;                                                                                                                                                                                                  \
+      }                                                                                                                                                                                                               \
+                                                                                                                                                                                                                      \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T operator op( const T& lhs, U&& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = std::move( rhs ), T( std::declval< T& >() ) ) )         \
+      {                                                                                                                                                                                                               \
+         T nrv( lhs );                                                                                                                                                                                                \
+         nrv op## = std::move( rhs );                                                                                                                                                                                 \
+         return nrv;                                                                                                                                                                                                  \
+      }                                                                                                                                                                                                               \
+                                                                                                                                                                                                                      \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T operator op( T&& lhs, const U& rhs ) noexcept( noexcept( T( std::move( lhs ) ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )         \
+      {                                                                                                                                                                                                               \
+         T nrv( std::move( lhs ) );                                                                                                                                                                                   \
+         nrv op## = rhs;                                                                                                                                                                                              \
+         return nrv;                                                                                                                                                                                                  \
+      }                                                                                                                                                                                                               \
+                                                                                                                                                                                                                      \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T operator op( T&& lhs, U&& rhs ) noexcept( noexcept( T( std::move( lhs ) ), std::declval< T& >() op## = std::move( rhs ), T( std::declval< T& >() ) ) ) \
+      {                                                                                                                                                                                                               \
+         T nrv( std::move( lhs ) );                                                                                                                                                                                   \
+         nrv op## = std::move( rhs );                                                                                                                                                                                 \
+         return nrv;                                                                                                                                                                                                  \
+      }                                                                                                                                                                                                               \
+   }
+#endif
+
+#define TAO_OPERATORS_BASIC_OP_LEFT( name, op )                                                                                                                                                                       \
+   template< typename T, typename U >                                                                                                                                                                                 \
+   class TAO_OPERATORS_BROKEN_EBO name##_left                                                                                                                                                                         \
+   {                                                                                                                                                                                                                  \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T operator op( const U& lhs, const T& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )                 \
+      {                                                                                                                                                                                                               \
+         T nrv( lhs );                                                                                                                                                                                                \
+         nrv op## = rhs;                                                                                                                                                                                              \
+         return nrv;                                                                                                                                                                                                  \
+      }                                                                                                                                                                                                               \
+                                                                                                                                                                                                                      \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T operator op( const U& lhs, T&& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = std::move( rhs ), T( std::declval< T& >() ) ) )         \
+      {                                                                                                                                                                                                               \
+         T nrv( lhs );                                                                                                                                                                                                \
+         nrv op## = std::move( rhs );                                                                                                                                                                                 \
+         return nrv;                                                                                                                                                                                                  \
+      }                                                                                                                                                                                                               \
+                                                                                                                                                                                                                      \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T operator op( U&& lhs, const T& rhs ) noexcept( noexcept( T( std::move( lhs ) ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )         \
+      {                                                                                                                                                                                                               \
+         T nrv( std::move( lhs ) );                                                                                                                                                                                   \
+         nrv op## = rhs;                                                                                                                                                                                              \
+         return nrv;                                                                                                                                                                                                  \
+      }                                                                                                                                                                                                               \
+                                                                                                                                                                                                                      \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T operator op( U&& lhs, T&& rhs ) noexcept( noexcept( T( std::move( lhs ) ), std::declval< T& >() op## = std::move( rhs ), T( std::declval< T& >() ) ) ) \
+      {                                                                                                                                                                                                               \
+         T nrv( std::move( lhs ) );                                                                                                                                                                                   \
+         nrv op## = std::move( rhs );                                                                                                                                                                                 \
+         return nrv;                                                                                                                                                                                                  \
+      }                                                                                                                                                                                                               \
+   }
+
+#ifndef TAO_OPERATORS_NO_RVALUE_REFERENCE_RESULTS
+#define TAO_OPERATORS_BASIC_OP_COMMUTATIVE( name, op )                                                                                                                                                        \
+   template< typename T, typename U = T >                                                                                                                                                                     \
+   class TAO_OPERATORS_BROKEN_EBO commutative_##name                                                                                                                                                          \
+   {                                                                                                                                                                                                          \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T operator op( const T& lhs, const U& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )         \
+      {                                                                                                                                                                                                       \
+         T nrv( lhs );                                                                                                                                                                                        \
+         nrv op## = rhs;                                                                                                                                                                                      \
+         return nrv;                                                                                                                                                                                          \
+      }                                                                                                                                                                                                       \
+                                                                                                                                                                                                              \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T operator op( const T& lhs, U&& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = std::move( rhs ), T( std::declval< T& >() ) ) ) \
+      {                                                                                                                                                                                                       \
+         T nrv( lhs );                                                                                                                                                                                        \
+         nrv op## = std::move( rhs );                                                                                                                                                                         \
+         return nrv;                                                                                                                                                                                          \
+      }                                                                                                                                                                                                       \
+                                                                                                                                                                                                              \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T&& operator op( T&& lhs, const U& rhs ) noexcept( noexcept( lhs op## = rhs ) )                                                                  \
+      {                                                                                                                                                                                                       \
+         lhs op## = rhs;                                                                                                                                                                                      \
+         return std::move( lhs );                                                                                                                                                                             \
+      }                                                                                                                                                                                                       \
+                                                                                                                                                                                                              \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T&& operator op( T&& lhs, U&& rhs ) noexcept( noexcept( lhs op## = std::move( rhs ) ) )                                                          \
+      {                                                                                                                                                                                                       \
+         lhs op## = std::move( rhs );                                                                                                                                                                         \
+         return std::move( lhs );                                                                                                                                                                             \
+      }                                                                                                                                                                                                       \
+                                                                                                                                                                                                              \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T operator op( const U& lhs, const T& rhs ) noexcept( noexcept( T( rhs ), std::declval< T& >() op## = lhs, T( std::declval< T& >() ) ) )         \
+      {                                                                                                                                                                                                       \
+         T nrv( rhs );                                                                                                                                                                                        \
+         nrv op## = lhs;                                                                                                                                                                                      \
+         return nrv;                                                                                                                                                                                          \
+      }                                                                                                                                                                                                       \
+                                                                                                                                                                                                              \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T&& operator op( const U& lhs, T&& rhs ) noexcept( noexcept( rhs op## = lhs ) )                                                                  \
+      {                                                                                                                                                                                                       \
+         rhs op## = lhs;                                                                                                                                                                                      \
+         return std::move( rhs );                                                                                                                                                                             \
+      }                                                                                                                                                                                                       \
+                                                                                                                                                                                                              \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T operator op( U&& lhs, const T& rhs ) noexcept( noexcept( T( rhs ), std::declval< T& >() op## = std::move( lhs ) ) )                            \
+      {                                                                                                                                                                                                       \
+         T nrv( rhs );                                                                                                                                                                                        \
+         nrv op## = std::move( lhs );                                                                                                                                                                         \
+         return nrv;                                                                                                                                                                                          \
+      }                                                                                                                                                                                                       \
+                                                                                                                                                                                                              \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T&& operator op( U&& lhs, T&& rhs ) noexcept( noexcept( rhs op## = std::move( lhs ) ) )                                                          \
+      {                                                                                                                                                                                                       \
+         rhs op## = std::move( lhs );                                                                                                                                                                         \
+         return std::move( rhs );                                                                                                                                                                             \
+      }                                                                                                                                                                                                       \
+   };                                                                                                                                                                                                         \
+                                                                                                                                                                                                              \
+   template< typename T >                                                                                                                                                                                     \
+   class TAO_OPERATORS_BROKEN_EBO commutative_##name< T >                                                                                                                                                     \
+   {                                                                                                                                                                                                          \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T operator op( const T& lhs, const T& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )         \
+      {                                                                                                                                                                                                       \
+         T nrv( lhs );                                                                                                                                                                                        \
+         nrv op## = rhs;                                                                                                                                                                                      \
+         return nrv;                                                                                                                                                                                          \
+      }                                                                                                                                                                                                       \
+                                                                                                                                                                                                              \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T&& operator op( const T& lhs, T&& rhs ) noexcept( noexcept( rhs op## = lhs ) )                                                                  \
+      {                                                                                                                                                                                                       \
+         rhs op## = lhs;                                                                                                                                                                                      \
+         return std::move( rhs );                                                                                                                                                                             \
+      }                                                                                                                                                                                                       \
+                                                                                                                                                                                                              \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T&& operator op( T&& lhs, const T& rhs ) noexcept( noexcept( lhs op## = rhs ) )                                                                  \
+      {                                                                                                                                                                                                       \
+         lhs op## = rhs;                                                                                                                                                                                      \
+         return std::move( lhs );                                                                                                                                                                             \
+      }                                                                                                                                                                                                       \
+                                                                                                                                                                                                              \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T&& operator op( T&& lhs, T&& rhs ) noexcept( noexcept( lhs op## = std::move( rhs ) ) )                                                          \
+      {                                                                                                                                                                                                       \
+         lhs op## = std::move( rhs );                                                                                                                                                                         \
+         return std::move( lhs );                                                                                                                                                                             \
+      }                                                                                                                                                                                                       \
+   }
+#else
+#define TAO_OPERATORS_BASIC_OP_COMMUTATIVE( name, op )                                                                                                                                                                \
+   template< typename T, typename U = T >                                                                                                                                                                             \
+   class TAO_OPERATORS_BROKEN_EBO commutative_##name                                                                                                                                                                  \
+   {                                                                                                                                                                                                                  \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T operator op( const T& lhs, const U& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )                 \
+      {                                                                                                                                                                                                               \
+         T nrv( lhs );                                                                                                                                                                                                \
+         nrv op## = rhs;                                                                                                                                                                                              \
+         return nrv;                                                                                                                                                                                                  \
+      }                                                                                                                                                                                                               \
+                                                                                                                                                                                                                      \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T operator op( const T& lhs, U&& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = std::move( rhs ), T( std::declval< T& >() ) ) )         \
+      {                                                                                                                                                                                                               \
+         T nrv( lhs );                                                                                                                                                                                                \
+         nrv op## = std::move( rhs );                                                                                                                                                                                 \
+         return nrv;                                                                                                                                                                                                  \
+      }                                                                                                                                                                                                               \
+                                                                                                                                                                                                                      \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T operator op( T&& lhs, const U& rhs ) noexcept( noexcept( T( std::move( lhs ) ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )         \
+      {                                                                                                                                                                                                               \
+         T nrv( std::move( lhs ) );                                                                                                                                                                                   \
+         nrv op## = rhs;                                                                                                                                                                                              \
+         return nrv;                                                                                                                                                                                                  \
+      }                                                                                                                                                                                                               \
+                                                                                                                                                                                                                      \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T operator op( T&& lhs, U&& rhs ) noexcept( noexcept( T( std::move( lhs ) ), std::declval< T& >() op## = std::move( rhs ), T( std::declval< T& >() ) ) ) \
+      {                                                                                                                                                                                                               \
+         T nrv( std::move( lhs ) );                                                                                                                                                                                   \
+         nrv op## = std::move( rhs );                                                                                                                                                                                 \
+         return nrv;                                                                                                                                                                                                  \
+      }                                                                                                                                                                                                               \
+                                                                                                                                                                                                                      \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T operator op( const U& lhs, const T& rhs ) noexcept( noexcept( T( rhs ), std::declval< T& >() op## = lhs, T( std::declval< T& >() ) ) )                 \
+      {                                                                                                                                                                                                               \
+         T nrv( rhs );                                                                                                                                                                                                \
+         nrv op## = lhs;                                                                                                                                                                                              \
+         return nrv;                                                                                                                                                                                                  \
+      }                                                                                                                                                                                                               \
+                                                                                                                                                                                                                      \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T operator op( const U& lhs, T&& rhs ) noexcept( noexcept( T( std::move( rhs ) ), std::declval< T& >() op## = lhs, T( std::declval< T& >() ) ) )         \
+      {                                                                                                                                                                                                               \
+         T nrv( std::move( rhs ) );                                                                                                                                                                                   \
+         nrv op## = lhs;                                                                                                                                                                                              \
+         return nrv;                                                                                                                                                                                                  \
+      }                                                                                                                                                                                                               \
+                                                                                                                                                                                                                      \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T operator op( U&& lhs, const T& rhs ) noexcept( noexcept( T( rhs ), std::declval< T& >() op## = std::move( lhs ) ) )                                    \
+      {                                                                                                                                                                                                               \
+         T nrv( rhs );                                                                                                                                                                                                \
+         nrv op## = std::move( lhs );                                                                                                                                                                                 \
+         return nrv;                                                                                                                                                                                                  \
+      }                                                                                                                                                                                                               \
+                                                                                                                                                                                                                      \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T operator op( U&& lhs, T&& rhs ) noexcept( noexcept( T( std::move( rhs ) ), std::declval< T& >() op## = std::move( lhs ) ) )                            \
+      {                                                                                                                                                                                                               \
+         T nrv( std::move( rhs ) );                                                                                                                                                                                   \
+         nrv op## = std::move( lhs );                                                                                                                                                                                 \
+         return nrv;                                                                                                                                                                                                  \
+      }                                                                                                                                                                                                               \
+   };                                                                                                                                                                                                                 \
+                                                                                                                                                                                                                      \
+   template< typename T >                                                                                                                                                                                             \
+   class TAO_OPERATORS_BROKEN_EBO commutative_##name< T >                                                                                                                                                             \
+   {                                                                                                                                                                                                                  \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T operator op( const T& lhs, const T& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )                 \
+      {                                                                                                                                                                                                               \
+         T nrv( lhs );                                                                                                                                                                                                \
+         nrv op## = rhs;                                                                                                                                                                                              \
+         return nrv;                                                                                                                                                                                                  \
+      }                                                                                                                                                                                                               \
+                                                                                                                                                                                                                      \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T operator op( const T& lhs, T&& rhs ) noexcept( noexcept( T( lhs ), std::declval< T& >() op## = std::move( rhs ), T( std::declval< T& >() ) ) )         \
+      {                                                                                                                                                                                                               \
+         T nrv( lhs );                                                                                                                                                                                                \
+         nrv op## = std::move( rhs );                                                                                                                                                                                 \
+         return nrv;                                                                                                                                                                                                  \
+      }                                                                                                                                                                                                               \
+                                                                                                                                                                                                                      \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T operator op( T&& lhs, const T& rhs ) noexcept( noexcept( T( std::move( lhs ) ), std::declval< T& >() op## = rhs, T( std::declval< T& >() ) ) )         \
+      {                                                                                                                                                                                                               \
+         T nrv( std::move( lhs ) );                                                                                                                                                                                   \
+         nrv op## = rhs;                                                                                                                                                                                              \
+         return nrv;                                                                                                                                                                                                  \
+      }                                                                                                                                                                                                               \
+                                                                                                                                                                                                                      \
+      TAO_OPERATORS_NODISCARD friend TAO_OPERATORS_CONSTEXPR T operator op( T&& lhs, T&& rhs ) noexcept( noexcept( T( std::move( lhs ) ), std::declval< T& >() op## = std::move( rhs ), T( std::declval< T& >() ) ) ) \
+      {                                                                                                                                                                                                               \
+         T nrv( std::move( lhs ) );                                                                                                                                                                                   \
+         nrv op## = std::move( rhs );                                                                                                                                                                                 \
+         return nrv;                                                                                                                                                                                                  \
+      }                                                                                                                                                                                                               \
    }
 #endif
 
